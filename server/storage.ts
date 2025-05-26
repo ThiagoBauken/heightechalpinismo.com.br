@@ -1,4 +1,6 @@
 import { users, contacts, quotes, type User, type InsertUser, type Contact, type InsertContact, type Quote, type InsertQuote } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
