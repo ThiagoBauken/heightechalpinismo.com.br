@@ -1,4 +1,5 @@
 import ServiceCard from "@/components/shared/service-card";
+import ServicesCarousel from "./services-carousel";
 import { SprayCan, PaintBucket, Wrench, Shield, Search, Settings, Zap, TreePine } from "lucide-react";
 
 export default function ServicesOverview() {
@@ -111,7 +112,11 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        {/* Mobile Carousel */}
+        <ServicesCarousel />
+        
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}

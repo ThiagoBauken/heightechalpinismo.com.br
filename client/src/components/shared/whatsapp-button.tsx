@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import whatsappIcon from "@assets/134w1500.jpg";
 
 export default function WhatsAppButton() {
   const phoneNumber = "5511999999999"; // Substitua pelo número real da empresa
@@ -16,7 +16,11 @@ export default function WhatsAppButton() {
       onClick={handleWhatsAppClick}
       title="Fale conosco no WhatsApp"
     >
-      <MessageCircle />
+      <img 
+        src={whatsappIcon} 
+        alt="WhatsApp" 
+        className="w-full h-full object-cover rounded-full"
+      />
     </div>
   );
 }
