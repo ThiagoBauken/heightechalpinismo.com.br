@@ -82,6 +82,8 @@ export default function QuoteForm() {
     "Impermeabilização",
     "Inspeção Técnica",
     "Instalação de Equipamentos",
+    "Soldas e Reparos Estruturais",
+    "Poda de Árvores em Altura",
     "Outros"
   ];
 

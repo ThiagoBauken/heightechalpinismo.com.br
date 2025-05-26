@@ -37,12 +37,12 @@ export default function Header() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-gray-600 hover:text-primary transition-colors duration-200 ${
+                className={`text-gray-600 hover:text-primary transition-colors duration-200 text-sm xl:text-base ${
                   location === item.href ? "text-primary font-medium" : ""
                 }`}
               >
@@ -50,15 +50,16 @@ export default function Header() {
               </Link>
             ))}
             <Link href="/contato">
-              <Button className="bg-accent hover:bg-yellow-600 text-white">
+              <Button className="bg-accent hover:bg-orange-600 text-white text-sm xl:text-base px-4 xl:px-6">
                 <Phone className="w-4 h-4 mr-2" />
-                Solicitar Orçamento
+                <span className="hidden xl:inline">Solicitar Orçamento</span>
+                <span className="xl:hidden">Orçamento</span>
               </Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

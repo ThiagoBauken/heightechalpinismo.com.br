@@ -76,6 +76,75 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Analytics/Metrics endpoints for n8n automation
+  app.get("/api/metrics/contacts", async (req, res) => {
+    try {
+      const contacts = await storage.getContacts();
+      const today = new Date();
+      const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+      
+      const recentContacts = contacts.filter(contact => 
+        contact.createdAt >= thirtyDaysAgo
+      );
+      
+      res.json({
+        total: contacts.length,
+        recent: recentContacts.length,
+        byService: contacts.reduce((acc, contact) => {
+          acc[contact.service] = (acc[contact.service] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>),
+        byCityState: contacts.reduce((acc, contact) => {
+          acc[contact.city] = (acc[contact.city] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>)
+      });
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Erro ao buscar métricas de contatos" 
+      });
+    }
+  });
+
+  app.get("/api/metrics/quotes", async (req, res) => {
+    try {
+      const quotes = await storage.getQuotes();
+      const today = new Date();
+      const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+      
+      const recentQuotes = quotes.filter(quote => 
+        quote.createdAt >= thirtyDaysAgo
+      );
+      
+      res.json({
+        total: quotes.length,
+        recent: recentQuotes.length,
+        byService: quotes.reduce((acc, quote) => {
+          acc[quote.service] = (acc[quote.service] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>),
+        byUrgency: quotes.reduce((acc, quote) => {
+          if (quote.urgency) {
+            acc[quote.urgency] = (acc[quote.urgency] || 0) + 1;
+          }
+          return acc;
+        }, {} as Record<string, number>),
+        byBuildingType: quotes.reduce((acc, quote) => {
+          if (quote.buildingType) {
+            acc[quote.buildingType] = (acc[quote.buildingType] || 0) + 1;
+          }
+          return acc;
+        }, {} as Record<string, number>)
+      });
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Erro ao buscar métricas de orçamentos" 
+      });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

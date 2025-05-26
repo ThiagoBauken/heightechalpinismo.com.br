@@ -60,7 +60,10 @@ export class MemStorage implements IStorage {
     const quote: Quote = { 
       ...insertQuote, 
       id, 
-      createdAt: new Date() 
+      createdAt: new Date(),
+      buildingType: insertQuote.buildingType || null,
+      buildingHeight: insertQuote.buildingHeight || null,
+      urgency: insertQuote.urgency || null
     };
     this.quotes.set(id, quote);
     return quote;
