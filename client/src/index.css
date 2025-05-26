@@ -1,29 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   --background: 0 0% 100%; /* #FFFFFF */
-  --foreground: 222 84% 4.9%; /* #020817 */
+  --foreground: 210 11% 15%; /* #1F2937 */
   --muted: 210 40% 98%; /* #F8FAFC */
   --muted-foreground: 215 16% 47%; /* #64748B */
   --popover: 0 0% 100%; /* #FFFFFF */
-  --popover-foreground: 222 84% 4.9%; /* #020817 */
+  --popover-foreground: 210 11% 15%; /* #1F2937 */
   --card: 0 0% 100%; /* #FFFFFF */
-  --card-foreground: 222 84% 4.9%; /* #020817 */
+  --card-foreground: 210 11% 15%; /* #1F2937 */
   --border: 214 32% 91%; /* #E2E8F0 */
   --input: 214 32% 91%; /* #E2E8F0 */
-  --primary: 221 83% 53%; /* #1E40AF */
-  --primary-foreground: 210 40% 98%; /* #F8FAFC */
+  --primary: 202 96% 27%; /* #0369A1 - Azul corporativo forte */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
   --secondary: 210 40% 98%; /* #F8FAFC */
-  --secondary-foreground: 222 84% 4.9%; /* #020817 */
-  --accent: 43 96% 56%; /* #F59E0B */
-  --accent-foreground: 222 84% 4.9%; /* #020817 */
+  --secondary-foreground: 210 11% 15%; /* #1F2937 */
+  --accent: 39 96% 52%; /* #F97316 - Laranja de segurança */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 84% 60%; /* #EF4444 */
-  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
-  --ring: 221 83% 53%; /* #1E40AF */
+  --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+  --ring: 202 96% 27%; /* #0369A1 */
   --radius: 0.5rem;
   
   --chart-1: 12 76% 61%;
@@ -43,25 +43,25 @@
 }
 
 .dark {
-  --background: 222 84% 4.9%; /* #020817 */
+  --background: 210 11% 7%; /* #0F172A */
   --foreground: 210 40% 98%; /* #F8FAFC */
   --muted: 217 32% 17%; /* #1E293B */
   --muted-foreground: 215 20% 65%; /* #94A3B8 */
-  --popover: 222 84% 4.9%; /* #020817 */
+  --popover: 210 11% 7%; /* #0F172A */
   --popover-foreground: 210 40% 98%; /* #F8FAFC */
-  --card: 222 84% 4.9%; /* #020817 */
+  --card: 210 11% 7%; /* #0F172A */
   --card-foreground: 210 40% 98%; /* #F8FAFC */
   --border: 217 32% 17%; /* #1E293B */
   --input: 217 32% 17%; /* #1E293B */
-  --primary: 217 91% 60%; /* #3B82F6 */
-  --primary-foreground: 222 84% 4.9%; /* #020817 */
+  --primary: 202 96% 35%; /* #0EA5E9 */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
   --secondary: 217 32% 17%; /* #1E293B */
   --secondary-foreground: 210 40% 98%; /* #F8FAFC */
-  --accent: 217 32% 17%; /* #1E293B */
-  --accent-foreground: 210 40% 98%; /* #F8FAFC */
+  --accent: 39 96% 62%; /* #FB923C */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 62% 30%; /* #991B1B */
   --destructive-foreground: 210 40% 98%; /* #F8FAFC */
-  --ring: 217 91% 60%; /* #3B82F6 */
+  --ring: 202 96% 35%; /* #0EA5E9 */
   
   --chart-1: 220 70% 50%;
   --chart-2: 160 60% 45%;
@@ -83,7 +83,7 @@
 
 @layer utilities {
   .hero-overlay {
-    background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(71, 85, 105, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(3, 105, 161, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
   }
   
   .service-card {
@@ -92,6 +92,50 @@
   
   .service-card:hover {
     transform: translateY(-5px);
+  }
+  
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      bottom: 15px;
+      right: 15px;
+    }
+    
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+    }
   }
 }
 

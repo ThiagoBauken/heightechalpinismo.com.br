@@ -1,5 +1,5 @@
 import ServiceCard from "@/components/shared/service-card";
-import { SprayCan, PaintBucket, Wrench, Shield, Search, Settings } from "lucide-react";
+import { SprayCan, PaintBucket, Wrench, Shield, Search, Settings, Zap, TreePine } from "lucide-react";
 
 export default function ServicesOverview() {
   const services = [
@@ -72,8 +72,32 @@ export default function ServicesOverview() {
         "Antenas e comunicação",
         "Letreiros e sinalização"
       ],
-      image: "https://pixabay.com/get/g19c21d3600343bf32c923ec16bab42a043ef2c7430c8451d33f1575a50bfbe15d02940f6f65a808ad7f594946408f0a5825a512fcf86887c564bdbe4320e5eb8_1280.jpg",
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
       href: "/servicos/instalacao-equipamentos"
+    },
+    {
+      icon: Zap,
+      title: "Soldas e Reparos Estruturais",
+      description: "Soldas especializadas em altura e reparos estruturais em locais de difícil acesso",
+      features: [
+        "Soldas em estruturas metálicas",
+        "Reparos de estruturas",
+        "Reforços estruturais"
+      ],
+      image: "https://images.unsplash.com/photo-1565452884095-55b8d4cdb8b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      href: "/servicos/soldas-reparos"
+    },
+    {
+      icon: TreePine,
+      title: "Poda de Árvores em Altura",
+      description: "Poda técnica e remoção de árvores próximas a estruturas e redes elétricas",
+      features: [
+        "Poda técnica especializada",
+        "Remoção segura",
+        "Próximo a redes elétricas"
+      ],
+      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      href: "/servicos/poda-arvores"
     }
   ];
 

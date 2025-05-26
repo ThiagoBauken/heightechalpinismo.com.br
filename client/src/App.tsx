@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import WhatsAppButton from "@/components/shared/whatsapp-button";
 import Home from "@/pages/home";
 import FacadeCleaning from "@/pages/services/facade-cleaning";
 import BuildingPainting from "@/pages/services/building-painting";
@@ -45,6 +46,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <WhatsAppButton />
       </TooltipProvider>
     </QueryClientProvider>
   );
