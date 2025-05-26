@@ -50,7 +50,7 @@ export default function Header() {
               </Link>
             ))}
             <Link href="/contato">
-              <Button className="bg-accent hover:bg-orange-600 text-white text-sm xl:text-base px-4 xl:px-6">
+              <Button className="bg-accent hover:bg-red-600 text-white text-sm xl:text-base px-4 xl:px-6">
                 <Phone className="w-4 h-4 mr-2" />
                 <span className="hidden xl:inline">Solicitar Orçamento</span>
                 <span className="xl:hidden">Orçamento</span>

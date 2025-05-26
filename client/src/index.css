@@ -15,15 +15,15 @@
   --card-foreground: 210 11% 15%; /* #1F2937 */
   --border: 214 32% 91%; /* #E2E8F0 */
   --input: 214 32% 91%; /* #E2E8F0 */
-  --primary: 202 96% 27%; /* #0369A1 - Azul corporativo forte */
+  --primary: 355 85% 45%; /* #DC2626 - Vermelho da logo Heightech */
   --primary-foreground: 0 0% 100%; /* #FFFFFF */
-  --secondary: 210 40% 98%; /* #F8FAFC */
-  --secondary-foreground: 210 11% 15%; /* #1F2937 */
-  --accent: 39 96% 52%; /* #F97316 - Laranja de segurança */
+  --secondary: 0 0% 15%; /* #262626 - Preto/cinza escuro da logo */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 355 91% 55%; /* #EF4444 - Vermelho mais vibrante */
   --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 100%; /* #FFFFFF */
-  --ring: 202 96% 27%; /* #0369A1 */
+  --ring: 355 85% 45%; /* #DC2626 - Vermelho da logo */
   --radius: 0.5rem;
   
   --chart-1: 12 76% 61%;
@@ -53,15 +53,15 @@
   --card-foreground: 210 40% 98%; /* #F8FAFC */
   --border: 217 32% 17%; /* #1E293B */
   --input: 217 32% 17%; /* #1E293B */
-  --primary: 202 96% 35%; /* #0EA5E9 */
+  --primary: 355 85% 50%; /* #E53E3E - Vermelho da logo no modo escuro */
   --primary-foreground: 0 0% 100%; /* #FFFFFF */
-  --secondary: 217 32% 17%; /* #1E293B */
-  --secondary-foreground: 210 40% 98%; /* #F8FAFC */
-  --accent: 39 96% 62%; /* #FB923C */
+  --secondary: 0 0% 20%; /* #333333 - Preto/cinza escuro no modo escuro */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 355 91% 60%; /* #F56565 - Vermelho mais claro no modo escuro */
   --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 62% 30%; /* #991B1B */
   --destructive-foreground: 210 40% 98%; /* #F8FAFC */
-  --ring: 202 96% 35%; /* #0EA5E9 */
+  --ring: 355 85% 50%; /* #E53E3E - Vermelho da logo no modo escuro */
   
   --chart-1: 220 70% 50%;
   --chart-2: 160 60% 45%;
@@ -83,7 +83,7 @@
 
 @layer utilities {
   .hero-overlay {
-    background: linear-gradient(135deg, rgba(3, 105, 161, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(38, 38, 38, 0.90) 100%);
   }
   
   .service-card {
