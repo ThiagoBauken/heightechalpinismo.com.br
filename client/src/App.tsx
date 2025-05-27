@@ -14,6 +14,7 @@ import Waterproofing from "@/pages/services/waterproofing";
 import TechnicalInspection from "@/pages/services/technical-inspection";
 import EquipmentInstallation from "@/pages/services/equipment-installation";
 import Projects from "@/pages/projects";
+import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
@@ -31,6 +32,7 @@ function Router() {
           <Route path="/servicos/inspecao-tecnica" component={TechnicalInspection} />
           <Route path="/servicos/instalacao-equipamentos" component={EquipmentInstallation} />
           <Route path="/projetos" component={Projects} />
+          <Route path="/blog" component={Blog} />
           <Route path="/contato" component={Contact} />
           <Route component={NotFound} />
         </Switch>
