@@ -250,6 +250,72 @@ Disallow: /admin/
     res.send(robotsTxt);
   });
 
+  // Analytics tracking endpoint
+  app.post("/api/analytics", async (req, res) => {
+    try {
+      const { events, sessionId } = req.body;
+      
+      // Log analytics events (em produção, salvaria no banco de dados)
+      console.log('📊 Analytics Events Received:', {
+        sessionId,
+        eventCount: events.length,
+        events: events.map((e: any) => ({
+          event: e.event,
+          page: e.page,
+          timestamp: e.timestamp,
+          data: e.data
+        }))
+      });
+
+      // Aqui você salvaria no banco de dados
+      // await storage.saveAnalyticsEvents(events);
+
+      res.json({ success: true, processed: events.length });
+    } catch (error) {
+      console.error('Erro ao processar analytics:', error);
+      res.status(500).json({ success: false, message: "Erro interno" });
+    }
+  });
+
+  // Dashboard de analytics (endpoint para visualizar métricas)
+  app.get("/api/analytics/dashboard", async (req, res) => {
+    try {
+      // Simulação de dados de analytics (em produção viria do banco)
+      const dashboardData = {
+        totalPageViews: 1250,
+        whatsappClicks: 89,
+        instagramClicks: 34,
+        formSubmissions: 45,
+        topPages: [
+          { page: "/", views: 456 },
+          { page: "/servicos/limpeza-fachadas", views: 234 },
+          { page: "/servicos/pintura-predial", views: 189 },
+          { page: "/contato", views: 156 },
+          { page: "/projetos", views: 134 }
+        ],
+        conversionRate: 7.2,
+        averageSessionDuration: 145, // segundos
+        bounceRate: 34.5,
+        deviceBreakdown: {
+          mobile: 68,
+          desktop: 28,
+          tablet: 4
+        },
+        serviceInterest: {
+          "Limpeza de Fachadas": 32,
+          "Pintura Predial": 28,
+          "Manutenção Predial": 18,
+          "Impermeabilização": 12,
+          "Outros": 10
+        }
+      };
+
+      res.json(dashboardData);
+    } catch (error) {
+      res.status(500).json({ success: false, message: "Erro ao buscar dados" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
