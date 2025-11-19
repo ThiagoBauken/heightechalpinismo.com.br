@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, Settings, Zap, Wind, Award, Phone, Play } from "lucide-react";
+import SEOHead from "@/components/shared/seo-head";
 
 export default function EquipmentInstallation() {
   const serviceFeatures = [
@@ -58,6 +59,17 @@ export default function EquipmentInstallation() {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Instalação de Banners e Letra Caixa em Fachadas - Balneário Camboriú"
+        description="Instalação profissional de banners, letreiros e letras caixa em fachadas em Balneário Camboriú e Itapema. Trabalho em altura certificado."
+        keywords={[
+          "instalação de banner",
+          "letra caixa",
+          "letreiro luminoso",
+          "comunicação visual",
+          "fachada comercial"
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

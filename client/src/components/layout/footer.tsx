@@ -3,11 +3,12 @@ import { Mountain, Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Yo
 
 export default function Footer() {
   const services = [
+    { name: "Instalação de Pontos de Ancoragem", href: "/servicos/pontos-ancoragem" },
     { name: "Limpeza de Fachadas", href: "/servicos/limpeza-fachadas" },
-    { name: "Pintura Predial", href: "/servicos/pintura-predial" },
-    { name: "Manutenção em Altura", href: "/servicos/manutencao-predial" },
-    { name: "Impermeabilização", href: "/servicos/impermeabilizacao" },
-    { name: "Inspeção Técnica", href: "/servicos/inspecao-tecnica" },
+    { name: "Montagem e Instalação de ACM e Fachada Ventilada", href: "/servicos/instalacao-acms" },
+    { name: "Manutenções Elétricas e Eletrônicas", href: "/servicos/manutencoes-eletricas" },
+    { name: "Mapeamento de Fachadas", href: "/servicos/mapeamento-fachadas" },
+    { name: "Reforma Predial", href: "/servicos/reforma-predial" },
   ];
 
   const quickLinks = [
@@ -32,16 +33,16 @@ export default function Footer() {
               Especialistas em serviços de alpinismo industrial e acesso por corda em todo o Brasil.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a href="https://www.facebook.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a href="https://www.instagram.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a href="https://www.linkedin.com/company/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a href="https://www.youtube.com/@heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
@@ -85,17 +86,17 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-300">
-              <p className="flex items-center">
+              <a href="tel:+5547992145961" className="flex items-center hover:text-accent transition-colors">
                 <Phone className="w-4 h-4 mr-2" />
-                (11) 9999-9999
-              </p>
-              <p className="flex items-center">
+                (47) 9214-5961
+              </a>
+              <a href="mailto:contato@heightechalpinismo.com.br" className="flex items-center hover:text-accent transition-colors">
                 <Mail className="w-4 h-4 mr-2" />
                 contato@heightechalpinismo.com.br
-              </p>
+              </a>
               <p className="flex items-center">
                 <MapPin className="w-4 h-4 mr-2" />
-                Atendimento em todo Brasil
+                Balneário Camboriú e Região
               </p>
               <p className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />

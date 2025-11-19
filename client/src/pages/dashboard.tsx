@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { TrendingUp, Users, MessageCircle, FileText, Eye, MousePointer } from "lucide-react";
+import { TrendingUp, Users, MessageCircle, FileText, Eye, MousePointer, Lock, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 interface DashboardData {
   totalPageViews: number;
@@ -17,9 +20,53 @@ interface DashboardData {
 }
 
 export default function Dashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const { toast } = useToast();
+
+  // Senha configurada via variável de ambiente (.env)
+  const DASHBOARD_PASSWORD = import.meta.env.VITE_DASHBOARD_PASSWORD || "pedrinho21";
+
+  useEffect(() => {
+    // Verificar se já está autenticado no localStorage
+    const auth = localStorage.getItem("dashboard_auth");
+    if (auth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === DASHBOARD_PASSWORD) {
+      setIsAuthenticated(true);
+      localStorage.setItem("dashboard_auth", "true");
+      toast({
+        title: "Acesso autorizado",
+        description: "Bem-vindo ao dashboard!",
+      });
+    } else {
+      toast({
+        title: "Senha incorreta",
+        description: "Tente novamente.",
+        variant: "destructive",
+      });
+      setPassword("");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("dashboard_auth");
+    toast({
+      title: "Logout realizado",
+      description: "Até logo!",
+    });
+  };
+
   const { data: dashboardData, isLoading } = useQuery<DashboardData>({
     queryKey: ['/api/analytics/dashboard'],
     refetchInterval: 30000, // Atualiza a cada 30 segundos
+    enabled: isAuthenticated, // Só busca dados se autenticado
   });
 
   const COLORS = ['#DC2626', '#EF4444', '#F87171', '#FCA5A5', '#FECACA'];
@@ -29,6 +76,56 @@ export default function Dashboard() {
     const remainingSeconds = seconds % 60;
     return `${minutes}m ${remainingSeconds}s`;
   };
+
+  // Tela de Login
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4">
+        <div className="max-w-md w-full">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+                <Lock className="w-8 h-8 text-red-600" />
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900">Dashboard Protegido</h1>
+              <p className="text-gray-600 mt-2">Heightech - Industrial Climbers</p>
+            </div>
+
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  Senha de Acesso
+                </label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Digite a senha"
+                  className="w-full"
+                  autoFocus
+                  required
+                />
+              </div>
+
+              <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">
+                Acessar Dashboard
+              </Button>
+            </form>
+
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-sm text-blue-800">
+                <strong>💡 Dica:</strong> A senha é configurada no arquivo <code>.env</code>
+              </p>
+              <p className="text-xs text-blue-600 mt-1">
+                Variável: <code>VITE_DASHBOARD_PASSWORD</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading || !dashboardData) {
     return (
@@ -56,8 +153,20 @@ export default function Dashboard() {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard de Analytics</h1>
-          <p className="text-gray-600 mt-2">Métricas de conversão e desempenho do site da Heightech</p>
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Analytics</h1>
+              <p className="text-gray-600 mt-2">Métricas de conversão e desempenho do site da Heightech</p>
+            </div>
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Sair
+            </Button>
+          </div>
         </div>
       </div>
 

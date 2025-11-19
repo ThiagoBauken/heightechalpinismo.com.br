@@ -1,18 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, Play } from "lucide-react";
+import VideoBackground from "@/components/shared/video-background";
 
 export default function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-        }}
-      ></div>
-      <div className="absolute inset-0 hero-overlay"></div>
+      {/* Video Background - CONFIGURE AQUI! */}
+      <VideoBackground
+        // OPÇÃO 1 (RECOMENDADO): Cole o ID do vídeo do YouTube
+        // Ex: se a URL é https://youtube.com/watch?v=ABC123, use youtubeId="ABC123"
+        youtubeId="SEU_YOUTUBE_ID_AQUI"
+
+        // OPÇÃO 2: Ou use vídeo local (depois que fizer upload)
+        // videoUrl="/videos/hero.mp4"
+
+        // Imagem que aparece enquanto carrega
+        posterImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+      />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <div className="animate-fade-in">

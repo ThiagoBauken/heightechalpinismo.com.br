@@ -30,7 +30,7 @@ export default function CTASection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="flex items-center justify-center space-x-2">
               <Phone className="w-5 h-5" />
-              <span className="text-lg">(11) 99999-9999</span>
+              <span className="text-lg">(47) 9214-5961</span>
             </div>
             <div className="flex items-center justify-center space-x-2">
               <Mail className="w-5 h-5" />

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, SprayCan, Shield, Clock, Award, Phone, Play } from "lucide-react";
+import SEOHead from "@/components/shared/seo-head";
 
 export default function FacadeCleaning() {
   const serviceFeatures = [
@@ -51,6 +52,17 @@ export default function FacadeCleaning() {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Lavação Predial em Balneário Camboriú e Itapema"
+        description="Lavação e limpeza profissional de fachadas prediais em Balneário Camboriú e Itapema. Limpeza de vidros, remoção de sujeira e acabamento impecável."
+        keywords={[
+          "lavação predial",
+          "limpeza de fachada",
+          "limpeza de prédio",
+          "limpeza de vidros",
+          "hidrojateamento"
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

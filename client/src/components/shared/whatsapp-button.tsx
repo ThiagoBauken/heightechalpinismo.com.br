@@ -2,8 +2,8 @@ import whatsappIcon from "@assets/134w1500.jpg";
 import { analytics } from "@/lib/analytics-tracker";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "5511999999999"; // Substitua pelo número real da empresa
-  const message = "Olá! Gostaria de solicitar um orçamento para serviços de alpinismo industrial.";
+  const phoneNumber = "554792145961"; // +55 47 9214-5961
+  const message = "Olá! Vi o site heightechalpinismo.com.br e gostaria de solicitar um orçamento para serviços de alpinismo industrial.";
   
   const handleWhatsAppClick = () => {
     // Track o clique do WhatsApp

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, PaintBucket, Shield, Clock, Award, Phone, Play } from "lucide-react";
+import SEOHead from "@/components/shared/seo-head";
 
 export default function BuildingPainting() {
   const serviceFeatures = [
@@ -51,6 +52,17 @@ export default function BuildingPainting() {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Restauração de Fachadas - Pintura, Pastilha e Reboco | Balneário Camboriú"
+        description="Restauração completa de fachadas em Balneário Camboriú e Itapema. Pintura predial, aplicação de pastilhas, reboco e textura."
+        keywords={[
+          "restauração de fachadas",
+          "pintura de fachada",
+          "aplicação de pastilha",
+          "reboco de fachada",
+          "reforma de prédio"
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

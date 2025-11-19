@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertQuoteSchema } from "@shared/schema";
+import { insertContactSchema, insertQuoteSchema, insertBlogPostSchema } from "@shared/schema";
+import { getDashboardMetrics } from "./analytics";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -199,18 +200,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>${baseUrl}/servicos/soldas-reparos</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/servicos/poda-arvores</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>${baseUrl}/projetos</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
@@ -254,23 +243,46 @@ Disallow: /admin/
   app.post("/api/analytics", async (req, res) => {
     try {
       const { events, sessionId } = req.body;
-      
-      // Log analytics events (em produção, salvaria no banco de dados)
-      console.log('📊 Analytics Events Received:', {
+
+      if (!events || !Array.isArray(events) || events.length === 0) {
+        return res.status(400).json({ success: false, message: "No events provided" });
+      }
+
+      // Função helper para detectar tipo de device do user agent
+      const getDeviceType = (userAgent: string | undefined): string => {
+        if (!userAgent) return "unknown";
+        const ua = userAgent.toLowerCase();
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+          return "tablet";
+        }
+        if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(userAgent)) {
+          return "mobile";
+        }
+        return "desktop";
+      };
+
+      // Preparar eventos para salvar no banco
+      const analyticsEvents = events.map((e: any) => ({
+        eventId: e.id,
+        event: e.event,
+        page: e.page,
+        timestamp: new Date(e.timestamp),
+        sessionId: sessionId || e.sessionId,
+        userAgent: e.userAgent,
+        referrer: e.referrer,
+        deviceType: getDeviceType(e.userAgent),
+        data: e.data || null
+      }));
+
+      // Salvar eventos no banco de dados
+      await storage.createAnalyticsEvents(analyticsEvents);
+
+      console.log('✅ Analytics Events Saved:', {
         sessionId,
-        eventCount: events.length,
-        events: events.map((e: any) => ({
-          event: e.event,
-          page: e.page,
-          timestamp: e.timestamp,
-          data: e.data
-        }))
+        eventCount: analyticsEvents.length
       });
 
-      // Aqui você salvaria no banco de dados
-      // await storage.saveAnalyticsEvents(events);
-
-      res.json({ success: true, processed: events.length });
+      res.json({ success: true, processed: analyticsEvents.length });
     } catch (error) {
       console.error('Erro ao processar analytics:', error);
       res.status(500).json({ success: false, message: "Erro interno" });
@@ -280,39 +292,148 @@ Disallow: /admin/
   // Dashboard de analytics (endpoint para visualizar métricas)
   app.get("/api/analytics/dashboard", async (req, res) => {
     try {
-      // Simulação de dados de analytics (em produção viria do banco)
-      const dashboardData = {
-        totalPageViews: 1250,
-        whatsappClicks: 89,
-        instagramClicks: 34,
-        formSubmissions: 45,
-        topPages: [
-          { page: "/", views: 456 },
-          { page: "/servicos/limpeza-fachadas", views: 234 },
-          { page: "/servicos/pintura-predial", views: 189 },
-          { page: "/contato", views: 156 },
-          { page: "/projetos", views: 134 }
-        ],
-        conversionRate: 7.2,
-        averageSessionDuration: 145, // segundos
-        bounceRate: 34.5,
-        deviceBreakdown: {
-          mobile: 68,
-          desktop: 28,
-          tablet: 4
-        },
-        serviceInterest: {
-          "Limpeza de Fachadas": 32,
-          "Pintura Predial": 28,
-          "Manutenção Predial": 18,
-          "Impermeabilização": 12,
-          "Outros": 10
-        }
-      };
+      // Buscar período dos query params (padrão: últimos 30 dias)
+      const daysAgo = req.query.days ? parseInt(req.query.days as string) : 30;
+
+      // Calcular métricas reais do banco de dados
+      const dashboardData = await getDashboardMetrics(daysAgo);
 
       res.json(dashboardData);
     } catch (error) {
+      console.error('Erro ao buscar dados do dashboard:', error);
       res.status(500).json({ success: false, message: "Erro ao buscar dados" });
+    }
+  });
+
+  // =============================================================================
+  // BLOG API ENDPOINTS (CMS)
+  // =============================================================================
+
+  // Listar todos os posts do blog
+  app.get("/api/blog/posts", async (req, res) => {
+    try {
+      // Se tiver um query param "all=true", retorna todos (incluindo não publicados)
+      // Caso contrário, retorna apenas publicados
+      const showAll = req.query.all === "true";
+      const posts = await storage.getBlogPosts(!showAll);
+
+      res.json({ success: true, posts });
+    } catch (error) {
+      console.error('Erro ao buscar posts:', error);
+      res.status(500).json({ success: false, message: "Erro ao buscar posts" });
+    }
+  });
+
+  // Buscar post por slug
+  app.get("/api/blog/posts/:slug", async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const post = await storage.getBlogPostBySlug(slug);
+
+      if (!post) {
+        return res.status(404).json({ success: false, message: "Post não encontrado" });
+      }
+
+      // Se o post não está publicado, só retornar se for admin (TODO: adicionar auth)
+      if (!post.published) {
+        return res.status(403).json({ success: false, message: "Post não publicado" });
+      }
+
+      res.json({ success: true, post });
+    } catch (error) {
+      console.error('Erro ao buscar post:', error);
+      res.status(500).json({ success: false, message: "Erro ao buscar post" });
+    }
+  });
+
+  // Criar novo post (requer autenticação - TODO)
+  app.post("/api/blog/posts", async (req, res) => {
+    try {
+      // TODO: Adicionar verificação de autenticação aqui
+      // if (!req.isAuthenticated()) {
+      //   return res.status(401).json({ success: false, message: "Não autorizado" });
+      // }
+
+      const validatedData = insertBlogPostSchema.parse(req.body);
+      const post = await storage.createBlogPost(validatedData);
+
+      console.log('✅ Novo post criado:', post.title);
+      res.status(201).json({ success: true, post });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({
+          success: false,
+          message: "Dados inválidos",
+          errors: error.errors
+        });
+      } else {
+        console.error('Erro ao criar post:', error);
+        res.status(500).json({ success: false, message: "Erro ao criar post" });
+      }
+    }
+  });
+
+  // Atualizar post existente (requer autenticação - TODO)
+  app.put("/api/blog/posts/:id", async (req, res) => {
+    try {
+      // TODO: Adicionar verificação de autenticação aqui
+      // if (!req.isAuthenticated()) {
+      //   return res.status(401).json({ success: false, message: "Não autorizado" });
+      // }
+
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ success: false, message: "ID inválido" });
+      }
+
+      // Validar apenas os campos que estão sendo atualizados
+      const updateData = insertBlogPostSchema.partial().parse(req.body);
+      const post = await storage.updateBlogPost(id, updateData);
+
+      if (!post) {
+        return res.status(404).json({ success: false, message: "Post não encontrado" });
+      }
+
+      console.log('✅ Post atualizado:', post.title);
+      res.json({ success: true, post });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({
+          success: false,
+          message: "Dados inválidos",
+          errors: error.errors
+        });
+      } else {
+        console.error('Erro ao atualizar post:', error);
+        res.status(500).json({ success: false, message: "Erro ao atualizar post" });
+      }
+    }
+  });
+
+  // Deletar post (requer autenticação - TODO)
+  app.delete("/api/blog/posts/:id", async (req, res) => {
+    try {
+      // TODO: Adicionar verificação de autenticação aqui
+      // if (!req.isAuthenticated()) {
+      //   return res.status(401).json({ success: false, message: "Não autorizado" });
+      // }
+
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ success: false, message: "ID inválido" });
+      }
+
+      const deleted = await storage.deleteBlogPost(id);
+
+      if (!deleted) {
+        return res.status(404).json({ success: false, message: "Post não encontrado" });
+      }
+
+      console.log('✅ Post deletado:', id);
+      res.json({ success: true, message: "Post deletado com sucesso" });
+    } catch (error) {
+      console.error('Erro ao deletar post:', error);
+      res.status(500).json({ success: false, message: "Erro ao deletar post" });
     }
   });
 

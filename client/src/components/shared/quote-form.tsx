@@ -142,7 +142,7 @@ export default function QuoteForm() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                placeholder="(11) 99999-9999"
+                placeholder="(47) 9214-5961"
                 required
               />
             </div>

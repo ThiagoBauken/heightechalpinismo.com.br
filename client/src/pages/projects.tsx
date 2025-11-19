@@ -1,10 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Calendar, Building } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Projects() {
   const projects = [
     {
+      id: "edificio-comercial-torre-norte",
       title: "Edifício Comercial Torre Norte",
       location: "São Paulo, SP",
       date: "2024",
@@ -14,6 +16,7 @@ export default function Projects() {
       services: ["Limpeza de Vidros", "Hidrojateamento", "Acabamento Profissional"]
     },
     {
+      id: "condominio-residencial-vista-mar",
       title: "Condomínio Residencial Vista Mar",
       location: "Rio de Janeiro, RJ",
       date: "2024",
@@ -23,6 +26,7 @@ export default function Projects() {
       services: ["Pintura Externa", "Impermeabilização", "Selagem de Fissuras"]
     },
     {
+      id: "complexo-industrial-mineracaobr",
       title: "Complexo Industrial MineraçãoBR",
       location: "Belo Horizonte, MG",
       date: "2023",
@@ -32,6 +36,7 @@ export default function Projects() {
       services: ["Manutenção de Silos", "Pintura Anticorrosiva", "Inspeção Estrutural"]
     },
     {
+      id: "shopping-center-plaza-sul",
       title: "Shopping Center Plaza Sul",
       location: "Curitiba, PR",
       date: "2023",
@@ -41,6 +46,7 @@ export default function Projects() {
       services: ["Limpeza de Fachadas", "Manutenção Geral", "Instalação de Equipamentos"]
     },
     {
+      id: "hospital-universitario-sao-lucas",
       title: "Hospital Universitário São Lucas",
       location: "Porto Alegre, RS",
       date: "2023",
@@ -50,6 +56,7 @@ export default function Projects() {
       services: ["Manutenção Preventiva", "Impermeabilização", "Limpeza Especializada"]
     },
     {
+      id: "hotel-resort-bahia-mar",
       title: "Hotel Resort Bahia Mar",
       location: "Salvador, BA",
       date: "2022",
@@ -119,46 +126,48 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <Badge variant="secondary" className="bg-accent text-white">
-                      {project.category}
-                    </Badge>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {project.date}
+              <Link key={index} href={`/projetos/${project.id}`}>
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer h-full">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <Badge variant="secondary" className="bg-accent text-white">
+                        {project.category}
+                      </Badge>
+                      <div className="flex items-center text-sm text-gray-500">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {project.date}
+                      </div>
                     </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-                  
-                  <div className="flex items-center text-gray-600 mb-3">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    {project.location}
-                  </div>
-                  
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  
-                  <div className="space-y-2">
-                    <h4 className="font-medium text-gray-900">Serviços Realizados:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.services.map((service, serviceIndex) => (
-                        <Badge key={serviceIndex} variant="outline" className="text-xs">
-                          {service}
-                        </Badge>
-                      ))}
+
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
+
+                    <div className="flex items-center text-gray-600 mb-3">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      {project.location}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+
+                    <p className="text-gray-600 mb-4">{project.description}</p>
+
+                    <div className="space-y-2">
+                      <h4 className="font-medium text-gray-900">Serviços Realizados:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.services.map((service, serviceIndex) => (
+                          <Badge key={serviceIndex} variant="outline" className="text-xs">
+                            {service}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

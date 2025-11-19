@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, Shield, Droplets, Clock, Award, Phone, Play } from "lucide-react";
+import SEOHead from "@/components/shared/seo-head";
 
 export default function Waterproofing() {
   const serviceFeatures = [
@@ -56,6 +57,17 @@ export default function Waterproofing() {
 
   return (
     <div className="pt-16">
+      <SEOHead
+        title="Vedação de Fachadas contra Infiltrações - Balneário Camboriú"
+        description="Vedação profissional de fachadas contra infiltrações em Balneário Camboriú e Itapema. Selagem de juntas e proteção contra intempéries."
+        keywords={[
+          "vedação de fachada",
+          "selagem de juntas",
+          "infiltração em fachada",
+          "impermeabilização",
+          "proteção de fachada"
+        ]}
+      />
       {/* Hero Section */}
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

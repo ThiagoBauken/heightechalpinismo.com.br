@@ -80,16 +80,16 @@ export default function Contact() {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-4">Redes Sociais</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
+                  <a href="https://www.facebook.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
+                  <a href="https://www.instagram.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
+                  <a href="https://www.linkedin.com/company/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
+                  <a href="https://www.youtube.com/@heightechalpinismo" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white hover:bg-yellow-600 transition-colors duration-200">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
@@ -122,7 +122,7 @@ export default function Contact() {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        placeholder="(11) 99999-9999"
+                        placeholder="(47) 9214-5961"
                         required
                       />
                     </div>
