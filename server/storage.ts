@@ -37,6 +37,7 @@ export interface IStorage {
   updateBlogPost(id: number, post: Partial<InsertBlogPost>): Promise<BlogPost | undefined>;
   deleteBlogPost(id: number): Promise<boolean>;
   createGeoVisit(visit: InsertGeoVisit): Promise<GeoVisit>;
+  checkRecentVisit(ipHash: string, pageUrl: string, hoursAgo?: number): Promise<boolean>;
   getGeoStats(daysAgo?: number): Promise<any>;
 }
 
@@ -219,6 +220,20 @@ export class MemStorage implements IStorage {
     return visit;
   }
 
+  async checkRecentVisit(ipHash: string, pageUrl: string, hoursAgo: number = 24): Promise<boolean> {
+    const cutoffDate = new Date();
+    cutoffDate.setHours(cutoffDate.getHours() - hoursAgo);
+
+    const recentVisit = Array.from(this.geoVisits.values()).find(
+      visit =>
+        visit.ipHash === ipHash &&
+        visit.pageUrl === pageUrl &&
+        visit.createdAt >= cutoffDate
+    );
+
+    return !!recentVisit;
+  }
+
   async getGeoStats(daysAgo: number = 30): Promise<any> {
     const cutoffDate = new Date();
     cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
@@ -371,6 +386,25 @@ export class DatabaseStorage implements IStorage {
   async createGeoVisit(insertVisit: InsertGeoVisit): Promise<GeoVisit> {
     const [visit] = await db.insert(geoVisits).values(insertVisit).returning();
     return visit;
+  }
+
+  async checkRecentVisit(ipHash: string, pageUrl: string, hoursAgo: number = 24): Promise<boolean> {
+    const cutoffDate = new Date();
+    cutoffDate.setHours(cutoffDate.getHours() - hoursAgo);
+
+    const [visit] = await db
+      .select()
+      .from(geoVisits)
+      .where(
+        and(
+          eq(geoVisits.ipHash, ipHash),
+          eq(geoVisits.pageUrl, pageUrl),
+          gte(geoVisits.createdAt, cutoffDate)
+        )
+      )
+      .limit(1);
+
+    return !!visit;
   }
 
   async getGeoStats(daysAgo: number = 30): Promise<any> {

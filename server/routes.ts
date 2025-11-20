@@ -456,6 +456,24 @@ Disallow: /admin/
 
       // Extrair IP do cliente
       const clientIP = getClientIP(req);
+      const ipHash = anonymizeIP(clientIP);
+
+      // ✅ DEDUPLICAÇÃO: Verificar se já existe visita deste IP nesta página nas últimas 24h
+      const hasRecentVisit = await storage.checkRecentVisit(ipHash, pageUrl, 24);
+
+      if (hasRecentVisit) {
+        console.log('🔄 Visita duplicada ignorada:', {
+          pageUrl,
+          ip: clientIP.substring(0, 10) + '...',
+          message: 'Mesmo IP visitou esta página nas últimas 24h'
+        });
+
+        return res.json({
+          success: true,
+          duplicate: true,
+          message: "Visita já registrada nas últimas 24h"
+        });
+      }
 
       // Buscar geolocalização
       const geo = await getGeoLocation(clientIP);
@@ -466,7 +484,7 @@ Disallow: /admin/
 
       // Criar objeto de visita
       const visitData = {
-        ipHash: anonymizeIP(clientIP),
+        ipHash,
         country: geo?.country || null,
         countryCode: geo?.countryCode || null,
         region: geo?.region || null,
@@ -487,12 +505,13 @@ Disallow: /admin/
       const validatedData = insertGeoVisitSchema.parse(visitData);
       const visit = await storage.createGeoVisit(validatedData);
 
-      console.log('✅ Geolocalização rastreada:', {
+      console.log('✅ Geolocalização rastreada (nova visita única):', {
         location: `${visit.city}, ${visit.region}`,
-        device: `${visit.deviceType} - ${visit.os} - ${visit.browser}`
+        device: `${visit.deviceType} - ${visit.os} - ${visit.browser}`,
+        page: pageUrl
       });
 
-      res.json({ success: true, visit });
+      res.json({ success: true, visit, duplicate: false });
     } catch (error) {
       console.error('Erro ao rastrear geolocalização:', error);
       res.status(500).json({
