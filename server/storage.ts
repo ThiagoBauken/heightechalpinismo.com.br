@@ -318,13 +318,50 @@ export class MemStorage implements IStorage {
       return acc;
     }, {} as Record<string, number>);
 
+    // Converter objetos em arrays e ordenar
+    const byStateArray = Object.entries(byState)
+      .map(([state, count]) => ({ state, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+
+    const byCityArray = Object.entries(byCity)
+      .map(([city, count]) => ({ city, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
+
+    const totalVisitsCount = recentVisits.length;
+
+    const byDeviceArray = Object.entries(byDevice)
+      .map(([device, count]) => ({
+        device,
+        count,
+        percentage: Math.round((count / totalVisitsCount) * 100)
+      }))
+      .sort((a, b) => b.count - a.count);
+
+    const byOSArray = Object.entries(byOS)
+      .map(([os, count]) => ({
+        os,
+        count,
+        percentage: Math.round((count / totalVisitsCount) * 100)
+      }))
+      .sort((a, b) => b.count - a.count);
+
+    const byBrowserArray = Object.entries(byBrowser)
+      .map(([browser, count]) => ({
+        browser,
+        count,
+        percentage: Math.round((count / totalVisitsCount) * 100)
+      }))
+      .sort((a, b) => b.count - a.count);
+
     return {
-      totalVisits: recentVisits.length,
-      byState,
-      byCity,
-      byDevice,
-      byOS,
-      byBrowser
+      totalVisits: totalVisitsCount,
+      byState: byStateArray,
+      byCity: byCityArray,
+      byDevice: byDeviceArray,
+      byOS: byOSArray,
+      byBrowser: byBrowserArray
     };
   }
 }
