@@ -361,9 +361,24 @@ export default function Dashboard() {
                 <span className="text-gray-600">Taxa de Rejeição</span>
                 <span className="font-bold text-gray-900">{dashboardData.bounceRate}%</span>
               </div>
+            </div>
+          </div>
+
+          {/* Redes Sociais */}
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Redes Sociais</h2>
+            <div className="space-y-4">
               <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
                 <span className="text-gray-600">Cliques Instagram</span>
                 <span className="font-bold text-gray-900">{dashboardData.instagramClicks}</span>
+              </div>
+              <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                <span className="text-gray-600">Cliques Facebook</span>
+                <span className="font-bold text-gray-900">{dashboardData.facebookClicks}</span>
+              </div>
+              <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                <span className="text-gray-600">Cliques YouTube</span>
+                <span className="font-bold text-gray-900">{dashboardData.youtubeClicks}</span>
               </div>
             </div>
           </div>

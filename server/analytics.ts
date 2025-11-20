@@ -6,6 +6,8 @@ interface DashboardMetrics {
   totalPageViews: number;
   whatsappClicks: number;
   instagramClicks: number;
+  facebookClicks: number;
+  youtubeClicks: number;
   formSubmissions: number;
   topPages: Array<{ page: string; views: number }>;
   conversionRate: number;
@@ -55,6 +57,30 @@ export async function getDashboardMetrics(daysAgo: number = 30): Promise<Dashboa
         )
       );
     const instagramClicks = instagramResult?.count || 0;
+
+    // Cliques no Facebook
+    const [facebookResult] = await db
+      .select({ count: count() })
+      .from(analyticsEvents)
+      .where(
+        and(
+          sql`${analyticsEvents.event} = 'facebook_click'`,
+          gte(analyticsEvents.timestamp, cutoffDate)
+        )
+      );
+    const facebookClicks = facebookResult?.count || 0;
+
+    // Cliques no YouTube
+    const [youtubeResult] = await db
+      .select({ count: count() })
+      .from(analyticsEvents)
+      .where(
+        and(
+          sql`${analyticsEvents.event} = 'youtube_click'`,
+          gte(analyticsEvents.timestamp, cutoffDate)
+        )
+      );
+    const youtubeClicks = youtubeResult?.count || 0;
 
     // Submissões de formulários
     const [formResult] = await db
@@ -201,6 +227,8 @@ export async function getDashboardMetrics(daysAgo: number = 30): Promise<Dashboa
       totalPageViews,
       whatsappClicks,
       instagramClicks,
+      facebookClicks,
+      youtubeClicks,
       formSubmissions,
       topPages,
       conversionRate,
@@ -217,6 +245,8 @@ export async function getDashboardMetrics(daysAgo: number = 30): Promise<Dashboa
       totalPageViews: 0,
       whatsappClicks: 0,
       instagramClicks: 0,
+      facebookClicks: 0,
+      youtubeClicks: 0,
       formSubmissions: 0,
       topPages: [],
       conversionRate: 0,

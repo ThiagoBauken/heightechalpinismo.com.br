@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube } from "lucide-react";
+import { analytics } from "@/lib/analytics-tracker";
 
 export default function Footer() {
   const services = [
@@ -38,16 +39,31 @@ export default function Footer() {
               Especialistas em serviços de alpinismo industrial e acesso por corda em todo o Brasil.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a
+                href="https://www.facebook.com/heightechalpinismo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-accent transition-colors duration-200"
+                onClick={() => analytics.trackSocialClick('facebook', 'footer')}
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a
+                href="https://www.instagram.com/heightechalpinismo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-accent transition-colors duration-200"
+                onClick={() => analytics.trackInstagramClick('footer')}
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/company/heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://www.youtube.com/@heightechalpinismo" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors duration-200">
+              <a
+                href="https://www.youtube.com/@heightechalpinismo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-accent transition-colors duration-200"
+                onClick={() => analytics.trackSocialClick('youtube', 'footer')}
+              >
                 <Youtube className="w-5 h-5" />
               </a>
             </div>

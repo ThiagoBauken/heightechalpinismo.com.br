@@ -118,6 +118,13 @@ class AnalyticsTracker {
     });
   }
 
+  trackSocialClick(platform: 'facebook' | 'youtube', source: string) {
+    this.trackEvent(`${platform}_click`, {
+      source,
+      platform
+    });
+  }
+
   trackFormSubmission(formType: string, formData: any) {
     this.trackEvent('form_submission', {
       formType,
@@ -181,7 +188,9 @@ class AnalyticsTracker {
   private isConversionEvent(event: string): boolean {
     const conversionEvents = [
       'whatsapp_click',
-      'instagram_click', 
+      'instagram_click',
+      'facebook_click',
+      'youtube_click',
       'form_submission',
       'phone_click'
     ];
