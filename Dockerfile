@@ -34,4 +34,4 @@ EXPOSE 5000
 ENV NODE_ENV=production
 
 # Start the application
-CMD ["node", "dist/server/index.js"]
+CMD ["npm", "start"]

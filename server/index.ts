@@ -3,6 +3,13 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic, log } from "./static";
 
+// Logs de inicialização para debug em produção
+console.log("[STARTUP] ==========================================");
+console.log("[STARTUP] NODE_ENV:", process.env.NODE_ENV);
+console.log("[STARTUP] Current working directory:", process.cwd());
+console.log("[STARTUP] Port:", process.env.PORT || "5000");
+console.log("[STARTUP] ==========================================");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
