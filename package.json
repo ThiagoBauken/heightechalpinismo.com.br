@@ -11,6 +11,7 @@
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "db:setup": "bash setup-database.sh",
+    "db:migrate": "tsx scripts/apply-migrations.ts",
     "db:backup": "bash scripts/backup-database.sh",
     "db:backup:win": "powershell -ExecutionPolicy Bypass -File scripts/backup-database.ps1",
     "create-admin": "tsx scripts/create-admin.ts",

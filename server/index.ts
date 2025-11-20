@@ -15,6 +15,9 @@ logger.info("==========================================");
 
 const app = express();
 
+// Trust proxy - Necessário para rate limiting funcionar atrás de proxies (nginx, load balancers, etc)
+app.set('trust proxy', true);
+
 // Security middleware - Helmet (configurado para permitir Vite em dev)
 app.use(helmet({
   contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false,

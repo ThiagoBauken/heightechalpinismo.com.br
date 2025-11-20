@@ -447,16 +447,27 @@ Disallow: /dashboard
       for (const event of analyticsEvents) {
         // Verificar duplicatas apenas para page_view
         if (event.event === 'page_view') {
-          const isDuplicate = await storage.checkRecentPageView(
-            ipHash,
-            event.page,
-            30 // 30 minutos
-          );
+          try {
+            const isDuplicate = await storage.checkRecentPageView(
+              ipHash,
+              event.page,
+              30 // 30 minutos
+            );
 
-          if (isDuplicate) {
-            duplicatesRemoved.push({ page: event.page });
-            logger.debug('Duplicate page_view removed', { page: event.page, ipHash });
-            continue; // Pular evento duplicado
+            if (isDuplicate) {
+              duplicatesRemoved.push({ page: event.page });
+              logger.debug('Duplicate page_view removed', { page: event.page, ipHash });
+              continue; // Pular evento duplicado
+            }
+          } catch (error: any) {
+            // Se a coluna ip_hash não existir (migration não executada), continuar sem deduplicação
+            if (error?.message?.includes('ip_hash') || error?.message?.includes('does not exist')) {
+              logger.warn('Column ip_hash does not exist - skipping deduplication. Run migration: npx tsx migrate-add-iphash.ts');
+              // Continuar sem deduplicação até migration ser executada
+            } else {
+              // Re-throw outros erros
+              throw error;
+            }
           }
         }
 
