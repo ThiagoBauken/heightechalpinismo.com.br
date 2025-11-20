@@ -33,5 +33,6 @@ EXPOSE 5000
 # Set environment to production
 ENV NODE_ENV=production
 
-# Start the application
+# Force use of CMD (ignore cache/override)
+ENTRYPOINT []
 CMD ["npm", "start"]
