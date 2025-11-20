@@ -8,6 +8,7 @@ export const apiLimiter = rateLimit({
   message: 'Muitas requisições deste IP, tente novamente mais tarde.',
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false }, // Desabilita validação de trust proxy
   handler: (req, res) => {
     logger.warn('Rate limit exceeded', {
       ip: req.ip,
@@ -27,6 +28,7 @@ export const contactLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   skipSuccessfulRequests: false,
+  validate: { trustProxy: false }, // Desabilita validação de trust proxy
   handler: (req, res) => {
     logger.warn('Contact form rate limit exceeded', {
       ip: req.ip,
@@ -46,6 +48,7 @@ export const authLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   skipSuccessfulRequests: true, // Não conta se login for bem-sucedido
+  validate: { trustProxy: false }, // Desabilita validação de trust proxy
   handler: (req, res) => {
     logger.warn('Auth rate limit exceeded', {
       ip: req.ip,
@@ -64,6 +67,7 @@ export const blogCreateLimiter = rateLimit({
   message: 'Limite de criação de posts atingido.',
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false }, // Desabilita validação de trust proxy
   handler: (req, res) => {
     logger.warn('Blog creation rate limit exceeded', {
       ip: req.ip,
@@ -82,6 +86,7 @@ export const analyticsLimiter = rateLimit({
   message: 'Muitos eventos de analytics enviados.',
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false }, // Desabilita validação de trust proxy
   handler: (req, res) => {
     logger.warn('Analytics rate limit exceeded', {
       ip: req.ip,

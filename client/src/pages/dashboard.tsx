@@ -24,34 +24,55 @@ interface DashboardData {
 
 export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [activeTab, setActiveTab] = useState("analytics");
+  const [authToken, setAuthToken] = useState<string | null>(null);
   const { toast } = useToast();
 
-  // Senha configurada via variável de ambiente (.env)
-  const DASHBOARD_PASSWORD = import.meta.env.VITE_DASHBOARD_PASSWORD || "pedrinho21";
-
   useEffect(() => {
-    // Verificar se já está autenticado no localStorage
-    const auth = localStorage.getItem("dashboard_auth");
-    if (auth === "true") {
+    // Verificar se já tem token no localStorage
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+      setAuthToken(token);
       setIsAuthenticated(true);
     }
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === DASHBOARD_PASSWORD) {
-      setIsAuthenticated(true);
-      localStorage.setItem("dashboard_auth", "true");
-      toast({
-        title: "Acesso autorizado",
-        description: "Bem-vindo ao dashboard!",
+
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
       });
-    } else {
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsAuthenticated(true);
+        setAuthToken(data.token);
+        localStorage.setItem("auth_token", data.token);
+        toast({
+          title: "Acesso autorizado",
+          description: "Bem-vindo ao dashboard!",
+        });
+      } else {
+        toast({
+          title: "Erro no login",
+          description: data.error || "Usuário ou senha inválidos.",
+          variant: "destructive",
+        });
+        setPassword("");
+      }
+    } catch (error) {
       toast({
-        title: "Senha incorreta",
-        description: "Tente novamente.",
+        title: "Erro de conexão",
+        description: "Não foi possível conectar ao servidor.",
         variant: "destructive",
       });
       setPassword("");
@@ -60,7 +81,8 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem("dashboard_auth");
+    setAuthToken(null);
+    localStorage.removeItem("auth_token");
     toast({
       title: "Logout realizado",
       description: "Até logo!",
@@ -69,8 +91,21 @@ export default function Dashboard() {
 
   const { data: dashboardData, isLoading } = useQuery<DashboardData>({
     queryKey: ['/api/analytics/dashboard'],
+    queryFn: async () => {
+      const response = await fetch('/api/analytics/dashboard', {
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch dashboard data');
+      }
+
+      return response.json();
+    },
     refetchInterval: 30000, // Atualiza a cada 30 segundos
-    enabled: isAuthenticated, // Só busca dados se autenticado
+    enabled: isAuthenticated && !!authToken, // Só busca dados se autenticado e tem token
   });
 
   const COLORS = ['#DC2626', '#EF4444', '#F87171', '#FCA5A5', '#FECACA'];
@@ -97,8 +132,24 @@ export default function Dashboard() {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
+                <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+                  Usuário
+                </label>
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Digite o usuário"
+                  className="w-full"
+                  autoFocus
+                  required
+                />
+              </div>
+
+              <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                  Senha de Acesso
+                  Senha
                 </label>
                 <Input
                   id="password"
@@ -107,7 +158,6 @@ export default function Dashboard() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Digite a senha"
                   className="w-full"
-                  autoFocus
                   required
                 />
               </div>
@@ -119,10 +169,7 @@ export default function Dashboard() {
 
             <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>💡 Dica:</strong> A senha é configurada no arquivo <code>.env</code>
-              </p>
-              <p className="text-xs text-blue-600 mt-1">
-                Variável: <code>VITE_DASHBOARD_PASSWORD</code>
+                <strong>💡 Dica:</strong> Use as credenciais do usuário admin
               </p>
             </div>
           </div>
