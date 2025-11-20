@@ -15,6 +15,7 @@ class AnalyticsTracker {
   private events: AnalyticsEvent[] = [];
   private conversionEvents: Set<string> = new Set(); // Rastrear eventos de conversão já enviados
   private trackedPages: Set<string> = new Set(); // Rastrear páginas já visualizadas nesta sessão
+  private isSending: boolean = false; // Flag para prevenir envios simultâneos
 
   constructor() {
     this.sessionId = this.generateSessionId();
@@ -227,6 +228,16 @@ class AnalyticsTracker {
   private async sendBatch() {
     if (this.events.length === 0) return;
 
+    // Prevenir envios simultâneos (race condition)
+    if (this.isSending) {
+      console.log('📊 Batch já está sendo enviado, aguardando...');
+      return;
+    }
+
+    this.isSending = true;
+    const eventsToSend = [...this.events]; // Copiar eventos antes de limpar
+    this.events = []; // Limpar imediatamente para prevenir duplicatas
+
     try {
       await fetch('/api/analytics', {
         method: 'POST',
@@ -234,15 +245,17 @@ class AnalyticsTracker {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          events: this.events,
+          events: eventsToSend,
           sessionId: this.sessionId
         })
       });
 
-      // Clear sent events
-      this.events = [];
+      console.log(`✅ Analytics enviados: ${eventsToSend.length} eventos`);
     } catch (error) {
-      console.error('Erro ao enviar analytics:', error);
+      console.error('❌ Erro ao enviar analytics:', error);
+      // Em caso de erro, não recolocar os eventos na fila para evitar duplicatas
+    } finally {
+      this.isSending = false;
     }
   }
 

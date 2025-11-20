@@ -19,7 +19,12 @@ export default function GeoLocationStats({ days = 30 }: GeoLocationStatsProps) {
   const { data, isLoading, error } = useQuery({
     queryKey: ['/api/geo/stats', days],
     queryFn: async () => {
-      const response = await fetch(`/api/geo/stats?days=${days}`);
+      const token = localStorage.getItem("auth_token");
+      const response = await fetch(`/api/geo/stats?days=${days}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error('Erro ao buscar estatísticas de geolocalização');
       }
