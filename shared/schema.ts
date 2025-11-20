@@ -108,6 +108,13 @@ export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
   id: true,
   createdAt: true,
   updatedAt: true,
+}).extend({
+  // Permitir publishedAt como string ISO ou Date para facilitar criação/atualização de posts
+  publishedAt: z.union([
+    z.string().datetime(),
+    z.date(),
+    z.null()
+  ]).optional(),
 });
 
 export const insertGeoVisitSchema = createInsertSchema(geoVisits).omit({

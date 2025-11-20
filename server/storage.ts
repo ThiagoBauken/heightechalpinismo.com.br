@@ -338,14 +338,26 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createBlogPost(insertPost: InsertBlogPost): Promise<BlogPost> {
-    const [post] = await db.insert(blogPosts).values(insertPost).returning();
+    // Converter publishedAt de string para Date se necessário
+    const dataToInsert = { ...insertPost };
+    if (dataToInsert.publishedAt && typeof dataToInsert.publishedAt === 'string') {
+      dataToInsert.publishedAt = new Date(dataToInsert.publishedAt) as any;
+    }
+
+    const [post] = await db.insert(blogPosts).values(dataToInsert).returning();
     return post;
   }
 
   async updateBlogPost(id: number, updateData: Partial<InsertBlogPost>): Promise<BlogPost | undefined> {
+    // Converter publishedAt de string para Date se necessário
+    const dataToUpdate = { ...updateData };
+    if (dataToUpdate.publishedAt && typeof dataToUpdate.publishedAt === 'string') {
+      dataToUpdate.publishedAt = new Date(dataToUpdate.publishedAt) as any;
+    }
+
     const [post] = await db
       .update(blogPosts)
-      .set({ ...updateData, updatedAt: new Date() })
+      .set({ ...dataToUpdate, updatedAt: new Date() })
       .where(eq(blogPosts.id, id))
       .returning();
     return post;

@@ -14,7 +14,18 @@ export function log(message: string, source = "express") {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  // Em produção, usar process.cwd() para garantir caminho correto após bundle
+  const distPath = path.resolve(process.cwd(), "dist", "public");
+
+  // Logs de debug para produção
+  console.log("[PRODUCTION] Current working directory:", process.cwd());
+  console.log("[PRODUCTION] Static files path:", distPath);
+  console.log("[PRODUCTION] Directory exists:", fs.existsSync(distPath));
+
+  if (fs.existsSync(distPath)) {
+    const files = fs.readdirSync(distPath);
+    console.log("[PRODUCTION] Files in dist/public:", files.slice(0, 10));
+  }
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
