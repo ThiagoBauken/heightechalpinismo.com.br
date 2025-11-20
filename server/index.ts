@@ -1,58 +1,58 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
+import helmet from "helmet";
+import cors from "cors";
 import { registerRoutes } from "./routes";
-import { serveStatic, log } from "./static";
+import { serveStatic } from "./static";
+import logger, { requestLogger } from "./logger";
 
-// Logs de inicialização para debug em produção
-console.log("[STARTUP] ==========================================");
-console.log("[STARTUP] NODE_ENV:", process.env.NODE_ENV);
-console.log("[STARTUP] Current working directory:", process.cwd());
-console.log("[STARTUP] Port:", process.env.PORT || "5000");
-console.log("[STARTUP] ==========================================");
+// Logs de inicialização
+logger.info("=========================================="  );
+logger.info(`NODE_ENV: ${process.env.NODE_ENV}`);
+logger.info(`Working directory: ${process.cwd()}`);
+logger.info(`Port: ${process.env.PORT || "5000"}`);
+logger.info("==========================================");
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+// Security middleware - Helmet (configurado para permitir Vite em dev)
+app.use(helmet({
+  contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false,
+  crossOriginEmbedderPolicy: false,
+}));
 
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
+// CORS configuration
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  credentials: true,
+}));
 
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
+// Body parsers
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
-  });
-
-  next();
-});
+// HTTP request logging with Winston
+app.use(requestLogger);
 
 (async () => {
   const server = await registerRoutes(app);
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  // Global error handler
+  app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    throw err;
+    logger.error('Unhandled error', {
+      error: err.message,
+      stack: err.stack,
+      url: req.url,
+      method: req.method,
+    });
+
+    res.status(status).json({
+      error: message,
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    });
   });
 
   // importantly only setup vite in development and after
@@ -73,6 +73,7 @@ app.use((req, res, next) => {
   const host = process.platform === 'win32' ? 'localhost' : '0.0.0.0';
 
   server.listen(port, host, () => {
-    log(`serving on http://${host}:${port}`);
+    logger.info(`🚀 Server running on http://${host}:${port}`);
+    logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 })();

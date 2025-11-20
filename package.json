@@ -11,7 +11,12 @@
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "db:setup": "bash setup-database.sh",
-    "create-admin": "tsx create-admin.js"
+    "db:backup": "bash scripts/backup-database.sh",
+    "db:backup:win": "powershell -ExecutionPolicy Bypass -File scripts/backup-database.ps1",
+    "create-admin": "tsx scripts/create-admin.ts",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

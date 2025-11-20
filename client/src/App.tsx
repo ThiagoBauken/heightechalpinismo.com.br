@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import WhatsAppButton from "@/components/shared/whatsapp-button";
+import { useGA } from "@/hooks/useGA";
 import Home from "@/pages/home";
 import FacadeCleaning from "@/pages/services/facade-cleaning";
 import BuildingPainting from "@/pages/services/building-painting";
@@ -34,6 +35,9 @@ import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
 
 function Router() {
+  // Track page views automatically with Google Analytics
+  useGA();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

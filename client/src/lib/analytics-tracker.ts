@@ -14,10 +14,12 @@ class AnalyticsTracker {
   private sessionId: string;
   private events: AnalyticsEvent[] = [];
   private conversionEvents: Set<string> = new Set(); // Rastrear eventos de conversão já enviados
+  private trackedPages: Set<string> = new Set(); // Rastrear páginas já visualizadas nesta sessão
 
   constructor() {
     this.sessionId = this.generateSessionId();
     this.loadConversionEvents();
+    this.loadTrackedPages();
     this.initializeTracking();
   }
 
@@ -35,7 +37,24 @@ class AnalyticsTracker {
   }
 
   private saveConversionEvents() {
-    sessionStorage.setItem('conversion_events', JSON.stringify([...this.conversionEvents]));
+    sessionStorage.setItem('conversion_events', JSON.stringify(Array.from(this.conversionEvents)));
+  }
+
+  private loadTrackedPages() {
+    // Carregar páginas rastreadas do sessionStorage
+    const stored = sessionStorage.getItem('tracked_pages');
+    if (stored) {
+      try {
+        const pages = JSON.parse(stored);
+        this.trackedPages = new Set(pages);
+      } catch (e) {
+        console.error('Error loading tracked pages:', e);
+      }
+    }
+  }
+
+  private saveTrackedPages() {
+    sessionStorage.setItem('tracked_pages', JSON.stringify(Array.from(this.trackedPages)));
   }
 
   private generateSessionId(): string {
@@ -104,6 +123,18 @@ class AnalyticsTracker {
   }
 
   trackPageView() {
+    const currentPage = window.location.pathname;
+
+    // 🔄 DEDUPLICAÇÃO: Verificar se página já foi rastreada nesta sessão
+    if (this.trackedPages.has(currentPage)) {
+      console.log('📊 Page view já registrado nesta sessão:', currentPage);
+      return; // Não enviar duplicata
+    }
+
+    // Marcar página como rastreada
+    this.trackedPages.add(currentPage);
+    this.saveTrackedPages();
+
     this.trackEvent('page_view', {
       title: document.title,
       url: window.location.href

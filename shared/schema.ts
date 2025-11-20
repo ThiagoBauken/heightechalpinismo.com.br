@@ -43,6 +43,7 @@ export const analyticsEvents = pgTable("analytics_events", {
   userAgent: text("user_agent"),
   referrer: text("referrer"),
   deviceType: text("device_type"),
+  ipHash: text("ip_hash"), // IP anonimizado (hash) - LGPD compliant
   data: jsonb("data"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -84,6 +85,83 @@ export const geoVisits = pgTable("geo_visits", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const projects = pgTable("projects", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  location: text("location").notNull(),
+  date: text("date").notNull(),
+  category: text("category").notNull(),
+  description: text("description").notNull(),
+  imageUrl: text("image_url").notNull(),
+  services: text("services").array().notNull(), // Array de serviços
+  challenge: text("challenge"),
+  solution: text("solution"),
+  results: text("results").array(), // Array de resultados
+  duration: text("duration"),
+  teamSize: text("team_size"),
+  area: text("area"),
+  published: boolean("published").default(true).notNull(),
+  featured: boolean("featured").default(false).notNull(), // Para destacar projetos
+  order: integer("order").default(0).notNull(), // Para ordenação customizada
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const testimonials = pgTable("testimonials", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  company: text("company"),
+  position: text("position"),
+  content: text("content").notNull(),
+  rating: integer("rating").notNull(), // 1-5
+  imageUrl: text("image_url"),
+  projectId: integer("project_id"), // Relação opcional com projeto
+  published: boolean("published").default(true).notNull(),
+  featured: boolean("featured").default(false).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const newsletterSubscribers = pgTable("newsletter_subscribers", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  name: text("name"),
+  active: boolean("active").default(true).notNull(),
+  confirmedAt: timestamp("confirmed_at"),
+  unsubscribedAt: timestamp("unsubscribed_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const teamMembers = pgTable("team_members", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  position: text("position").notNull(),
+  bio: text("bio"),
+  imageUrl: text("image_url"),
+  certifications: text("certifications").array(), // Array de certificações
+  specialties: text("specialties").array(), // Array de especialidades
+  active: boolean("active").default(true).notNull(),
+  order: integer("order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const services = pgTable("services", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  shortDescription: text("short_description").notNull(),
+  fullDescription: text("full_description").notNull(),
+  iconName: text("icon_name"), // Nome do ícone (ex: "Paintbrush", "Shield", etc)
+  imageUrl: text("image_url"),
+  benefits: text("benefits").array(), // Array de benefícios
+  process: text("process").array(), // Array de etapas do processo
+  published: boolean("published").default(true).notNull(),
+  featured: boolean("featured").default(false).notNull(),
+  order: integer("order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -122,6 +200,33 @@ export const insertGeoVisitSchema = createInsertSchema(geoVisits).omit({
   createdAt: true,
 });
 
+export const insertProjectSchema = createInsertSchema(projects).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const insertTestimonialSchema = createInsertSchema(testimonials).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertNewsletterSubscriberSchema = createInsertSchema(newsletterSubscribers).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertTeamMemberSchema = createInsertSchema(teamMembers).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertServiceSchema = createInsertSchema(services).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
@@ -134,3 +239,13 @@ export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertGeoVisit = z.infer<typeof insertGeoVisitSchema>;
 export type GeoVisit = typeof geoVisits.$inferSelect;
+export type InsertProject = z.infer<typeof insertProjectSchema>;
+export type Project = typeof projects.$inferSelect;
+export type InsertTestimonial = z.infer<typeof insertTestimonialSchema>;
+export type Testimonial = typeof testimonials.$inferSelect;
+export type InsertNewsletterSubscriber = z.infer<typeof insertNewsletterSubscriberSchema>;
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertTeamMember = z.infer<typeof insertTeamMemberSchema>;
+export type TeamMember = typeof teamMembers.$inferSelect;
+export type InsertService = z.infer<typeof insertServiceSchema>;
+export type Service = typeof services.$inferSelect;

@@ -31,6 +31,8 @@ export interface IStorage {
   getQuotes(): Promise<Quote[]>;
   createAnalyticsEvent(event: InsertAnalyticsEvent): Promise<AnalyticsEvent>;
   createAnalyticsEvents(events: InsertAnalyticsEvent[]): Promise<AnalyticsEvent[]>;
+  getAnalyticsEvents(daysAgo?: number): Promise<AnalyticsEvent[]>;
+  checkRecentPageView(ipHash: string, page: string, minutesAgo?: number): Promise<boolean>;
   getBlogPosts(publishedOnly?: boolean): Promise<BlogPost[]>;
   getBlogPostBySlug(slug: string): Promise<BlogPost | undefined>;
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
@@ -143,6 +145,30 @@ export class MemStorage implements IStorage {
     return Promise.all(events.map(event => this.createAnalyticsEvent(event)));
   }
 
+  async getAnalyticsEvents(daysAgo: number = 30): Promise<AnalyticsEvent[]> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
+
+    return Array.from(this.analyticsEvents.values())
+      .filter(event => event.createdAt >= cutoffDate)
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  }
+
+  async checkRecentPageView(ipHash: string, page: string, minutesAgo: number = 30): Promise<boolean> {
+    const cutoffDate = new Date();
+    cutoffDate.setMinutes(cutoffDate.getMinutes() - minutesAgo);
+
+    const recentPageView = Array.from(this.analyticsEvents.values()).find(
+      event =>
+        event.event === 'page_view' &&
+        event.ipHash === ipHash &&
+        event.page === page &&
+        event.createdAt >= cutoffDate
+    );
+
+    return !!recentPageView;
+  }
+
   async getBlogPosts(publishedOnly: boolean = true): Promise<BlogPost[]> {
     let posts = Array.from(this.blogPosts.values());
 
@@ -169,7 +195,11 @@ export class MemStorage implements IStorage {
       id,
       tags: insertPost.tags || null,
       imageUrl: insertPost.imageUrl || null,
-      publishedAt: insertPost.publishedAt || null,
+      publishedAt: insertPost.publishedAt
+        ? (typeof insertPost.publishedAt === 'string'
+          ? new Date(insertPost.publishedAt)
+          : insertPost.publishedAt)
+        : null,
       published: insertPost.published ?? false,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -182,9 +212,15 @@ export class MemStorage implements IStorage {
     const post = this.blogPosts.get(id);
     if (!post) return undefined;
 
+    // Converter publishedAt de string para Date se necessário
+    const processedData: any = { ...updateData };
+    if (processedData.publishedAt && typeof processedData.publishedAt === 'string') {
+      processedData.publishedAt = new Date(processedData.publishedAt);
+    }
+
     const updatedPost: BlogPost = {
       ...post,
-      ...updateData,
+      ...processedData,
       updatedAt: new Date()
     };
     this.blogPosts.set(id, updatedPost);
@@ -337,6 +373,37 @@ export class DatabaseStorage implements IStorage {
     return await db.insert(analyticsEvents).values(events).returning();
   }
 
+  async getAnalyticsEvents(daysAgo: number = 30): Promise<AnalyticsEvent[]> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
+
+    return await db
+      .select()
+      .from(analyticsEvents)
+      .where(gte(analyticsEvents.createdAt, cutoffDate))
+      .orderBy(desc(analyticsEvents.createdAt));
+  }
+
+  async checkRecentPageView(ipHash: string, page: string, minutesAgo: number = 30): Promise<boolean> {
+    const cutoffDate = new Date();
+    cutoffDate.setMinutes(cutoffDate.getMinutes() - minutesAgo);
+
+    const [pageView] = await db
+      .select()
+      .from(analyticsEvents)
+      .where(
+        and(
+          sql`${analyticsEvents.event} = 'page_view'`,
+          sql`${analyticsEvents.ipHash} = ${ipHash}`,
+          sql`${analyticsEvents.page} = ${page}`,
+          gte(analyticsEvents.createdAt, cutoffDate)
+        )
+      )
+      .limit(1);
+
+    return !!pageView;
+  }
+
   async getBlogPosts(publishedOnly: boolean = true): Promise<BlogPost[]> {
     const query = db.select().from(blogPosts);
 
@@ -354,9 +421,9 @@ export class DatabaseStorage implements IStorage {
 
   async createBlogPost(insertPost: InsertBlogPost): Promise<BlogPost> {
     // Converter publishedAt de string para Date se necessário
-    const dataToInsert = { ...insertPost };
+    const dataToInsert: any = { ...insertPost };
     if (dataToInsert.publishedAt && typeof dataToInsert.publishedAt === 'string') {
-      dataToInsert.publishedAt = new Date(dataToInsert.publishedAt) as any;
+      dataToInsert.publishedAt = new Date(dataToInsert.publishedAt);
     }
 
     const [post] = await db.insert(blogPosts).values(dataToInsert).returning();
@@ -365,9 +432,9 @@ export class DatabaseStorage implements IStorage {
 
   async updateBlogPost(id: number, updateData: Partial<InsertBlogPost>): Promise<BlogPost | undefined> {
     // Converter publishedAt de string para Date se necessário
-    const dataToUpdate = { ...updateData };
+    const dataToUpdate: any = { ...updateData };
     if (dataToUpdate.publishedAt && typeof dataToUpdate.publishedAt === 'string') {
-      dataToUpdate.publishedAt = new Date(dataToUpdate.publishedAt) as any;
+      dataToUpdate.publishedAt = new Date(dataToUpdate.publishedAt);
     }
 
     const [post] = await db
