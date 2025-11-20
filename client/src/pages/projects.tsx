@@ -8,7 +8,7 @@ export default function Projects() {
     {
       id: "edificio-comercial-torre-norte",
       title: "Edifício Comercial Torre Norte",
-      location: "São Paulo, SP",
+      location: "Balneário Camboriú, SC",
       date: "2024",
       category: "Limpeza de Fachadas",
       description: "Limpeza completa de fachada de vidro em edifício comercial de 25 andares com sistema de hidrojateamento e produtos especializados.",
@@ -18,7 +18,7 @@ export default function Projects() {
     {
       id: "condominio-residencial-vista-mar",
       title: "Condomínio Residencial Vista Mar",
-      location: "Rio de Janeiro, RJ",
+      location: "Itapema, SC",
       date: "2024",
       category: "Pintura e Impermeabilização",
       description: "Projeto completo de pintura externa e impermeabilização de fachada em condomínio residencial de alto padrão.",
@@ -28,7 +28,7 @@ export default function Projects() {
     {
       id: "complexo-industrial-mineracaobr",
       title: "Complexo Industrial MineraçãoBR",
-      location: "Belo Horizonte, MG",
+      location: "Joinville, SC",
       date: "2023",
       category: "Manutenção Industrial",
       description: "Manutenção preventiva e corretiva de silos e estruturas metálicas em complexo industrial de grande porte.",
@@ -58,7 +58,7 @@ export default function Projects() {
     {
       id: "hotel-resort-bahia-mar",
       title: "Hotel Resort Bahia Mar",
-      location: "Salvador, BA",
+      location: "Florianópolis, SC",
       date: "2022",
       category: "Restauração de Fachada",
       description: "Projeto de restauração completa da fachada histórica de hotel de luxo, preservando características arquitetônicas originais.",

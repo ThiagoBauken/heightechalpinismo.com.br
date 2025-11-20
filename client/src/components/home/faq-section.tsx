@@ -19,7 +19,7 @@ export default function FAQSection() {
     },
     {
       question: "Quais regiões a Heightech atende?",
-      answer: "Atendemos principalmente a região metropolitana de São Paulo e Grande São Paulo. Para projetos em outras regiões do estado ou país, fazemos uma avaliação específica. Entre em contato para verificar disponibilidade na sua região."
+      answer: "Atendemos principalmente Balneário Camboriú, Itapema e toda a região Sul do Brasil (Santa Catarina, Paraná e Rio Grande do Sul). Trabalhamos nos maiores edifícios da região. Para projetos em outras localidades, fazemos uma avaliação específica. Entre em contato para verificar disponibilidade."
     },
     {
       question: "Como é feito o orçamento dos serviços?",

@@ -10,7 +10,7 @@ const projects = [
   {
     id: "edificio-comercial-torre-norte",
     title: "Edifício Comercial Torre Norte",
-    location: "São Paulo, SP",
+    location: "Balneário Camboriú, SC",
     date: "2024",
     category: "Limpeza de Fachadas",
     description: "Limpeza completa de fachada de vidro em edifício comercial de 25 andares com sistema de hidrojateamento e produtos especializados.",
@@ -31,7 +31,7 @@ const projects = [
   {
     id: "condominio-residencial-vista-mar",
     title: "Condomínio Residencial Vista Mar",
-    location: "Rio de Janeiro, RJ",
+    location: "Itapema, SC",
     date: "2024",
     category: "Pintura e Impermeabilização",
     description: "Projeto completo de pintura externa e impermeabilização de fachada em condomínio residencial de alto padrão.",

@@ -38,7 +38,7 @@ export default function CTASection() {
             </div>
             <div className="flex items-center justify-center space-x-2">
               <MapPin className="w-5 h-5" />
-              <span className="text-lg">São Paulo - SP</span>
+              <span className="text-lg">Balneário Camboriú - SC</span>
             </div>
           </div>
         </div>

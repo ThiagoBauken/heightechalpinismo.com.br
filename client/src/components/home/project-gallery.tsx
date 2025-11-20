@@ -4,13 +4,13 @@ export default function ProjectGallery() {
   const beforeAfterProjects = [
     {
       title: "Limpeza de Fachada Comercial",
-      description: "Revitalização completa de edifício comercial em São Paulo",
+      description: "Revitalização completa de edifício comercial em Balneário Camboriú",
       beforeImage: "https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       afterImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
     },
     {
       title: "Pintura Predial Residencial",
-      description: "Transformação de fachada de condomínio no Rio de Janeiro",
+      description: "Transformação de fachada de condomínio em Itapema",
       beforeImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       afterImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
     }
