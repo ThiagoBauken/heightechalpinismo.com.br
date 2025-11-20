@@ -13,10 +13,29 @@ interface AnalyticsEvent {
 class AnalyticsTracker {
   private sessionId: string;
   private events: AnalyticsEvent[] = [];
+  private conversionEvents: Set<string> = new Set(); // Rastrear eventos de conversão já enviados
 
   constructor() {
     this.sessionId = this.generateSessionId();
+    this.loadConversionEvents();
     this.initializeTracking();
+  }
+
+  private loadConversionEvents() {
+    // Carregar eventos de conversão do sessionStorage
+    const stored = sessionStorage.getItem('conversion_events');
+    if (stored) {
+      try {
+        const events = JSON.parse(stored);
+        this.conversionEvents = new Set(events);
+      } catch (e) {
+        console.error('Error loading conversion events:', e);
+      }
+    }
+  }
+
+  private saveConversionEvents() {
+    sessionStorage.setItem('conversion_events', JSON.stringify([...this.conversionEvents]));
   }
 
   private generateSessionId(): string {
@@ -44,6 +63,24 @@ class AnalyticsTracker {
   }
 
   trackEvent(event: string, data?: Record<string, any>) {
+    // ✅ DEDUPLICAÇÃO: Verificar se evento de conversão já foi enviado nesta sessão
+    if (this.isConversionEvent(event)) {
+      const eventKey = `${event}_${data?.source || 'unknown'}`;
+
+      if (this.conversionEvents.has(eventKey)) {
+        console.log('🔄 Evento de conversão duplicado ignorado:', {
+          event,
+          source: data?.source,
+          message: 'Já registrado nesta sessão'
+        });
+        return; // Não enviar duplicata
+      }
+
+      // Marcar como enviado
+      this.conversionEvents.add(eventKey);
+      this.saveConversionEvents();
+    }
+
     const analyticsEvent: AnalyticsEvent = {
       id: `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       event,
