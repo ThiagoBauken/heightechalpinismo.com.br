@@ -14,6 +14,7 @@
     "db:migrate": "tsx scripts/apply-migrations.ts",
     "db:backup": "bash scripts/backup-database.sh",
     "db:backup:win": "powershell -ExecutionPolicy Bypass -File scripts/backup-database.ps1",
+    "migrate:add-iphash": "tsx migrate-add-iphash.ts",
     "create-admin": "tsx scripts/create-admin.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",

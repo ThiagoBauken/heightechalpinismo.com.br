@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mountain, Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
   const services = [
@@ -26,7 +26,12 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-4">
-              <Mountain className="text-accent text-2xl mr-3" />
+              <img
+                src="/logo.png"
+                alt="Heightech Alpinismo Industrial"
+                className="h-10 w-auto max-w-[50px] object-contain mr-3"
+                loading="lazy"
+              />
               <span className="text-xl font-bold">Heightech Alpinismo</span>
             </div>
             <p className="text-gray-300 mb-4">
