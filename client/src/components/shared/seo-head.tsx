@@ -109,7 +109,7 @@ function updateOrCreateLink(rel: string, href: string) {
 
 function updateStructuredData(data: object) {
   const scriptId = "structured-data";
-  let script = document.getElementById(scriptId);
+  let script = document.getElementById(scriptId) as HTMLScriptElement | null;
 
   if (!script) {
     script = document.createElement("script");

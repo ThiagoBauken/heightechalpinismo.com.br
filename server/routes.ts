@@ -1,9 +1,10 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertQuoteSchema, insertBlogPostSchema } from "@shared/schema";
+import { insertContactSchema, insertQuoteSchema, insertBlogPostSchema, insertGeoVisitSchema } from "@shared/schema";
 import { getDashboardMetrics } from "./analytics";
 import { z } from "zod";
+import { getClientIP, getGeoLocation, getDeviceInfo, anonymizeIP } from "./services/geo-service";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -434,6 +435,98 @@ Disallow: /admin/
     } catch (error) {
       console.error('Erro ao deletar post:', error);
       res.status(500).json({ success: false, message: "Erro ao deletar post" });
+    }
+  });
+
+  // =============================================================================
+  // GEOLOCATION TRACKING API ENDPOINTS
+  // =============================================================================
+
+  // Rastrear visita com geolocalização e detecção de dispositivo
+  app.post("/api/geo/track", async (req, res) => {
+    try {
+      const { pageUrl, sessionId } = req.body;
+
+      if (!pageUrl || !sessionId) {
+        return res.status(400).json({
+          success: false,
+          message: "pageUrl e sessionId são obrigatórios"
+        });
+      }
+
+      // Extrair IP do cliente
+      const clientIP = getClientIP(req);
+
+      // Buscar geolocalização
+      const geo = await getGeoLocation(clientIP);
+
+      // Detectar dispositivo, OS e navegador
+      const userAgent = req.headers["user-agent"] || "";
+      const device = getDeviceInfo(userAgent);
+
+      // Criar objeto de visita
+      const visitData = {
+        ipHash: anonymizeIP(clientIP),
+        country: geo?.country || null,
+        countryCode: geo?.countryCode || null,
+        region: geo?.region || null,
+        regionName: geo?.regionName || null,
+        city: geo?.city || null,
+        lat: geo?.lat?.toString() || null,
+        lon: geo?.lon?.toString() || null,
+        timezone: geo?.timezone || null,
+        isp: geo?.isp || null,
+        deviceType: device.deviceType,
+        os: device.os,
+        browser: device.browser,
+        pageUrl,
+        sessionId
+      };
+
+      // Validar e salvar no banco
+      const validatedData = insertGeoVisitSchema.parse(visitData);
+      const visit = await storage.createGeoVisit(validatedData);
+
+      console.log('✅ Geolocalização rastreada:', {
+        location: `${visit.city}, ${visit.region}`,
+        device: `${visit.deviceType} - ${visit.os} - ${visit.browser}`
+      });
+
+      res.json({ success: true, visit });
+    } catch (error) {
+      console.error('Erro ao rastrear geolocalização:', error);
+      res.status(500).json({
+        success: false,
+        message: "Erro ao processar rastreamento"
+      });
+    }
+  });
+
+  // Buscar estatísticas de geolocalização para o dashboard
+  app.get("/api/geo/stats", async (req, res) => {
+    try {
+      const daysAgo = req.query.days ? parseInt(req.query.days as string) : 30;
+
+      if (isNaN(daysAgo) || daysAgo < 1 || daysAgo > 365) {
+        return res.status(400).json({
+          success: false,
+          message: "Parâmetro 'days' deve ser entre 1 e 365"
+        });
+      }
+
+      const stats = await storage.getGeoStats(daysAgo);
+
+      res.json({
+        success: true,
+        period: `${daysAgo} dias`,
+        data: stats
+      });
+    } catch (error) {
+      console.error('Erro ao buscar estatísticas de geo:', error);
+      res.status(500).json({
+        success: false,
+        message: "Erro ao buscar estatísticas"
+      });
     }
   });
 

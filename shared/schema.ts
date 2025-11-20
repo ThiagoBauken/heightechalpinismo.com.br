@@ -64,6 +64,26 @@ export const blogPosts = pgTable("blog_posts", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const geoVisits = pgTable("geo_visits", {
+  id: serial("id").primaryKey(),
+  ipHash: text("ip_hash").notNull(), // IP anonimizado (hash) - LGPD compliant
+  country: text("country"),
+  countryCode: text("country_code"),
+  region: text("region"), // Estado (SP, RJ, etc)
+  regionName: text("region_name"), // Nome completo do estado
+  city: text("city"),
+  lat: text("lat"),
+  lon: text("lon"),
+  timezone: text("timezone"),
+  isp: text("isp"), // Provedor de internet
+  deviceType: text("device_type"), // mobile, desktop, tablet
+  os: text("os"), // Sistema operacional (Android, iOS, Windows, etc)
+  browser: text("browser"), // Navegador (Chrome, Firefox, Safari, etc)
+  pageUrl: text("page_url"),
+  sessionId: text("session_id"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -90,6 +110,11 @@ export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
   updatedAt: true,
 });
 
+export const insertGeoVisitSchema = createInsertSchema(geoVisits).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
@@ -100,3 +125,5 @@ export type InsertAnalyticsEvent = z.infer<typeof insertAnalyticsEventSchema>;
 export type AnalyticsEvent = typeof analyticsEvents.$inferSelect;
 export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertGeoVisit = z.infer<typeof insertGeoVisitSchema>;
+export type GeoVisit = typeof geoVisits.$inferSelect;

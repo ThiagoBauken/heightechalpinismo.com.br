@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { TrendingUp, Users, MessageCircle, FileText, Eye, MousePointer, Lock, LogOut } from "lucide-react";
+import { TrendingUp, Users, MessageCircle, FileText, Eye, MousePointer, Lock, LogOut, BarChart3, BookOpen, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import BlogAdmin from "./blog-admin";
+import GeoLocationStats from "@/components/dashboard/geo-location-stats";
 
 interface DashboardData {
   totalPageViews: number;
@@ -22,6 +25,7 @@ interface DashboardData {
 export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
+  const [activeTab, setActiveTab] = useState("analytics");
   const { toast } = useToast();
 
   // Senha configurada via variável de ambiente (.env)
@@ -155,8 +159,8 @@ export default function Dashboard() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Analytics</h1>
-              <p className="text-gray-600 mt-2">Métricas de conversão e desempenho do site da Heightech</p>
+              <h1 className="text-3xl font-bold text-gray-900">Dashboard Administrativo</h1>
+              <p className="text-gray-600 mt-2">Heightech - Gestão e Analytics</p>
             </div>
             <Button
               onClick={handleLogout}
@@ -171,6 +175,23 @@ export default function Dashboard() {
       </div>
 
       <div className="container mx-auto px-4 py-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full max-w-2xl grid-cols-3 mb-8">
+            <TabsTrigger value="analytics" className="flex items-center gap-2">
+              <BarChart3 className="w-4 h-4" />
+              Analytics
+            </TabsTrigger>
+            <TabsTrigger value="geo" className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" />
+              Geolocalização
+            </TabsTrigger>
+            <TabsTrigger value="blog" className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4" />
+              Blog Admin
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="analytics" className="mt-0">
         {/* Cards de Métricas Principais */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -325,6 +346,16 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+          </TabsContent>
+
+          <TabsContent value="geo" className="mt-0">
+            <GeoLocationStats days={30} />
+          </TabsContent>
+
+          <TabsContent value="blog" className="mt-0">
+            <BlogAdmin />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

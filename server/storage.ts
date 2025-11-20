@@ -4,6 +4,7 @@ import {
   quotes,
   analyticsEvents,
   blogPosts,
+  geoVisits,
   type User,
   type InsertUser,
   type Contact,
@@ -13,7 +14,9 @@ import {
   type AnalyticsEvent,
   type InsertAnalyticsEvent,
   type BlogPost,
-  type InsertBlogPost
+  type InsertBlogPost,
+  type GeoVisit,
+  type InsertGeoVisit
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, gte, count, sql } from "drizzle-orm";
@@ -33,6 +36,8 @@ export interface IStorage {
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
   updateBlogPost(id: number, post: Partial<InsertBlogPost>): Promise<BlogPost | undefined>;
   deleteBlogPost(id: number): Promise<boolean>;
+  createGeoVisit(visit: InsertGeoVisit): Promise<GeoVisit>;
+  getGeoStats(daysAgo?: number): Promise<any>;
 }
 
 export class MemStorage implements IStorage {
@@ -41,11 +46,13 @@ export class MemStorage implements IStorage {
   private quotes: Map<number, Quote>;
   private analyticsEvents: Map<number, AnalyticsEvent>;
   private blogPosts: Map<number, BlogPost>;
+  private geoVisits: Map<number, GeoVisit>;
   private currentUserId: number;
   private currentContactId: number;
   private currentQuoteId: number;
   private currentEventId: number;
   private currentPostId: number;
+  private currentGeoVisitId: number;
 
   constructor() {
     this.users = new Map();
@@ -53,11 +60,13 @@ export class MemStorage implements IStorage {
     this.quotes = new Map();
     this.analyticsEvents = new Map();
     this.blogPosts = new Map();
+    this.geoVisits = new Map();
     this.currentUserId = 1;
     this.currentContactId = 1;
     this.currentQuoteId = 1;
     this.currentEventId = 1;
     this.currentPostId = 1;
+    this.currentGeoVisitId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -119,6 +128,10 @@ export class MemStorage implements IStorage {
     const event: AnalyticsEvent = {
       ...insertEvent,
       id,
+      data: insertEvent.data ?? null,
+      userAgent: insertEvent.userAgent ?? null,
+      referrer: insertEvent.referrer ?? null,
+      deviceType: insertEvent.deviceType ?? null,
       createdAt: new Date()
     };
     this.analyticsEvents.set(id, event);
@@ -156,6 +169,7 @@ export class MemStorage implements IStorage {
       tags: insertPost.tags || null,
       imageUrl: insertPost.imageUrl || null,
       publishedAt: insertPost.publishedAt || null,
+      published: insertPost.published ?? false,
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -178,6 +192,89 @@ export class MemStorage implements IStorage {
 
   async deleteBlogPost(id: number): Promise<boolean> {
     return this.blogPosts.delete(id);
+  }
+
+  async createGeoVisit(insertVisit: InsertGeoVisit): Promise<GeoVisit> {
+    const id = this.currentGeoVisitId++;
+    const visit: GeoVisit = {
+      ...insertVisit,
+      id,
+      country: insertVisit.country ?? null,
+      countryCode: insertVisit.countryCode ?? null,
+      region: insertVisit.region ?? null,
+      regionName: insertVisit.regionName ?? null,
+      city: insertVisit.city ?? null,
+      lat: insertVisit.lat ?? null,
+      lon: insertVisit.lon ?? null,
+      timezone: insertVisit.timezone ?? null,
+      isp: insertVisit.isp ?? null,
+      deviceType: insertVisit.deviceType ?? null,
+      os: insertVisit.os ?? null,
+      browser: insertVisit.browser ?? null,
+      pageUrl: insertVisit.pageUrl ?? null,
+      sessionId: insertVisit.sessionId ?? null,
+      createdAt: new Date()
+    };
+    this.geoVisits.set(id, visit);
+    return visit;
+  }
+
+  async getGeoStats(daysAgo: number = 30): Promise<any> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
+
+    const recentVisits = Array.from(this.geoVisits.values()).filter(
+      visit => visit.createdAt >= cutoffDate
+    );
+
+    // Agregar por estado
+    const byState = recentVisits.reduce((acc, visit) => {
+      if (visit.region) {
+        acc[visit.region] = (acc[visit.region] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Agregar por cidade
+    const byCity = recentVisits.reduce((acc, visit) => {
+      if (visit.city) {
+        acc[visit.city] = (acc[visit.city] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Agregar por tipo de dispositivo
+    const byDevice = recentVisits.reduce((acc, visit) => {
+      if (visit.deviceType) {
+        acc[visit.deviceType] = (acc[visit.deviceType] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Agregar por sistema operacional
+    const byOS = recentVisits.reduce((acc, visit) => {
+      if (visit.os) {
+        acc[visit.os] = (acc[visit.os] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Agregar por navegador
+    const byBrowser = recentVisits.reduce((acc, visit) => {
+      if (visit.browser) {
+        acc[visit.browser] = (acc[visit.browser] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    return {
+      totalVisits: recentVisits.length,
+      byState,
+      byCity,
+      byDevice,
+      byOS,
+      byBrowser
+    };
   }
 }
 
@@ -257,6 +354,107 @@ export class DatabaseStorage implements IStorage {
   async deleteBlogPost(id: number): Promise<boolean> {
     const result = await db.delete(blogPosts).where(eq(blogPosts.id, id));
     return result.rowCount ? result.rowCount > 0 : false;
+  }
+
+  async createGeoVisit(insertVisit: InsertGeoVisit): Promise<GeoVisit> {
+    const [visit] = await db.insert(geoVisits).values(insertVisit).returning();
+    return visit;
+  }
+
+  async getGeoStats(daysAgo: number = 30): Promise<any> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysAgo);
+
+    // Buscar visitas recentes
+    const recentVisits = await db
+      .select()
+      .from(geoVisits)
+      .where(gte(geoVisits.createdAt, cutoffDate));
+
+    // Contar total de visitas
+    const totalVisits = recentVisits.length;
+
+    // Agregar por estado (top 10)
+    const stateGroups = recentVisits.reduce((acc, visit) => {
+      if (visit.region) {
+        acc[visit.region] = (acc[visit.region] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byState = Object.entries(stateGroups)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10)
+      .map(([state, count]) => ({ state, count }));
+
+    // Agregar por cidade (top 20)
+    const cityGroups = recentVisits.reduce((acc, visit) => {
+      if (visit.city) {
+        const key = `${visit.city}, ${visit.region}`;
+        acc[key] = (acc[key] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byCity = Object.entries(cityGroups)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 20)
+      .map(([city, count]) => ({ city, count }));
+
+    // Agregar por tipo de dispositivo
+    const deviceGroups = recentVisits.reduce((acc, visit) => {
+      if (visit.deviceType) {
+        acc[visit.deviceType] = (acc[visit.deviceType] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byDevice = Object.entries(deviceGroups).map(([device, count]) => ({
+      device,
+      count,
+      percentage: totalVisits > 0 ? Math.round((count / totalVisits) * 100) : 0
+    }));
+
+    // Agregar por sistema operacional
+    const osGroups = recentVisits.reduce((acc, visit) => {
+      if (visit.os) {
+        acc[visit.os] = (acc[visit.os] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byOS = Object.entries(osGroups)
+      .sort((a, b) => b[1] - a[1])
+      .map(([os, count]) => ({
+        os,
+        count,
+        percentage: totalVisits > 0 ? Math.round((count / totalVisits) * 100) : 0
+      }));
+
+    // Agregar por navegador
+    const browserGroups = recentVisits.reduce((acc, visit) => {
+      if (visit.browser) {
+        acc[visit.browser] = (acc[visit.browser] || 0) + 1;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byBrowser = Object.entries(browserGroups)
+      .sort((a, b) => b[1] - a[1])
+      .map(([browser, count]) => ({
+        browser,
+        count,
+        percentage: totalVisits > 0 ? Math.round((count / totalVisits) * 100) : 0
+      }));
+
+    return {
+      totalVisits,
+      byState,
+      byCity,
+      byDevice,
+      byOS,
+      byBrowser
+    };
   }
 }
 

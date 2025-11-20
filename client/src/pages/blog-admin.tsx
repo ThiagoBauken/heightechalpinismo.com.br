@@ -220,24 +220,23 @@ export default function BlogAdmin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              Administração do Blog
-            </h1>
-            <p className="text-gray-600 mt-2">
-              Gerencie posts, crie novos artigos e publique conteúdo
-            </p>
-          </div>
-          <Button onClick={openCreateDialog} size="lg">
-            <PlusCircle className="w-5 h-5 mr-2" />
-            Novo Post
-          </Button>
+    <div className="w-full">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            Administração do Blog
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Gerencie posts, crie novos artigos e publique conteúdo
+          </p>
         </div>
+        <Button onClick={openCreateDialog} size="lg">
+          <PlusCircle className="w-5 h-5 mr-2" />
+          Novo Post
+        </Button>
+      </div>
 
-        {isLoading ? (
+      {isLoading ? (
           <div className="flex justify-center items-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
           </div>
@@ -307,7 +306,6 @@ export default function BlogAdmin() {
             ))}
           </div>
         )}
-      </div>
 
       {/* Dialog de Criação/Edição */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

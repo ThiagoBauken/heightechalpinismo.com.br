@@ -26,7 +26,10 @@ class AnalyticsTracker {
   private initializeTracking() {
     // Track page views
     this.trackPageView();
-    
+
+    // Track geolocation (once per session)
+    this.trackGeoVisit();
+
     // Track page visibility changes
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
@@ -113,6 +116,34 @@ class AnalyticsTracker {
         page: window.location.pathname
       });
     });
+  }
+
+  trackGeoVisit() {
+    // Rastrear geolocalização apenas uma vez por sessão
+    const geoTracked = sessionStorage.getItem('geo_tracked');
+
+    if (!geoTracked) {
+      fetch('/api/geo/track', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pageUrl: window.location.pathname,
+          sessionId: this.sessionId
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            sessionStorage.setItem('geo_tracked', 'true');
+            console.log('📍 Geolocalização rastreada:', data.visit);
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao rastrear geolocalização:', error);
+        });
+    }
   }
 
   private isConversionEvent(event: string): boolean {

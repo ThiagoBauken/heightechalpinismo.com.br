@@ -26,7 +26,7 @@ export default function VideoBackground({
   // Detectar se é mobile para economizar dados
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
-    const prefersReducedData = navigator.connection?.saveData;
+    const prefersReducedData = (navigator as any).connection?.saveData;
 
     // Desabilitar vídeo em mobile ou conexão lenta
     if (isMobile || prefersReducedData) {

@@ -1,0 +1,24 @@
+# heightechalpinismo.com.br - robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://heightechalpinismo.com.br/sitemap.xml
+
+# Disallow admin/private areas (se houver)
+Disallow: /api/
+Disallow: /dashboard/
+
+# Permitir crawlers de busca específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay (opcional, para não sobrecarregar servidor)
+Crawl-delay: 1
