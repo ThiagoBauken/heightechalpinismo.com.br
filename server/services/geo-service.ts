@@ -79,7 +79,7 @@ export async function getGeoLocation(ip: string): Promise<GeoLocation | null> {
       return null;
     }
 
-    const data = await response.json();
+    const data = await response.json() as any;
 
     if (data.status === "fail") {
       console.error("Geolocalização falhou:", data.message);

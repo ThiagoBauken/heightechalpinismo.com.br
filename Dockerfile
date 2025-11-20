@@ -27,11 +27,11 @@ RUN npm ci --production
 # Copy built application from builder
 COPY --from=builder /app/dist ./dist
 
-# Expose port
+# Expose port (configurável via PORT env variable)
 EXPOSE 5000
 
 # Set environment to production
 ENV NODE_ENV=production
 
 # Start the application
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/server/index.js"]
