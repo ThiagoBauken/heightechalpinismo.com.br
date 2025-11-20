@@ -53,12 +53,16 @@ export default function Home() {
         "name": "Itapema"
       },
       {
-        "@type": "City",
-        "name": "Camboriú"
+        "@type": "State",
+        "name": "Santa Catarina"
       },
       {
-        "@type": "City",
-        "name": "Bombinhas"
+        "@type": "State",
+        "name": "Paraná"
+      },
+      {
+        "@type": "State",
+        "name": "Rio Grande do Sul"
       }
     ],
     "aggregateRating": {

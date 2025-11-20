@@ -36,7 +36,7 @@ export default function Footer() {
               <span className="text-xl font-bold">Heightech Alpinismo</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Especialistas em serviços de alpinismo industrial e acesso por corda em todo o Brasil.
+              Especialistas em serviços de alpinismo industrial e acesso por corda. Atuamos nos maiores edifícios da região Sul do Brasil.
             </p>
             <div className="flex space-x-4">
               <a
@@ -117,7 +117,7 @@ export default function Footer() {
               </a>
               <p className="flex items-center">
                 <MapPin className="w-4 h-4 mr-2" />
-                Balneário Camboriú e Região
+                Balneário Camboriú, Itapema e Região Sul
               </p>
               <p className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />

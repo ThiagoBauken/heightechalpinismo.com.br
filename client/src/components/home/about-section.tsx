@@ -13,9 +13,10 @@ export default function AboutSection() {
               Sobre a Heightech Alpinismo Industrial
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              A Heightech é uma empresa especializada em alpinismo industrial e acesso por corda, 
-              oferecendo soluções seguras e eficientes para trabalhos em altura. Com mais de 15 anos 
-              de experiência no mercado, somos referência em qualidade e segurança.
+              A Heightech é uma empresa especializada em alpinismo industrial e acesso por corda,
+              oferecendo soluções seguras e eficientes para trabalhos em altura. Atuamos principalmente
+              em Balneário Camboriú, Itapema e região, trabalhando nos maiores edifícios do Sul do Brasil.
+              Com mais de 15 anos de experiência no mercado, somos referência em qualidade e segurança.
             </p>
             <p className="text-lg text-gray-600 mb-8">
               Nossa equipe é composta por profissionais certificados segundo as normas NR-35 e 
