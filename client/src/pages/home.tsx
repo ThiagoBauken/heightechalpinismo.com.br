@@ -1,7 +1,7 @@
 import HeroSection from "@/components/home/hero-section";
 import ServicesOverview from "@/components/home/services-overview";
 import AboutSection from "@/components/home/about-section";
-import StatsSection from "@/components/home/stats-section";
+import SocialProof from "@/components/shared/social-proof";
 import VideoSection from "@/components/home/video-section";
 import ProjectGallery from "@/components/home/project-gallery";
 import Certifications from "@/components/home/certifications";
@@ -89,7 +89,7 @@ export default function Home() {
       <HeroSection />
       <ServicesOverview />
       <AboutSection />
-      <StatsSection />
+      <SocialProof />
       <VideoSection />
       <ProjectGallery />
       <Certifications />

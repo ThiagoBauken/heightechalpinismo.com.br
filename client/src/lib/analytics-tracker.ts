@@ -126,7 +126,7 @@ class AnalyticsTracker {
   }
 
   trackFormSubmission(formType: string, formData: any) {
-    this.trackEvent('form_submission', {
+    this.trackEvent('form_submit', {
       formType,
       fields: Object.keys(formData),
       service: formData.service || 'not_specified'
@@ -191,7 +191,7 @@ class AnalyticsTracker {
       'instagram_click',
       'facebook_click',
       'youtube_click',
-      'form_submission',
+      'form_submit',
       'phone_click'
     ];
     return conversionEvents.includes(event);
