@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,40 +7,40 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function FacadeCleaning() {
   const serviceFeatures = [
-    "Limpeza de vidros e fachadas cortina",
-    "Remoção de poluição, fuligem e manchas climáticas",
-    "Limpeza pós-obra (remoção de respingos de tinta e cimento)",
-    "Remoção de limo e fungos para evitar infiltrações",
+    "Limpeza de vidros, fachadas cortina e especÃ­fico em ACM",
+    "RemoÃ§Ã£o de poluiÃ§Ã£o, fuligem e manchas climÃ¡ticas",
+    "Limpeza pÃ³s-obra (remoÃ§Ã£o de respingos de tinta e cimento)",
+    "RemoÃ§Ã£o de limo e fungos para evitar infiltraÃ§Ãµes",
     "Hidrojateamento com produtos especializados",
     "Acabamento profissional sem manchas"
   ];
 
   const buildingTypes = [
-    "Edifícios comerciais e residenciais",
-    "Arranha-céus e fachadas cortina",
+    "EdifÃ­cios comerciais e residenciais",
+    "Arranha-cÃ©us e fachadas cortina",
     "Fachadas de lojas e shopping centers",
-    "Hospitais e escolas com múltiplos andares",
-    "Silos industriais e chaminés"
+    "Hospitais e escolas com mÃºltiplos andares",
+    "Silos industriais e chaminÃ©s"
   ];
 
   const equipment = [
-    "Cordas duplas (principal e segurança)",
-    "Arnês tipo paraquedista e cadeirinha de posicionamento",
-    "Mosquetões de aço e conectores certificados",
+    "Cordas duplas (principal e seguranÃ§a)",
+    "ArnÃªs tipo paraquedista e cadeirinha de posicionamento",
+    "MosquetÃµes de aÃ§o e conectores certificados",
     "Descensor para controle de descida e ascensor para subidas",
-    "Capacete, luvas e óculos de proteção",
-    "Máquina de hidrojato e produtos especializados"
+    "Capacete, luvas e Ã³culos de proteÃ§Ã£o",
+    "MÃ¡quina de hidrojato e produtos especializados"
   ];
 
   const benefits = [
     {
       icon: Clock,
       title: "Agilidade",
-      description: "Execução rápida sem necessidade de andaimes tradicionais"
+      description: "ExecuÃ§Ã£o rÃ¡pida sem necessidade de andaimes tradicionais"
     },
     {
       icon: Shield,
-      title: "Segurança",
+      title: "SeguranÃ§a",
       description: "Equipamentos certificados e profissionais treinados"
     },
     {
@@ -53,12 +53,12 @@ export default function FacadeCleaning() {
   return (
     <div className="pt-16">
       <SEOHead
-        title="Lavação Predial em Balneário Camboriú e Itapema"
-        description="Lavação e limpeza profissional de fachadas prediais em Balneário Camboriú e Itapema. Limpeza de vidros, remoção de sujeira e acabamento impecável."
+        title="LavaÃ§Ã£o Predial em BalneÃ¡rio CamboriÃº e Itapema"
+        description="LavaÃ§Ã£o e limpeza profissional de fachadas prediais em BalneÃ¡rio CamboriÃº e Itapema. Limpeza de vidros, remoÃ§Ã£o de sujeira e acabamento impecÃ¡vel."
         keywords={[
-          "lavação predial",
+          "lavaÃ§Ã£o predial",
           "limpeza de fachada",
-          "limpeza de prédio",
+          "limpeza de prÃ©dio",
           "limpeza de vidros",
           "hidrojateamento"
         ]}
@@ -68,29 +68,29 @@ export default function FacadeCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Limpeza de Fachadas
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Lavagem e higienização profissional de superfícies externas com hidrojateamento e produtos especializados, garantindo a conservação e valorização do seu imóvel.
+                Lavagem e higienizaÃ§Ã£o profissional de superfÃ­cies externas com hidrojateamento e produtos especializados, garantindo a conservaÃ§Ã£o e valorizaÃ§Ã£o do seu imÃ³vel.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contato">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver Demonstração
+                  Ver DemonstraÃ§Ã£o
                 </Button>
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              <img
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                 alt="Limpeza profissional de fachadas"
                 className="rounded-lg shadow-2xl"
               />
@@ -104,19 +104,19 @@ export default function FacadeCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
               <p className="text-gray-600 mb-6">
-                O serviço de limpeza de fachadas consiste na lavagem e higienização das superfícies externas de prédios por técnicos especializados em acesso por corda. Nossa equipe avalia o tipo de revestimento e o nível de sujeira para escolher os métodos adequados.
+                O serviÃ§o de limpeza de fachadas consiste na lavagem e higienizaÃ§Ã£o das superfÃ­cies externas de prÃ©dios por tÃ©cnicos especializados em acesso por corda. Nossa equipe avalia o tipo de revestimento e o nÃ­vel de sujeira para escolher os mÃ©todos adequados.
               </p>
               <p className="text-gray-600 mb-6">
-                Utilizamos escovas ou brochas com detergentes especiais e realizamos hidrojateamento (jato de água de alta pressão) para remover poeira, poluição, fuligem, limo e outras impurezas. Em fachadas de vidro, após a lavagem, a água é puxada com rodos para um acabamento sem manchas.
+                Utilizamos escovas com produtos especiais e realizamos hidrojateamento (jato de Ã¡gua de alta pressÃ£o) para remover poeira, poluiÃ§Ã£o, fuligem, limo e outras impurezas. Em fachadas de vidro, apÃ³s a lavagem, a Ã¡gua Ã© puxada com rodos para um acabamento sem manchas.
               </p>
               <p className="text-gray-600">
-                A limpeza regular de fachadas previne a deterioração da construção e melhora significativamente a aparência e valor do imóvel.
+                A limpeza regular de fachadas previne a deterioraÃ§Ã£o da construÃ§Ã£o e melhora significativamente a aparÃªncia e valor do imÃ³vel.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -134,7 +134,7 @@ export default function FacadeCleaning() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens do Nosso Serviço</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens do Nosso ServiÃ§o</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Por que escolher o acesso por corda para limpeza de fachadas
             </p>
@@ -192,30 +192,30 @@ export default function FacadeCleaning() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Nosso Processo de Trabalho</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seguimos um protocolo rigoroso para garantir qualidade e segurança
+              Seguimos um protocolo rigoroso para garantir qualidade e seguranÃ§a
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
                 step: "01",
-                title: "Avaliação",
-                description: "Análise do tipo de revestimento e nível de sujeira"
+                title: "AvaliaÃ§Ã£o",
+                description: "AnÃ¡lise do tipo de revestimento e nÃ­vel de sujeira"
               },
               {
                 step: "02",
-                title: "Preparação",
-                description: "Instalação de pontos de ancoragem e equipamentos"
+                title: "PreparaÃ§Ã£o",
+                description: "InstalaÃ§Ã£o de pontos de ancoragem e equipamentos"
               },
               {
                 step: "03",
                 title: "Limpeza",
-                description: "Aplicação de produtos e hidrojateamento"
+                description: "AplicaÃ§Ã£o de produtos e hidrojateamento"
               },
               {
                 step: "04",
                 title: "Acabamento",
-                description: "Finalização com rodos e inspeção final"
+                description: "FinalizaÃ§Ã£o com rodos e inspeÃ§Ã£o final"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-6">
@@ -239,17 +239,17 @@ export default function FacadeCleaning() {
             Precisa de Limpeza de Fachadas?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Entre em contato conosco para um orçamento personalizado e mantenha seu imóvel sempre valorizado
+            Entre em contato conosco para um orÃ§amento personalizado e mantenha seu imÃ³vel sempre valorizado
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contato">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar Orçamento Gratuito
+                Solicitar OrÃ§amento Gratuito
               </Button>
             </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-              Ver Outros Serviços
+              Ver Outros ServiÃ§os
             </Button>
           </div>
         </div>

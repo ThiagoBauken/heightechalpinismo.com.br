@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -6,51 +6,51 @@ import { Check, Search, FileText, AlertTriangle, Award, Phone, Play } from "luci
 
 export default function TechnicalInspection() {
   const serviceFeatures = [
-    "Inspeção visual detalhada de estruturas em altura",
-    "Testes de percussão para identificar áreas comprometidas",
-    "Análise de fissuras, trincas e deformações",
-    "Avaliação de sistemas de fixação e ancoragem",
-    "Inspeção de revestimentos e vedações",
-    "Verificação de sistemas de drenagem e impermeabilização",
-    "Documentação fotográfica detalhada",
-    "Relatórios técnicos com recomendações específicas"
+    "InspeÃ§Ã£o visual detalhada de estruturas em altura",
+    "Testes de percussÃ£o para identificar Ã¡reas comprometidas",
+    "AnÃ¡lise de fissuras, trincas e deformaÃ§Ãµes",
+    "AvaliaÃ§Ã£o de sistemas de fixaÃ§Ã£o e ancoragem",
+    "InspeÃ§Ã£o de revestimentos e vedaÃ§Ãµes",
+    "VerificaÃ§Ã£o de sistemas de drenagem e impermeabilizaÃ§Ã£o",
+    "DocumentaÃ§Ã£o fotogrÃ¡fica detalhada",
+    "RelatÃ³rios tÃ©cnicos com recomendaÃ§Ãµes especÃ­ficas"
   ];
 
   const inspectionTypes = [
-    "Inspeção predial preventiva conforme IBAPE",
-    "Avaliação de fachadas e revestimentos externos",
-    "Inspeção de estruturas metálicas e concreto",
-    "Análise de sistemas de impermeabilização",
-    "Verificação de equipamentos fixos em altura",
-    "Inspeção de segurança para trabalhos em altura"
+    "InspeÃ§Ã£o predial preventiva conforme IBAPE",
+    "AvaliaÃ§Ã£o de fachadas e revestimentos externos",
+    "InspeÃ§Ã£o de estruturas metÃ¡licas e concreto",
+    "AnÃ¡lise de sistemas de impermeabilizaÃ§Ã£o",
+    "VerificaÃ§Ã£o de equipamentos fixos em altura",
+    "InspeÃ§Ã£o de seguranÃ§a para trabalhos em altura"
   ];
 
   const equipment = [
     "Equipamentos de acesso por corda certificados",
-    "Instrumentos de medição de precisão",
-    "Câmeras fotográficas de alta resolução",
-    "Martelo de percussão para testes sonoros",
-    "Trincômetros para medição de fissuras",
-    "Equipamentos de detecção de umidade",
-    "Ferramentas de análise não destrutiva",
-    "Software especializado para relatórios técnicos"
+    "Instrumentos de mediÃ§Ã£o de precisÃ£o",
+    "CÃ¢meras fotogrÃ¡ficas de alta resoluÃ§Ã£o",
+    "Martelo de percussÃ£o para testes sonoros",
+    "TrincÃ´metros para mediÃ§Ã£o de fissuras",
+    "Equipamentos de detecÃ§Ã£o de umidade",
+    "Ferramentas de anÃ¡lise nÃ£o destrutiva",
+    "Software especializado para relatÃ³rios tÃ©cnicos"
   ];
 
   const benefits = [
     {
       icon: Search,
-      title: "Diagnóstico Preciso",
-      description: "Identificação detalhada de problemas estruturais e pontos críticos"
+      title: "DiagnÃ³stico Preciso",
+      description: "IdentificaÃ§Ã£o detalhada de problemas estruturais e pontos crÃ­ticos"
     },
     {
       icon: FileText,
-      title: "Relatórios Técnicos",
-      description: "Documentação completa com recomendações e prazos"
+      title: "RelatÃ³rios TÃ©cnicos",
+      description: "DocumentaÃ§Ã£o completa com recomendaÃ§Ãµes e prazos"
     },
     {
       icon: AlertTriangle,
-      title: "Prevenção",
-      description: "Antecipação de problemas evitando custos maiores"
+      title: "PrevenÃ§Ã£o",
+      description: "AntecipaÃ§Ã£o de problemas evitando custos maiores"
     }
   ];
 
@@ -61,30 +61,30 @@ export default function TechnicalInspection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Inspeção Técnica Predial
+                InspeÃ§Ã£o TÃ©cnica Predial
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Avaliação detalhada de estruturas em altura para identificação de problemas e elaboração de recomendações técnicas precisas para manutenção preventiva.
+                AvaliaÃ§Ã£o detalhada de estruturas em altura para identificaÃ§Ã£o de problemas e elaboraÃ§Ã£o de recomendaÃ§Ãµes tÃ©cnicas precisas para manutenÃ§Ã£o preventiva.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contato">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver Demonstração
+                  Ver DemonstraÃ§Ã£o
                 </Button>
               </div>
             </div>
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Inspeção técnica predial"
+                alt="InspeÃ§Ã£o tÃ©cnica predial"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -97,19 +97,19 @@ export default function TechnicalInspection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
               <p className="text-gray-600 mb-6">
-                Nossa inspeção técnica predial é uma avaliação detalhada de estruturas em altura para identificação de problemas, deficiências e pontos que necessitam manutenção. Utilizamos técnicas de acesso por corda para alcançar todos os pontos da edificação.
+                Nossa inspeÃ§Ã£o tÃ©cnica predial Ã© uma avaliaÃ§Ã£o detalhada de estruturas em altura para identificaÃ§Ã£o de problemas, deficiÃªncias e pontos que necessitam manutenÃ§Ã£o. Utilizamos tÃ©cnicas de acesso por corda para alcanÃ§ar todos os pontos da edificaÃ§Ã£o.
               </p>
               <p className="text-gray-600 mb-6">
-                Realizamos inspeção visual minuciosa, testes de percussão para identificar áreas ocas ou com problemas de aderência, análise de fissuras e trincas, verificação de sistemas de fixação e avaliação do estado geral da estrutura e revestimentos.
+                Realizamos inspeÃ§Ã£o visual minuciosa, testes de percussÃ£o para identificar Ã¡reas ocas ou com problemas de aderÃªncia, anÃ¡lise de fissuras e trincas, verificaÃ§Ã£o de sistemas de fixaÃ§Ã£o e avaliaÃ§Ã£o do estado geral da estrutura e revestimentos.
               </p>
               <p className="text-gray-600">
-                Todo o processo é documentado com fotografias de alta resolução e resulta em relatório técnico detalhado com classificação de problemas por grau de risco e recomendações específicas para cada situação encontrada.
+                Todo o processo Ã© documentado com fotografias de alta resoluÃ§Ã£o e resulta em relatÃ³rio tÃ©cnico detalhado com classificaÃ§Ã£o de problemas por grau de risco e recomendaÃ§Ãµes especÃ­ficas para cada situaÃ§Ã£o encontrada.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -127,9 +127,9 @@ export default function TechnicalInspection() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da Inspeção Técnica Especializada</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da InspeÃ§Ã£o TÃ©cnica Especializada</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Benefícios de uma avaliação profissional e detalhada
+              BenefÃ­cios de uma avaliaÃ§Ã£o profissional e detalhada
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,7 +154,7 @@ export default function TechnicalInspection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Tipos de Inspeção</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Tipos de InspeÃ§Ã£o</h2>
               <ul className="space-y-3">
                 {inspectionTypes.map((type, index) => (
                   <li key={index} className="flex items-start">
@@ -183,9 +183,9 @@ export default function TechnicalInspection() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de Inspeção Técnica</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de InspeÃ§Ã£o TÃ©cnica</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Metodologia sistemática para avaliação completa da estrutura
+              Metodologia sistemÃ¡tica para avaliaÃ§Ã£o completa da estrutura
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -193,22 +193,22 @@ export default function TechnicalInspection() {
               {
                 step: "01",
                 title: "Planejamento",
-                description: "Análise de documentos e definição do escopo de inspeção"
+                description: "AnÃ¡lise de documentos e definiÃ§Ã£o do escopo de inspeÃ§Ã£o"
               },
               {
                 step: "02",
-                title: "Inspeção Visual",
-                description: "Avaliação detalhada de todos os elementos estruturais"
+                title: "InspeÃ§Ã£o Visual",
+                description: "AvaliaÃ§Ã£o detalhada de todos os elementos estruturais"
               },
               {
                 step: "03",
-                title: "Testes Técnicos",
-                description: "Aplicação de métodos não destrutivos e medições"
+                title: "Testes TÃ©cnicos",
+                description: "AplicaÃ§Ã£o de mÃ©todos nÃ£o destrutivos e mediÃ§Ãµes"
               },
               {
                 step: "04",
-                title: "Relatório",
-                description: "Elaboração de relatório técnico com recomendações"
+                title: "RelatÃ³rio",
+                description: "ElaboraÃ§Ã£o de relatÃ³rio tÃ©cnico com recomendaÃ§Ãµes"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-6">
@@ -231,34 +231,34 @@ export default function TechnicalInspection() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">O Que Avaliamos</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Elementos estruturais e sistemas analisados durante a inspeção
+              Elementos estruturais e sistemas analisados durante a inspeÃ§Ã£o
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Estrutura e Vedações",
-                items: ["Elementos estruturais", "Alvenarias e vedações", "Revestimentos externos", "Esquadrias e vidros"]
+                title: "Estrutura e VedaÃ§Ãµes",
+                items: ["Elementos estruturais", "Alvenarias e vedaÃ§Ãµes", "Revestimentos externos", "Esquadrias e vidros"]
               },
               {
-                title: "Sistemas Hidráulicos",
-                items: ["Tubulações aparentes", "Sistemas de drenagem", "Calhas e condutores", "Pontos de infiltração"]
+                title: "Sistemas HidrÃ¡ulicos",
+                items: ["TubulaÃ§Ãµes aparentes", "Sistemas de drenagem", "Calhas e condutores", "Pontos de infiltraÃ§Ã£o"]
               },
               {
-                title: "Sistemas Elétricos",
-                items: ["Instalações externas", "Luminária e equipamentos", "Proteções e aterramentos", "Conformidade normativa"]
+                title: "Sistemas ElÃ©tricos",
+                items: ["InstalaÃ§Ãµes externas", "LuminÃ¡ria e equipamentos", "ProteÃ§Ãµes e aterramentos", "Conformidade normativa"]
               },
               {
-                title: "Impermeabilização",
-                items: ["Estado das membranas", "Juntas de dilatação", "Pontos críticos", "Eficiência do sistema"]
+                title: "ImpermeabilizaÃ§Ã£o",
+                items: ["Estado das membranas", "Juntas de dilataÃ§Ã£o", "Pontos crÃ­ticos", "EficiÃªncia do sistema"]
               },
               {
-                title: "Segurança",
-                items: ["Pontos de ancoragem", "Guarda-corpos", "Acessos em altura", "Equipamentos de segurança"]
+                title: "SeguranÃ§a",
+                items: ["Pontos de ancoragem", "Guarda-corpos", "Acessos em altura", "Equipamentos de seguranÃ§a"]
               },
               {
-                title: "Conservação Geral",
-                items: ["Estado de conservação", "Vida útil estimada", "Prioridades de manutenção", "Custos estimados"]
+                title: "ConservaÃ§Ã£o Geral",
+                items: ["Estado de conservaÃ§Ã£o", "Vida Ãºtil estimada", "Prioridades de manutenÃ§Ã£o", "Custos estimados"]
               }
             ].map((category, index) => (
               <Card key={index} className="p-6">
@@ -283,21 +283,21 @@ export default function TechnicalInspection() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Precisa de uma Inspeção Técnica?
+            Precisa de uma InspeÃ§Ã£o TÃ©cnica?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Garanta a segurança e conservação do seu imóvel com nossa avaliação técnica especializada
+            Garanta a seguranÃ§a e conservaÃ§Ã£o do seu imÃ³vel com nossa avaliaÃ§Ã£o tÃ©cnica especializada
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contato">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar Orçamento Gratuito
+                Solicitar OrÃ§amento Gratuito
               </Button>
             </Link>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Outros Serviços
+                Ver Outros ServiÃ§os
               </Button>
             </Link>
           </div>

@@ -18,7 +18,7 @@ export default function HeroSection() {
         // Imagem que aparece enquanto carrega
         posterImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
       />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <div className="animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -35,10 +35,22 @@ export default function HeroSection() {
                 Solicitar Orçamento
               </Button>
             </Link>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+              onClick={() => {
+                const element = document.getElementById('video-section');
+                if (element) {
+                  const headerOffset = 80;
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
             >
               <Play className="w-5 h-5 mr-2" />
               Ver Vídeos

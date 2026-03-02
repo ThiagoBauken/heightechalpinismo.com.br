@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -11,21 +11,21 @@ export default function GlassCleaning() {
     "Produtos premium de alta qualidade",
     "Acabamento sem manchas ou marcas",
     "Limpeza de vidros temperados e laminados",
-    "Remoção de respingos e manchas difíceis",
+    "RemoÃ§Ã£o de respingos e manchas difÃ­ceis",
     "Tratamento anti-manchas opcional"
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="Limpeza Fina de Vidros em Altura - Balneário Camboriú"
-        description="Limpeza especializada e polimento de vidros em altura em Balneário Camboriú e Itapema. Acabamento profissional sem manchas."
+        title="Limpeza Fina de Vidros em Altura - BalneÃ¡rio CamboriÃº"
+        description="Limpeza especializada e polimento de vidros em altura em BalneÃ¡rio CamboriÃº e Itapema. Acabamento profissional sem manchas."
         keywords={[
           "limpeza de vidros",
           "limpeza de vidros em altura",
           "polimento de vidros",
           "limpeza de janelas",
-          "vidros de prédio"
+          "vidros de prÃ©dio"
         ]}
       />
       <section className="relative py-20 bg-primary">
@@ -37,12 +37,12 @@ export default function GlassCleaning() {
                 Limpeza Fina de Vidros
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Limpeza especializada e polimento de vidros em altura com produtos específicos e acabamento profissional impecável.
+                Limpeza especializada e polimento de vidros em altura com produtos especÃ­ficos e acabamento profissional impecÃ¡vel.
               </p>
               <Link href="/contato">
                 <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar Orçamento
+                  Solicitar OrÃ§amento
                 </Button>
               </Link>
             </div>
@@ -63,10 +63,10 @@ export default function GlassCleaning() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Limpeza Profissional</h2>
               <p className="text-gray-600 mb-6">
-                Nossa equipe especializada utiliza produtos profissionais e técnicas avançadas para garantir vidros cristalinos sem manchas, riscos ou marcas.
+                Nossa equipe especializada utiliza produtos profissionais e tÃ©cnicas avanÃ§adas para garantir vidros cristalinos sem manchas, riscos ou marcas.
               </p>
               <p className="text-gray-600">
-                Ideal para fachadas de vidro, sacadas, janelas de difícil acesso e grandes áreas envidraçadas.
+                Ideal para fachadas de vidro, sacadas, janelas de difÃ­cil acesso e grandes Ã¡reas envidraÃ§adas.
               </p>
             </div>
             <div>
@@ -87,14 +87,14 @@ export default function GlassCleaning() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Vidros Cristalinos e Impecáveis
+            Vidros Cristalinos e ImpecÃ¡veis
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Solicite um orçamento sem compromisso
+            Solicite um orÃ§amento sem compromisso
           </p>
           <Link href="/contato">
             <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
-              Solicitar Orçamento
+              Solicitar OrÃ§amento
             </Button>
           </Link>
         </div>

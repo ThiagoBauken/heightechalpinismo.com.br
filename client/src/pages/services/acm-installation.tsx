@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,22 +7,22 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function AcmInstallation() {
   const features = [
-    "Instalação profissional de ACM (Aluminium Composite Material)",
-    "Estrutura de fixação segura e durável",
-    "Acabamento impecável e alinhamento perfeito",
-    "Isolamento térmico e acústico",
-    "Resistente a intempéries e corrosão",
+    "InstalaÃ§Ã£o profissional de ACM (Aluminium Composite Material)",
+    "Estrutura de fixaÃ§Ã£o segura e durÃ¡vel",
+    "Acabamento impecÃ¡vel e alinhamento perfeito",
+    "Isolamento tÃ©rmico e acÃºstico",
+    "Resistente a intempÃ©ries e corrosÃ£o",
     "Grande variedade de cores e acabamentos"
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="Instalação de ACM em Fachadas - Balneário Camboriú e Itapema"
-        description="Instalação profissional de painéis ACM (Aluminium Composite Material) em fachadas comerciais e residenciais em Balneário Camboriú."
+        title="InstalaÃ§Ã£o de ACM em Fachadas - BalneÃ¡rio CamboriÃº e Itapema"
+        description="InstalaÃ§Ã£o profissional de painÃ©is ACM (Aluminium Composite Material) em fachadas comerciais e residenciais em BalneÃ¡rio CamboriÃº."
         keywords={[
-          "instalação ACM",
-          "painel composto de alumínio",
+          "instalaÃ§Ã£o ACM",
+          "painel composto de alumÃ­nio",
           "fachada ACM",
           "revestimento de fachada",
           "fachada moderna"
@@ -34,22 +34,22 @@ export default function AcmInstallation() {
             <div>
               <Badge className="bg-accent text-white mb-4">Revestimento Moderno</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Instalação de ACMs
+                InstalaÃ§Ã£o de ACMs
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Instalação de painéis de alumínio composto para revestimento moderno e durável de fachadas comerciais e residenciais.
+                InstalaÃ§Ã£o de painÃ©is de alumÃ­nio composto para revestimento moderno e durÃ¡vel de fachadas comerciais e residenciais.
               </p>
               <Link href="/contato">
                 <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar Orçamento
+                  Solicitar OrÃ§amento
                 </Button>
               </Link>
             </div>
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Instalação de ACM"
+                alt="InstalaÃ§Ã£o de ACM"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -61,16 +61,16 @@ export default function AcmInstallation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">O que é ACM?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">O que Ã© ACM?</h2>
               <p className="text-gray-600 mb-6">
-                ACM (Aluminium Composite Material) é um material composto por duas chapas de alumínio com núcleo de polietileno, amplamente utilizado em fachadas modernas por sua durabilidade, leveza e versatilidade estética.
+                ACM (Aluminium Composite Material) Ã© um material composto por duas chapas de alumÃ­nio com nÃºcleo de polietileno, amplamente utilizado em fachadas modernas por sua durabilidade, leveza e versatilidade estÃ©tica.
               </p>
               <p className="text-gray-600">
-                Nossa equipe especializada realiza todo o projeto, estruturação e instalação garantindo segurança e acabamento perfeito.
+                Nossa equipe especializada realiza todo o projeto, estruturaÃ§Ã£o e instalaÃ§Ã£o garantindo seguranÃ§a e acabamento perfeito.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Características</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">CaracterÃ­sticas</h3>
               <ul className="space-y-3">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -94,7 +94,7 @@ export default function AcmInstallation() {
           </p>
           <Link href="/contato">
             <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
-              Solicitar Orçamento
+              Solicitar OrÃ§amento
             </Button>
           </Link>
         </div>

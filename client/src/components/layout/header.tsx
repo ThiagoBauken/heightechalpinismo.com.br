@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone } from "lucide-react";
+import { ModeToggle } from "@/components/shared/mode-toggle";
 
 export default function Header() {
   const [location] = useLocation();
@@ -104,10 +105,12 @@ export default function Header() {
                 <span className="xl:hidden">Orçamento</span>
               </Button>
             </Link>
+            <ModeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center space-x-2">
+            <ModeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

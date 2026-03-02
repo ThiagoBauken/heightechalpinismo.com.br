@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,41 +7,42 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function BuildingPainting() {
   const serviceFeatures = [
-    "Preparação completa da superfície com limpeza e reparo",
-    "Selagem de trincas e rachaduras com massa apropriada",
-    "Aplicação de selador/primer para garantir aderência",
-    "Pintura em 2 a 3 demãos com rolo ou pistola airless",
-    "Pintura anticorrosiva para estruturas metálicas",
-    "Acabamento uniforme e proteção contra intempéries"
+    "PreparaÃ§Ã£o completa da superfÃ­cie com limpeza e reparo",
+    "Tratamento de ferragem exposta e oxidaÃ§Ã£o",
+    "VedaÃ§Ã£o de fissuras, trincas e rachaduras com massa apropriada",
+    "AplicaÃ§Ã£o de selador/primer para garantir aderÃªncia",
+    "Pintura em 2 a 3 demÃ£os com rolo ou pistola airless",
+    "Pintura anticorrosiva para estruturas metÃ¡licas",
+    "Acabamento uniforme e proteÃ§Ã£o contra intempÃ©ries"
   ];
 
   const applicationTypes = [
-    "Repintura periódica de prédios residenciais e comerciais",
-    "Pintura de áreas difíceis (shafts técnicos, empenas altas)",
-    "Revestimento anticorrosivo de estruturas metálicas",
-    "Pintura de detalhes arquitetônicos e murais em altura",
-    "Pintura de tanques elevados e silos metálicos"
+    "Repintura periÃ³dica de prÃ©dios residenciais e comerciais",
+    "Pintura de Ã¡reas difÃ­ceis (shafts tÃ©cnicos, empenas altas)",
+    "Revestimento anticorrosivo de estruturas metÃ¡licas",
+    "Pintura de detalhes arquitetÃ´nicos e murais em altura",
+    "Pintura de tanques elevados e silos metÃ¡licos"
   ];
 
   const equipment = [
     "Kit completo de acesso por corda certificado",
     "Baldes de tinta com sistema anti-gotejamento",
-    "Rolos e pincéis de longo alcance",
+    "Rolos e pincÃ©is de longo alcance",
     "Pistolas de pintura airless com compressor",
-    "Ferramentas de preparação (escova de aço, espátulas)",
-    "Materiais de reparo (massa acrílica, selantes)"
+    "Ferramentas de preparaÃ§Ã£o (escova de aÃ§o, espÃ¡tulas)",
+    "Materiais de reparo (massa acrÃ­lica, selantes)"
   ];
 
   const benefits = [
     {
       icon: Clock,
       title: "Rapidez",
-      description: "Execução ágil sem necessidade de andaimes complexos"
+      description: "ExecuÃ§Ã£o Ã¡gil sem necessidade de andaimes complexos"
     },
     {
       icon: Shield,
       title: "Durabilidade",
-      description: "Preparação adequada garante maior vida útil da pintura"
+      description: "PreparaÃ§Ã£o adequada garante maior vida Ãºtil da pintura"
     },
     {
       icon: Award,
@@ -53,14 +54,14 @@ export default function BuildingPainting() {
   return (
     <div className="pt-16">
       <SEOHead
-        title="Restauração de Fachadas - Pintura, Pastilha e Reboco | Balneário Camboriú"
-        description="Restauração completa de fachadas em Balneário Camboriú e Itapema. Pintura predial, aplicação de pastilhas, reboco e textura."
+        title="RestauraÃ§Ã£o e Pintura de Fachadas - Tratamento de Ferragem e VedaÃ§Ã£o | BalneÃ¡rio CamboriÃº"
+        description="RestauraÃ§Ã£o completa e pintura de fachadas em BalneÃ¡rio CamboriÃº e Itapema. Tratamento de ferragem, vedaÃ§Ã£o de fissuras e pintura predial."
         keywords={[
-          "restauração de fachadas",
+          "restauraÃ§Ã£o de fachadas",
           "pintura de fachada",
-          "aplicação de pastilha",
-          "reboco de fachada",
-          "reforma de prédio"
+          "tratamento de ferragem",
+          "vedaÃ§Ã£o de fissuras",
+          "reforma de prÃ©dio"
         ]}
       />
       {/* Hero Section */}
@@ -68,29 +69,29 @@ export default function BuildingPainting() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Pintura de Fachadas Prediais
+                RestauraÃ§Ã£o e Pintura de Fachadas
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Pintura e repintura de superfícies externas utilizando técnicas de rapel com preparação completa e produtos de alta qualidade para máxima durabilidade.
+                Pintura e repintura de superfÃ­cies externas utilizando tÃ©cnicas de rapel com preparaÃ§Ã£o completa e produtos de alta qualidade para mÃ¡xima durabilidade.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contato">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver Demonstração
+                  Ver DemonstraÃ§Ã£o
                 </Button>
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              <img
+                src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                 alt="Pintura predial em altura"
                 className="rounded-lg shadow-2xl"
               />
@@ -104,19 +105,19 @@ export default function BuildingPainting() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
               <p className="text-gray-600 mb-6">
-                O serviço de pintura de fachadas envolve pintar ou repintar as superfícies externas de edifícios utilizando técnicas de rapel. Nossos alpinistas industriais preparam cuidadosamente a área, limpando a fachada e reparando imperfeições antes da pintura.
+                O serviÃ§o de restauraÃ§Ã£o e pintura de fachadas envolve pintar ou repintar as superfÃ­cies externas de edifÃ­cios utilizando tÃ©cnicas de rapel. Nossos alpinistas industriais preparam cuidadosamente a Ã¡rea, limpando a fachada, tratando ferragens expostas e reparando imperfeiÃ§Ãµes antes da pintura.
               </p>
               <p className="text-gray-600 mb-6">
-                Trincas e rachaduras são seladas com massa apropriada e lixadas, aplicando-se um selador/primer em toda a superfície para garantir aderência da tinta e uniformidade. A pintura é feita em 2 a 3 demãos usando rolo ou pistola airless.
+                A vedaÃ§Ã£o de fissuras, trincas e rachaduras Ã© feita com massa apropriada e lixada, aplicando-se um selador/primer em toda a superfÃ­cie para garantir aderÃªncia da tinta e uniformidade. A pintura Ã© feita em 2 a 3 demÃ£os usando rolo ou pistola airless.
               </p>
               <p className="text-gray-600">
-                Este serviço em altura permite alcançar todas as partes da fachada sem andaimes, garantindo agilidade e redução significativa de custos.
+                Este serviÃ§o em altura permite alcanÃ§ar todas as partes da fachada sem andaimes, garantindo agilidade e reduÃ§Ã£o significativa de custos.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -136,7 +137,7 @@ export default function BuildingPainting() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da Pintura por Acesso por Corda</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Benefícios únicos da nossa técnica especializada
+              BenefÃ­cios Ãºnicos da nossa tÃ©cnica especializada
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -161,7 +162,7 @@ export default function BuildingPainting() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Aplicações Comuns</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">AplicaÃ§Ãµes Comuns</h2>
               <ul className="space-y-3">
                 {applicationTypes.map((application, index) => (
                   <li key={index} className="flex items-start">
@@ -200,27 +201,27 @@ export default function BuildingPainting() {
               {
                 step: "01",
                 title: "Limpeza",
-                description: "Preparação e limpeza completa da superfície"
+                description: "PreparaÃ§Ã£o e limpeza completa da superfÃ­cie"
               },
               {
                 step: "02",
                 title: "Reparo",
-                description: "Selagem de trincas e correção de imperfeições"
+                description: "Selagem de trincas e correÃ§Ã£o de imperfeiÃ§Ãµes"
               },
               {
                 step: "03",
                 title: "Primer",
-                description: "Aplicação de selador para melhor aderência"
+                description: "AplicaÃ§Ã£o de selador para melhor aderÃªncia"
               },
               {
                 step: "04",
                 title: "Pintura",
-                description: "Aplicação das demãos de tinta especificada"
+                description: "AplicaÃ§Ã£o das demÃ£os de tinta especificada"
               },
               {
                 step: "05",
                 title: "Acabamento",
-                description: "Finalização e limpeza da área de trabalho"
+                description: "FinalizaÃ§Ã£o e limpeza da Ã¡rea de trabalho"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-4">
@@ -243,26 +244,26 @@ export default function BuildingPainting() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Tipos de Estruturas Atendidas</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Atendemos diversos tipos de edificações e estruturas
+              Atendemos diversos tipos de edificaÃ§Ãµes e estruturas
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Edifícios Residenciais",
-                description: "Prédios de apartamentos necessitando renovação da pintura externa"
+                title: "EdifÃ­cios Residenciais",
+                description: "PrÃ©dios de apartamentos necessitando renovaÃ§Ã£o da pintura externa"
               },
               {
                 title: "Complexos Industriais",
-                description: "Galpões e torres metálicas que requerem pintura anticorrosiva"
+                description: "GalpÃµes e torres metÃ¡licas que requerem pintura anticorrosiva"
               },
               {
-                title: "Edificações Institucionais",
-                description: "Hospitais, hotéis e edificações antigas em processo de restauração"
+                title: "EdificaÃ§Ãµes Institucionais",
+                description: "Hospitais, hotÃ©is e edificaÃ§Ãµes antigas em processo de restauraÃ§Ã£o"
               },
               {
                 title: "Estruturas Especiais",
-                description: "Tanques elevados e silos metálicos com pintura protetiva"
+                description: "Tanques elevados e silos metÃ¡licos com pintura protetiva"
               }
             ].map((building, index) => (
               <Card key={index} className="p-6 text-center">
@@ -283,18 +284,18 @@ export default function BuildingPainting() {
             Precisa de Pintura Predial?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Renove e proteja seu imóvel com nossa pintura profissional em altura
+            Renove e proteja seu imÃ³vel com nossa pintura profissional em altura
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contato">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar Orçamento Gratuito
+                Solicitar OrÃ§amento Gratuito
               </Button>
             </Link>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Outros Serviços
+                Ver Outros ServiÃ§os
               </Button>
             </Link>
           </div>

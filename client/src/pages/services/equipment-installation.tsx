@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,66 +7,63 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function EquipmentInstallation() {
   const serviceFeatures = [
-    "Instalação de sistemas de climatização em altura",
-    "Montagem de antenas e equipamentos de comunicação",
-    "Instalação de letreiros e sinalização externa",
-    "Montagem de estruturas metálicas leves",
-    "Instalação de sistemas de iluminação externa",
-    "Montagem de equipamentos de segurança",
-    "Instalação de para-raios e sistemas de proteção",
-    "Manutenção e substituição de equipamentos existentes"
+    "InstalaÃ§Ã£o de banners de grandes formatos em altura",
+    "Montagem de letra caixa simples e com iluminaÃ§Ã£o",
+    "InstalaÃ§Ã£o de estruturas em lona",
+    "Montagem de toda a estrutura metÃ¡lica de suporte",
+    "InstalaÃ§Ã£o elÃ©trica completa para letreiros luminosos",
+    "AptidÃ£o para tudo especificado com seguranÃ§a"
   ];
 
   const equipmentTypes = [
-    "Unidades condensadoras de ar condicionado",
-    "Antenas de telecomunicações e TV",
-    "Letreiros luminosos e placas de identificação",
-    "Sistemas de iluminação de fachada",
-    "Câmeras de segurança e monitoramento",
-    "Equipamentos de ventilação e exaustão",
-    "Para-raios e sistemas de proteção elétrica",
-    "Estruturas de suporte e fixação"
+    "Banners e painÃ©is publicitÃ¡rios",
+    "Letra caixa em acrÃ­lico, MDF ou metal",
+    "Estruturas tensionadas em lona",
+    "Letreiros luminosos e Backlights",
+    "PainÃ©is de LED",
+    "Suportes e estruturas de fixaÃ§Ã£o",
+    "Sistemas de iluminaÃ§Ã£o elÃ©trica de fachada"
   ];
 
   const tools = [
     "Kit completo de acesso por corda certificado",
-    "Ferramentas elétricas portáteis especializadas",
-    "Equipamentos de soldas leves e fixação",
-    "Instrumentos de medição e alinhamento",
-    "Sistemas de içamento e movimentação",
+    "Ferramentas elÃ©tricas portÃ¡teis especializadas",
+    "Equipamentos de soldas leves e fixaÃ§Ã£o",
+    "Instrumentos de mediÃ§Ã£o e alinhamento",
+    "Sistemas de iÃ§amento e movimentaÃ§Ã£o",
     "Equipamentos de teste e comissionamento",
-    "Materiais de fixação e ancoragem",
-    "EPIs específicos para trabalhos elétricos"
+    "Materiais de fixaÃ§Ã£o e ancoragem",
+    "EPIs especÃ­ficos para trabalhos elÃ©tricos"
   ];
 
   const benefits = [
     {
       icon: Settings,
       title: "Versatilidade",
-      description: "Instalação de diversos tipos de equipamentos em qualquer altura"
+      description: "InstalaÃ§Ã£o de diversos tipos de equipamentos em qualquer altura"
     },
     {
       icon: Zap,
-      title: "Eficiência",
-      description: "Montagem rápida sem necessidade de estruturas auxiliares"
+      title: "EficiÃªncia",
+      description: "Montagem rÃ¡pida sem necessidade de estruturas auxiliares"
     },
     {
       icon: Award,
       title: "Qualidade",
-      description: "Instalação profissional seguindo normas técnicas"
+      description: "InstalaÃ§Ã£o profissional seguindo normas tÃ©cnicas"
     }
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="Instalação de Banners e Letra Caixa em Fachadas - Balneário Camboriú"
-        description="Instalação profissional de banners, letreiros e letras caixa em fachadas em Balneário Camboriú e Itapema. Trabalho em altura certificado."
+        title="InstalaÃ§Ã£o de Banners e Letra Caixa em Fachadas - BalneÃ¡rio CamboriÃº"
+        description="InstalaÃ§Ã£o profissional de banners, letreiros e letras caixa em fachadas em BalneÃ¡rio CamboriÃº e Itapema. Trabalho em altura certificado."
         keywords={[
-          "instalação de banner",
+          "instalaÃ§Ã£o de banner",
           "letra caixa",
           "letreiro luminoso",
-          "comunicação visual",
+          "comunicaÃ§Ã£o visual",
           "fachada comercial"
         ]}
       />
@@ -75,30 +72,30 @@ export default function EquipmentInstallation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Instalação de Equipamentos
+                InstalaÃ§Ã£o de Banners e Letra Caixa
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Montagem e manutenção de equipamentos em locais de difícil acesso com máxima segurança, utilizando técnicas especializadas de alpinismo industrial.
+                InstalaÃ§Ã£o de banners, letra caixa, estruturas em lona com toda sua estrutura e elÃ©trica. Temos aptidÃ£o e certificaÃ§Ã£o para tudo especificado.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contato">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver Demonstração
+                  Ver DemonstraÃ§Ã£o
                 </Button>
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Instalação de equipamentos em altura"
+              <img
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="InstalaÃ§Ã£o de equipamentos em altura"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -111,19 +108,19 @@ export default function EquipmentInstallation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
               <p className="text-gray-600 mb-6">
-                Nosso serviço de instalação de equipamentos abrange a montagem e manutenção de diversos tipos de equipamentos em locais de difícil acesso. Utilizamos técnicas de alpinismo industrial para alcançar qualquer ponto da estrutura com máxima segurança.
+                Nosso serviÃ§o abrange a montagem e manutenÃ§Ã£o de banners, letra caixa e estruturas em lona em locais de difÃ­cil acesso. Utilizamos tÃ©cnicas de alpinismo industrial para alcanÃ§ar qualquer ponto da fachada com mÃ¡xima seguranÃ§a.
               </p>
               <p className="text-gray-600 mb-6">
-                Realizamos desde a instalação de sistemas de climatização, antenas de comunicação, letreiros e sinalização externa, até montagem de estruturas metálicas leves e sistemas de iluminação. Todo equipamento é instalado seguindo rigorosamente as normas técnicas.
+                Realizamos desde a fixaÃ§Ã£o da base estrutural, tensionamento de lonas ou montagem das letras, atÃ© toda a instalaÃ§Ã£o elÃ©trica necessÃ¡ria para letreiros luminosos. Temos aptidÃ£o para entregar tudo pronto e funcionando.
               </p>
               <p className="text-gray-600">
-                Nossos técnicos são especializados em trabalhos elétricos em altura e possuem todas as certificações necessárias para garantir segurança e qualidade na instalação.
+                Nossos tÃ©cnicos sÃ£o especializados em trabalhos elÃ©tricos em altura (NR-10) e possuem todas as certificaÃ§Ãµes necessÃ¡rias para garantir seguranÃ§a e qualidade na comunicaÃ§Ã£o visual da sua empresa.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -141,9 +138,9 @@ export default function EquipmentInstallation() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da Instalação por Acesso por Corda</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da InstalaÃ§Ã£o por Acesso por Corda</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Benefícios únicos da nossa técnica especializada
+              BenefÃ­cios Ãºnicos da nossa tÃ©cnica especializada
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -197,9 +194,9 @@ export default function EquipmentInstallation() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de Instalação</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de InstalaÃ§Ã£o</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Metodologia estruturada para instalação segura e eficiente
+              Metodologia estruturada para instalaÃ§Ã£o segura e eficiente
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
@@ -207,27 +204,27 @@ export default function EquipmentInstallation() {
               {
                 step: "01",
                 title: "Projeto",
-                description: "Análise técnica e planejamento da instalação"
+                description: "AnÃ¡lise tÃ©cnica e planejamento da instalaÃ§Ã£o"
               },
               {
                 step: "02",
-                title: "Preparação",
-                description: "Organização de materiais e equipamentos"
+                title: "PreparaÃ§Ã£o",
+                description: "OrganizaÃ§Ã£o de materiais e equipamentos"
               },
               {
                 step: "03",
-                title: "Fixação",
-                description: "Instalação de suportes e pontos de ancoragem"
+                title: "FixaÃ§Ã£o",
+                description: "InstalaÃ§Ã£o de suportes e pontos de ancoragem"
               },
               {
                 step: "04",
                 title: "Montagem",
-                description: "Instalação do equipamento conforme especificações"
+                description: "InstalaÃ§Ã£o do equipamento conforme especificaÃ§Ãµes"
               },
               {
                 step: "05",
                 title: "Teste",
-                description: "Comissionamento e verificação de funcionamento"
+                description: "Comissionamento e verificaÃ§Ã£o de funcionamento"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-4">
@@ -248,41 +245,41 @@ export default function EquipmentInstallation() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Principais Aplicações</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Principais AplicaÃ§Ãµes</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Setores e estruturas onde realizamos instalações especializadas
+              Setores e estruturas onde realizamos instalaÃ§Ãµes especializadas
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Edifícios Comerciais",
-                description: "Instalação de sistemas de climatização, letreiros e equipamentos de segurança",
+                title: "EdifÃ­cios Comerciais",
+                description: "InstalaÃ§Ã£o de sistemas de climatizaÃ§Ã£o, letreiros e equipamentos de seguranÃ§a",
                 icon: <Settings className="w-8 h-8 text-accent" />
               },
               {
-                title: "Torres de Comunicação",
-                description: "Montagem de antenas, equipamentos de transmissão e sistemas de proteção",
+                title: "Torres de ComunicaÃ§Ã£o",
+                description: "Montagem de antenas, equipamentos de transmissÃ£o e sistemas de proteÃ§Ã£o",
                 icon: <Zap className="w-8 h-8 text-accent" />
               },
               {
                 title: "Complexos Industriais",
-                description: "Instalação de sistemas de ventilação, exaustão e equipamentos especializados",
+                description: "InstalaÃ§Ã£o de sistemas de ventilaÃ§Ã£o, exaustÃ£o e equipamentos especializados",
                 icon: <Wind className="w-8 h-8 text-accent" />
               },
               {
                 title: "Shopping Centers",
-                description: "Montagem de letreiros, sistemas de iluminação e equipamentos de climatização",
+                description: "Montagem de letreiros, sistemas de iluminaÃ§Ã£o e equipamentos de climatizaÃ§Ã£o",
                 icon: <Settings className="w-8 h-8 text-accent" />
               },
               {
                 title: "Hospitais e Escolas",
-                description: "Instalação de equipamentos médicos externos e sistemas de ventilação",
+                description: "InstalaÃ§Ã£o de equipamentos mÃ©dicos externos e sistemas de ventilaÃ§Ã£o",
                 icon: <Zap className="w-8 h-8 text-accent" />
               },
               {
-                title: "Hotéis e Resorts",
-                description: "Montagem de sistemas de iluminação decorativa e equipamentos de lazer",
+                title: "HotÃ©is e Resorts",
+                description: "Montagem de sistemas de iluminaÃ§Ã£o decorativa e equipamentos de lazer",
                 icon: <Wind className="w-8 h-8 text-accent" />
               }
             ].map((application, index) => (
@@ -302,9 +299,9 @@ export default function EquipmentInstallation() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Normas e Segurança</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Normas e SeguranÃ§a</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Cumprimos rigorosamente todas as normas técnicas e de segurança
+              Cumprimos rigorosamente todas as normas tÃ©cnicas e de seguranÃ§a
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -315,15 +312,15 @@ export default function EquipmentInstallation() {
               },
               {
                 title: "NR-10",
-                description: "Segurança em Instalações Elétricas"
+                description: "SeguranÃ§a em InstalaÃ§Ãµes ElÃ©tricas"
               },
               {
                 title: "ABNT NBR",
-                description: "Normas Técnicas Brasileiras"
+                description: "Normas TÃ©cnicas Brasileiras"
               },
               {
                 title: "IRATA",
-                description: "Certificação Internacional"
+                description: "CertificaÃ§Ã£o Internacional"
               }
             ].map((standard, index) => (
               <Card key={index} className="p-6 text-center">
@@ -344,21 +341,21 @@ export default function EquipmentInstallation() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Precisa Instalar Equipamentos em Altura?
+            Precisa Instalar Banners ou Letra Caixa em Altura?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Conte com nossa expertise para instalações seguras e eficientes em qualquer altura
+            Conte com nossa expertise para instalar sua comunicaÃ§Ã£o visual de forma segura e eficiente
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contato">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar Orçamento Gratuito
+                Solicitar OrÃ§amento Gratuito
               </Button>
             </Link>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Outros Serviços
+                Ver Outros ServiÃ§os
               </Button>
             </Link>
           </div>

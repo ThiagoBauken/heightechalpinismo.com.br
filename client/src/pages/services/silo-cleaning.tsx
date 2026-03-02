@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,23 +7,24 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function SiloCleaning() {
   const features = [
-    "Limpeza interna e externa de silos",
-    "Técnicas especializadas de acesso por corda",
-    "Segurança certificada NR-33 (espaços confinados)",
-    "Remoção de resíduos e incrustações",
-    "Inspeção e manutenção preventiva",
-    "Equipe treinada para ambientes industriais"
+    "Limpeza de caixas d'Ã¡gua",
+    "Limpeza e manutenÃ§Ã£o em poÃ§os de elevador",
+    "Limpeza interna e externa de silos industriais",
+    "AferiÃ§Ã£o de gases e monitoramento contÃ­nuo",
+    "SeguranÃ§a certificada NR-33 (espaÃ§os confinados)",
+    "Equipe treinada para ambientes e resgate industrial"
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="Limpeza de Silos Industriais - Balneário Camboriú"
-        description="Limpeza especializada de silos industriais com técnicas de acesso por corda em Balneário Camboriú. Conforme NR-33."
+        title="Limpeza em EspaÃ§o Confinado - BalneÃ¡rio CamboriÃº"
+        description="Limpeza especializada em espaÃ§os confinados: caixas d'Ã¡gua, poÃ§os de elevador, silos com aferiÃ§Ã£o de gases em BalneÃ¡rio CamboriÃº. Conforme NR-33."
         keywords={[
-          "limpeza de silos",
-          "limpeza industrial",
-          "espaço confinado",
+          "limpeza espaÃ§o confinado",
+          "limpeza caixa d'Ã¡gua",
+          "poÃ§o elevador",
+          "aferiÃ§Ã£o de gases",
           "NR-33",
           "silo industrial"
         ]}
@@ -32,17 +33,17 @@ export default function SiloCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Limpeza Industrial</Badge>
+              <Badge className="bg-accent text-white mb-4">EspaÃ§o Confinado NR-33</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Limpeza de Silos
+                Limpeza em EspaÃ§o Confinado
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Limpeza especializada de silos industriais com técnicas de acesso por corda e total conformidade com normas de segurança.
+                Limpeza especializada em ambientes de acesso restrito como caixas d'Ã¡gua, poÃ§os de elevador e silos industriais, com aferiÃ§Ã£o de gases e total conformidade com normas de seguranÃ§a.
               </p>
               <Link href="/contato">
                 <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar Orçamento
+                  Solicitar OrÃ§amento
                 </Button>
               </Link>
             </div>
@@ -61,16 +62,16 @@ export default function SiloCleaning() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Limpeza Profissional</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Trabalhos em EspaÃ§os Regulamentados</h2>
               <p className="text-gray-600 mb-6">
-                Realizamos limpeza completa de silos industriais, tanto interna quanto externa, utilizando técnicas avançadas de alpinismo industrial e em conformidade com a NR-33 para trabalhos em espaços confinados.
+                Nossa equipe Ã© especializada em acessar, limpar e realizar manutenÃ§Ãµes em espaÃ§os confinados de alto risco, como caixas d'Ã¡gua em altura, poÃ§os de elevadores prediais e silos industriais.
               </p>
               <p className="text-gray-600">
-                Equipe certificada e experiente em ambientes industriais de alto risco.
+                A operaÃ§Ã£o inclui procedimentos rigorosos, como a aferiÃ§Ã£o de gases e plano de resgate, utilizando tÃ©cnicas de alpinismo industrial em total conformidade com a NR-33.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os</h3>
               <ul className="space-y-3">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -87,14 +88,14 @@ export default function SiloCleaning() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Precisa Limpar Silos Industriais?
+            Precisa de Limpeza em EspaÃ§o Confinado?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
             Consulte nossa equipe especializada
           </p>
           <Link href="/contato">
             <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
-              Solicitar Orçamento
+              Solicitar OrÃ§amento
             </Button>
           </Link>
         </div>

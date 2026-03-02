@@ -1,8 +1,10 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/hooks/use-theme";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import WhatsAppButton from "@/components/shared/whatsapp-button";
@@ -11,7 +13,6 @@ import Home from "@/pages/home";
 import FacadeCleaning from "@/pages/services/facade-cleaning";
 import BuildingPainting from "@/pages/services/building-painting";
 import BuildingMaintenance from "@/pages/services/building-maintenance";
-import Waterproofing from "@/pages/services/waterproofing";
 import TechnicalInspection from "@/pages/services/technical-inspection";
 import EquipmentInstallation from "@/pages/services/equipment-installation";
 import AnchorPoints from "@/pages/services/anchor-points";
@@ -21,8 +22,6 @@ import GlassRestoration from "@/pages/services/glass-restoration";
 import CargoHoisting from "@/pages/services/cargo-hoisting";
 import LedInstallation from "@/pages/services/led-installation";
 import SiloCleaning from "@/pages/services/silo-cleaning";
-import TrabalhosIndustriais from "@/pages/services/trabalhos-industriais";
-import ManutencoesEletricas from "@/pages/services/manutencoes-eletricas";
 import MapeamentoFachadas from "@/pages/services/mapeamento-fachadas";
 import ReformaPredial from "@/pages/services/reforma-predial";
 import Projects from "@/pages/projects";
@@ -37,6 +36,11 @@ import NotFound from "@/pages/not-found";
 function Router() {
   // Track page views automatically with Google Analytics
   useGA();
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -54,18 +58,14 @@ function Router() {
           <Route path="/servicos/icamento-cargas" component={CargoHoisting} />
           <Route path="/servicos/banners-letra-caixa" component={EquipmentInstallation} />
           <Route path="/servicos/leds" component={LedInstallation} />
-          <Route path="/servicos/vedacao-fachadas" component={Waterproofing} />
           <Route path="/servicos/pintura-industrial" component={BuildingMaintenance} />
           <Route path="/servicos/limpeza-silos" component={SiloCleaning} />
-          <Route path="/servicos/trabalhos-industriais" component={TrabalhosIndustriais} />
-          <Route path="/servicos/manutencoes-eletricas" component={ManutencoesEletricas} />
           <Route path="/servicos/mapeamento-fachadas" component={MapeamentoFachadas} />
           <Route path="/servicos/reforma-predial" component={ReformaPredial} />
           {/* Rotas antigas (manter compatibilidade) */}
           <Route path="/servicos/limpeza-fachadas" component={FacadeCleaning} />
           <Route path="/servicos/pintura-predial" component={BuildingPainting} />
           <Route path="/servicos/manutencao-predial" component={BuildingMaintenance} />
-          <Route path="/servicos/impermeabilizacao" component={Waterproofing} />
           <Route path="/servicos/inspecao-tecnica" component={TechnicalInspection} />
           <Route path="/servicos/instalacao-equipamentos" component={EquipmentInstallation} />
           {/* Outras páginas */}
@@ -87,11 +87,13 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-        <WhatsAppButton />
-      </TooltipProvider>
+      <ThemeProvider defaultTheme="light" storageKey="heightech-theme">
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+          <WhatsAppButton />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

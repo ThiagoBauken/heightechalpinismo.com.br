@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -7,65 +7,65 @@ import SEOHead from "@/components/shared/seo-head";
 
 export default function Waterproofing() {
   const serviceFeatures = [
-    "Identificação e tratamento de fissuras e trincas",
-    "Preparação da superfície com raspagem e escovação",
-    "Aplicação de massa selante ou epóxi para preenchimento",
-    "Impermeabilização com múltiplas camadas cruzadas",
-    "Aplicação de membranas acrílicas e poliuretano",
-    "Vedação de juntas de dilatação e pontos críticos",
+    "IdentificaÃ§Ã£o e tratamento de fissuras e trincas",
+    "PreparaÃ§Ã£o da superfÃ­cie com raspagem e escovaÃ§Ã£o",
+    "AplicaÃ§Ã£o de massa selante ou epÃ³xi para preenchimento",
+    "ImpermeabilizaÃ§Ã£o com mÃºltiplas camadas cruzadas",
+    "AplicaÃ§Ã£o de membranas acrÃ­licas e poliuretano",
+    "VedaÃ§Ã£o de juntas de dilataÃ§Ã£o e pontos crÃ­ticos",
     "Tratamento de calhas e sistemas de drenagem",
-    "Garantia contra infiltrações e umidade"
+    "Garantia contra infiltraÃ§Ãµes e umidade"
   ];
 
   const applicationTypes = [
-    "Vedação de fissuras em paredes e estruturas",
-    "Impermeabilização de coberturas e terraços",
-    "Tratamento de juntas de dilatação",
-    "Selagem de pontos de infiltração em fachadas",
-    "Impermeabilização de reservatórios e tanques",
-    "Vedação de estruturas subterrâneas"
+    "VedaÃ§Ã£o de fissuras em paredes e estruturas",
+    "ImpermeabilizaÃ§Ã£o de coberturas e terraÃ§os",
+    "Tratamento de juntas de dilataÃ§Ã£o",
+    "Selagem de pontos de infiltraÃ§Ã£o em fachadas",
+    "ImpermeabilizaÃ§Ã£o de reservatÃ³rios e tanques",
+    "VedaÃ§Ã£o de estruturas subterrÃ¢neas"
   ];
 
   const materials = [
-    "Membranas acrílicas de alta performance",
+    "Membranas acrÃ­licas de alta performance",
     "Selantes de poliuretano e silicone estrutural",
-    "Massa epóxi para reparos estruturais",
-    "Primers de aderência para diferentes superfícies",
-    "Mantas líquidas impermeabilizantes",
-    "Sistemas de vedação para juntas",
+    "Massa epÃ³xi para reparos estruturais",
+    "Primers de aderÃªncia para diferentes superfÃ­cies",
+    "Mantas lÃ­quidas impermeabilizantes",
+    "Sistemas de vedaÃ§Ã£o para juntas",
     "Aditivos impermeabilizantes para argamassa",
-    "Telas de reforço para áreas críticas"
+    "Telas de reforÃ§o para Ã¡reas crÃ­ticas"
   ];
 
   const benefits = [
     {
       icon: Droplets,
-      title: "Proteção Total",
-      description: "Eliminação completa de infiltrações e problemas de umidade"
+      title: "ProteÃ§Ã£o Total",
+      description: "EliminaÃ§Ã£o completa de infiltraÃ§Ãµes e problemas de umidade"
     },
     {
       icon: Shield,
       title: "Durabilidade",
-      description: "Sistemas impermeabilizantes de longa duração"
+      description: "Sistemas impermeabilizantes de longa duraÃ§Ã£o"
     },
     {
       icon: Award,
       title: "Qualidade",
-      description: "Materiais de primeira linha e aplicação especializada"
+      description: "Materiais de primeira linha e aplicaÃ§Ã£o especializada"
     }
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="Vedação de Fachadas contra Infiltrações - Balneário Camboriú"
-        description="Vedação profissional de fachadas contra infiltrações em Balneário Camboriú e Itapema. Selagem de juntas e proteção contra intempéries."
+        title="VedaÃ§Ã£o de Fachadas contra InfiltraÃ§Ãµes - BalneÃ¡rio CamboriÃº"
+        description="VedaÃ§Ã£o profissional de fachadas contra infiltraÃ§Ãµes em BalneÃ¡rio CamboriÃº e Itapema. Selagem de juntas e proteÃ§Ã£o contra intempÃ©ries."
         keywords={[
-          "vedação de fachada",
+          "vedaÃ§Ã£o de fachada",
           "selagem de juntas",
-          "infiltração em fachada",
-          "impermeabilização",
-          "proteção de fachada"
+          "infiltraÃ§Ã£o em fachada",
+          "impermeabilizaÃ§Ã£o",
+          "proteÃ§Ã£o de fachada"
         ]}
       />
       {/* Hero Section */}
@@ -73,30 +73,30 @@ export default function Waterproofing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Impermeabilização e Selagem
+                ImpermeabilizaÃ§Ã£o e Selagem
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Vedação de fissuras e aplicação de sistemas impermeabilizantes para proteção completa contra infiltrações, garantindo a durabilidade da sua estrutura.
+                VedaÃ§Ã£o de fissuras e aplicaÃ§Ã£o de sistemas impermeabilizantes para proteÃ§Ã£o completa contra infiltraÃ§Ãµes, garantindo a durabilidade da sua estrutura.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contato">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                   </Button>
                 </Link>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver Demonstração
+                  Ver DemonstraÃ§Ã£o
                 </Button>
               </div>
             </div>
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Impermeabilização em altura"
+                alt="ImpermeabilizaÃ§Ã£o em altura"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -109,19 +109,19 @@ export default function Waterproofing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
               <p className="text-gray-600 mb-6">
-                Este serviço foca em eliminar infiltrações e vedar pontos vulneráveis na estrutura externa, usando alpinismo industrial para alcançar locais críticos. Nossos profissionais identificam fissuras, trincas em paredes e juntas de dilatação por onde há entrada de água.
+                Este serviÃ§o foca em eliminar infiltraÃ§Ãµes e vedar pontos vulnerÃ¡veis na estrutura externa, usando alpinismo industrial para alcanÃ§ar locais crÃ­ticos. Nossos profissionais identificam fissuras, trincas em paredes e juntas de dilataÃ§Ã£o por onde hÃ¡ entrada de Ã¡gua.
               </p>
               <p className="text-gray-600 mb-6">
-                Realizamos o preparo da superfície com raspagem e escovação ao redor da fissura, limpando partículas soltas. As trincas são então tratadas com massa selante ou epóxi para preenchimento completo. Depois da preparação, utilizamos impermeabilizante apropriado em múltiplas camadas cruzadas.
+                Realizamos o preparo da superfÃ­cie com raspagem e escovaÃ§Ã£o ao redor da fissura, limpando partÃ­culas soltas. As trincas sÃ£o entÃ£o tratadas com massa selante ou epÃ³xi para preenchimento completo. Depois da preparaÃ§Ã£o, utilizamos impermeabilizante apropriado em mÃºltiplas camadas cruzadas.
               </p>
               <p className="text-gray-600">
-                Aplicamos membranas acrílicas, poliuretano ou outros sistemas impermeabilizantes para garantir vedação completa e proteção duradoura contra infiltrações.
+                Aplicamos membranas acrÃ­licas, poliuretano ou outros sistemas impermeabilizantes para garantir vedaÃ§Ã£o completa e proteÃ§Ã£o duradoura contra infiltraÃ§Ãµes.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -139,9 +139,9 @@ export default function Waterproofing() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da Impermeabilização Profissional</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da ImpermeabilizaÃ§Ã£o Profissional</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Benefícios exclusivos do nosso sistema de impermeabilização em altura
+              BenefÃ­cios exclusivos do nosso sistema de impermeabilizaÃ§Ã£o em altura
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,7 +166,7 @@ export default function Waterproofing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Aplicações Comuns</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">AplicaÃ§Ãµes Comuns</h2>
               <ul className="space-y-3">
                 {applicationTypes.map((application, index) => (
                   <li key={index} className="flex items-start">
@@ -195,22 +195,22 @@ export default function Waterproofing() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de Impermeabilização</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de ImpermeabilizaÃ§Ã£o</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Metodologia técnica para garantir vedação completa e duradoura
+              Metodologia tÃ©cnica para garantir vedaÃ§Ã£o completa e duradoura
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
               {
                 step: "01",
-                title: "Diagnóstico",
-                description: "Identificação de pontos de infiltração e avaliação estrutural"
+                title: "DiagnÃ³stico",
+                description: "IdentificaÃ§Ã£o de pontos de infiltraÃ§Ã£o e avaliaÃ§Ã£o estrutural"
               },
               {
                 step: "02",
-                title: "Preparação",
-                description: "Limpeza e preparo da superfície para aplicação"
+                title: "PreparaÃ§Ã£o",
+                description: "Limpeza e preparo da superfÃ­cie para aplicaÃ§Ã£o"
               },
               {
                 step: "03",
@@ -219,13 +219,13 @@ export default function Waterproofing() {
               },
               {
                 step: "04",
-                title: "Impermeabilização",
-                description: "Aplicação de sistema impermeabilizante em camadas"
+                title: "ImpermeabilizaÃ§Ã£o",
+                description: "AplicaÃ§Ã£o de sistema impermeabilizante em camadas"
               },
               {
                 step: "05",
                 title: "Teste",
-                description: "Verificação da eficácia e teste de estanqueidade"
+                description: "VerificaÃ§Ã£o da eficÃ¡cia e teste de estanqueidade"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-4">
@@ -248,40 +248,40 @@ export default function Waterproofing() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Principais Problemas que Solucionamos</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Identificamos e tratamos diversos tipos de infiltrações e problemas de umidade
+              Identificamos e tratamos diversos tipos de infiltraÃ§Ãµes e problemas de umidade
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Infiltrações em Fachadas",
-                description: "Tratamento de fissuras e pontos de entrada de água em paredes externas",
-                icon: "🏢"
+                title: "InfiltraÃ§Ãµes em Fachadas",
+                description: "Tratamento de fissuras e pontos de entrada de Ã¡gua em paredes externas",
+                icon: "ðŸ¢"
               },
               {
                 title: "Problemas em Coberturas",
-                description: "Impermeabilização de lajes, terraços e sistemas de cobertura",
-                icon: "🏠"
+                description: "ImpermeabilizaÃ§Ã£o de lajes, terraÃ§os e sistemas de cobertura",
+                icon: "ðŸ "
               },
               {
-                title: "Juntas de Dilatação",
-                description: "Vedação especializada de juntas estruturais e movimentação",
-                icon: "🔧"
+                title: "Juntas de DilataÃ§Ã£o",
+                description: "VedaÃ§Ã£o especializada de juntas estruturais e movimentaÃ§Ã£o",
+                icon: "ðŸ”§"
               },
               {
-                title: "Reservatórios e Tanques",
-                description: "Impermeabilização interna e externa de estruturas de armazenamento",
-                icon: "💧"
+                title: "ReservatÃ³rios e Tanques",
+                description: "ImpermeabilizaÃ§Ã£o interna e externa de estruturas de armazenamento",
+                icon: "ðŸ’§"
               },
               {
-                title: "Estruturas Subterrâneas",
-                description: "Tratamento de infiltrações em subsolos e fundações",
-                icon: "🏗️"
+                title: "Estruturas SubterrÃ¢neas",
+                description: "Tratamento de infiltraÃ§Ãµes em subsolos e fundaÃ§Ãµes",
+                icon: "ðŸ—ï¸"
               },
               {
                 title: "Calhas e Drenagem",
-                description: "Vedação e impermeabilização de sistemas de drenagem pluvial",
-                icon: "🌧️"
+                description: "VedaÃ§Ã£o e impermeabilizaÃ§Ã£o de sistemas de drenagem pluvial",
+                icon: "ðŸŒ§ï¸"
               }
             ].map((problem, index) => (
               <Card key={index} className="p-6 text-center h-full">
@@ -300,21 +300,21 @@ export default function Waterproofing() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Problemas de Infiltração?
+            Problemas de InfiltraÃ§Ã£o?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Proteja seu patrimônio com nossa impermeabilização especializada e definitiva
+            Proteja seu patrimÃ´nio com nossa impermeabilizaÃ§Ã£o especializada e definitiva
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contato">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar Orçamento Gratuito
+                Solicitar OrÃ§amento Gratuito
               </Button>
             </Link>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Outros Serviços
+                Ver Outros ServiÃ§os
               </Button>
             </Link>
           </div>
