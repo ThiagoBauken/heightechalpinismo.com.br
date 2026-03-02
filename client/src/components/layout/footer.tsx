@@ -4,12 +4,12 @@ import { analytics } from "@/lib/analytics-tracker";
 
 export default function Footer() {
   const services = [
+    { name: "Lavação Predial", href: "/servicos/lavacao-predial" },
+    { name: "Restauração de Fachadas", href: "/servicos/restauracao-fachadas" },
+    { name: "Limpeza e Restauração de Vidros", href: "/servicos/limpeza-vidros" },
     { name: "Instalação de Pontos de Ancoragem", href: "/servicos/pontos-ancoragem" },
-    { name: "Limpeza de Fachadas", href: "/servicos/limpeza-fachadas" },
-    { name: "Montagem e Instalação de ACM e Fachada Ventilada", href: "/servicos/instalacao-acms" },
-    { name: "Manutenções Elétricas e Eletrônicas", href: "/servicos/manutencoes-eletricas" },
-    { name: "Mapeamento de Fachadas", href: "/servicos/mapeamento-fachadas" },
-    { name: "Reforma Predial", href: "/servicos/reforma-predial" },
+    { name: "Içamento de Cargas", href: "/servicos/icamento-cargas" },
+    { name: "Pintura Industrial", href: "/servicos/pintura-industrial" },
   ];
 
   const quickLinks = [
@@ -75,8 +75,8 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300">
               {services.map((service) => (
                 <li key={service.name}>
-                  <Link 
-                    href={service.href} 
+                  <Link
+                    href={service.href}
                     className="hover:text-accent transition-colors duration-200"
                   >
                     {service.name}
@@ -92,8 +92,8 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="hover:text-accent transition-colors duration-200"
                   >
                     {link.name}

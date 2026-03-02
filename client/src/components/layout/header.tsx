@@ -56,12 +56,16 @@ export default function Header() {
   };
 
   const services = [
+    { name: "Lavação Predial", href: "/servicos/lavacao-predial" },
+    { name: "Restauração de Fachadas", href: "/servicos/restauracao-fachadas" },
+    { name: "Limpeza de Vidros", href: "/servicos/limpeza-vidros" },
+    { name: "Restauração de Vidros", href: "/servicos/restauracao-vidros" },
     { name: "Instalação de Pontos de Ancoragem", href: "/servicos/pontos-ancoragem" },
-    { name: "Limpeza de Fachadas", href: "/servicos/limpeza-fachadas" },
-    { name: "Montagem e Instalação de ACM e Fachada Ventilada", href: "/servicos/instalacao-acms" },
-    { name: "Manutenções Elétricas e Eletrônicas", href: "/servicos/manutencoes-eletricas" },
-    { name: "Mapeamento de Fachadas", href: "/servicos/mapeamento-fachadas" },
-    { name: "Reforma Predial", href: "/servicos/reforma-predial" },
+    { name: "Instalação de ACM e Fachadas", href: "/servicos/instalacao-acms" },
+    { name: "Içamento de Cargas", href: "/servicos/icamento-cargas" },
+    { name: "Pintura Industrial", href: "/servicos/pintura-industrial" },
+    { name: "Banners e Letra Caixa", href: "/servicos/banners-letra-caixa" },
+    { name: "Limpeza em Espaço Confinado", href: "/servicos/limpeza-silos" },
   ];
 
   return (
@@ -79,7 +83,7 @@ export default function Header() {
               <span className="text-xl font-bold text-gray-900">Heightech Alpinismo</span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
@@ -87,9 +91,8 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-gray-600 hover:text-primary transition-colors duration-200 text-sm xl:text-base cursor-pointer ${
-                  location === item.href || (item.href.startsWith('/#') && location === '/') ? "text-primary font-medium" : ""
-                }`}
+                className={`text-gray-600 hover:text-primary transition-colors duration-200 text-sm xl:text-base cursor-pointer ${location === item.href || (item.href.startsWith('/#') && location === '/') ? "text-primary font-medium" : ""
+                  }`}
               >
                 {item.name}
               </a>

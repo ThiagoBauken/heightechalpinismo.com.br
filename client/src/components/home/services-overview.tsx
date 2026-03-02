@@ -112,25 +112,14 @@ export default function ServicesOverview() {
       image: "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
       href: "/servicos/leds"
     },
-    {
-      icon: Wrench,
-      title: "Vedação de Fachadas",
-      description: "Vedação profissional de fachadas contra infiltrações, ventos e intempéries",
-      features: [
-        "Selagem de juntas",
-        "Vedação de esquadrias",
-        "Proteção contra infiltração"
-      ],
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
-      href: "/servicos/vedacao-fachadas"
-    },
+
     {
       icon: Factory,
       title: "Pintura Industrial",
-      description: "Pintura especializada para ambientes industriais com produtos anticorrosivos e de alta resistência",
+      description: "Pintura especializada para estruturas metálicas e ambientes industriais com produtos anticorrosivos",
       features: [
         "Pintura anticorrosiva",
-        "Produtos industriais",
+        "Estruturas metálicas",
         "Alta durabilidade"
       ],
       image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
@@ -148,30 +137,7 @@ export default function ServicesOverview() {
       image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
       href: "/servicos/limpeza-silos"
     },
-    {
-      icon: HardHat,
-      title: "Trabalhos Diversos Industriais",
-      description: "Soluções completas para diversos trabalhos industriais em altura com equipe especializada",
-      features: [
-        "Serviços personalizados",
-        "Equipe multidisciplinar",
-        "Segurança certificada"
-      ],
-      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
-      href: "/servicos/trabalhos-industriais"
-    },
-    {
-      icon: Cpu,
-      title: "Manutenções Elétricas e Eletrônicas",
-      description: "Manutenção e instalação de sistemas elétricos e eletrônicos em locais de difícil acesso",
-      features: [
-        "Manutenção elétrica",
-        "Sistemas eletrônicos",
-        "Equipe certificada"
-      ],
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
-      href: "/servicos/manutencoes-eletricas"
-    },
+
     {
       icon: Map,
       title: "Mapeamento de Fachadas",
@@ -209,7 +175,7 @@ export default function ServicesOverview() {
         </div>
 
         {/* Mobile Carousel */}
-        <ServicesCarousel />
+        <ServicesCarousel services={services} />
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
