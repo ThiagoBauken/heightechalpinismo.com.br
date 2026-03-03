@@ -1,6 +1,7 @@
-import { Shield, Award, Users, Clock } from "lucide-react";
+﻿import { Shield, Award, Users, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function AboutSection() {
   return (
@@ -75,11 +76,11 @@ export default function AboutSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contato">
+              <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-primary hover:bg-red-700">
                   Solicitar Orçamento
                 </Button>
-              </Link>
+              </a>
               <Button size="lg" variant="outline">
                 Ver Projetos Realizados
               </Button>

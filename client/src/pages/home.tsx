@@ -1,4 +1,4 @@
-import HeroSection from "@/components/home/hero-section";
+﻿import HeroSection from "@/components/home/hero-section";
 import ServicesOverview from "@/components/home/services-overview";
 import AboutSection from "@/components/home/about-section";
 import SocialProof from "@/components/shared/social-proof";

@@ -1,4 +1,4 @@
-import ServiceCard from "@/components/shared/service-card";
+﻿import ServiceCard from "@/components/shared/service-card";
 import ServicesCarousel from "./services-carousel";
 import { SprayCan, PaintBucket, Wrench, Shield, Search, Settings, Zap, Package, Lightbulb, Factory, Container, FileCheck, HardHat, Cpu, Map, Building2 } from "lucide-react";
 

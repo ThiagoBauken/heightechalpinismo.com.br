@@ -1,4 +1,4 @@
-import { IdCard, Award, Shield, CheckCircle, HardHat, GraduationCap, ClipboardCheck } from "lucide-react";
+﻿import { IdCard, Award, Shield, CheckCircle, HardHat, GraduationCap, ClipboardCheck } from "lucide-react";
 
 export default function Certifications() {
   const certifications = [

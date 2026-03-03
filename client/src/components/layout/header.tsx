@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone } from "lucide-react";
 import { ModeToggle } from "@/components/shared/mode-toggle";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function Header() {
   const [location] = useLocation();
@@ -98,13 +99,13 @@ export default function Header() {
                 {item.name}
               </a>
             ))}
-            <Link href="/contato">
+            <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
               <Button className="bg-accent hover:bg-red-600 text-white text-sm xl:text-base px-4 xl:px-6">
                 <Phone className="w-4 h-4 mr-2" />
                 <span className="hidden xl:inline">Solicitar Orçamento</span>
                 <span className="xl:hidden">Orçamento</span>
               </Button>
-            </Link>
+            </a>
             <ModeToggle />
           </div>
 
@@ -145,12 +146,12 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
-                  <Link href="/contato" onClick={() => setIsOpen(false)}>
+                  <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                     <Button className="w-full bg-accent hover:bg-yellow-600 text-white mt-4">
                       <Phone className="w-4 h-4 mr-2" />
                       Solicitar Orçamento
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </SheetContent>
             </Sheet>

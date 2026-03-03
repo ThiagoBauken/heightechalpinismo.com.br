@@ -4,53 +4,54 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, Zap, Shield, Award, Phone } from "lucide-react";
 import SEOHead from "@/components/shared/seo-head";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function CargoHoisting() {
   const features = [
-    "IÃ§amos qualquer coisa",
+    "Içamos qualquer coisa",
     "Equipamentos certificados e inspecionados",
     "Equipe especializada e treinada",
-    "Planejamento detalhado da operaÃ§Ã£o",
-    "AnÃ¡lise de riscos e seguranÃ§a",
-    "IÃ§amento de mÃ¡quinas e equipamentos",
-    "MovimentaÃ§Ã£o em locais de difÃ­cil acesso"
+    "Planejamento detalhado da operação",
+    "Análise de riscos e segurança",
+    "Içamento de máquinas e equipamentos",
+    "Movimentação em locais de difícil acesso"
   ];
 
   return (
     <div className="pt-16">
       <SEOHead
-        title="IÃ§amento de Cargas em Altura - BalneÃ¡rio CamboriÃº"
-        description="ServiÃ§o especializado de iÃ§amento e movimentaÃ§Ã£o de cargas em altura em BalneÃ¡rio CamboriÃº. Equipamentos certificados e equipe treinada."
+        title="Içamento de Cargas em Altura - Balneário Camboriú"
+        description="Serviço especializado de içamento e movimentação de cargas em altura em Balneário Camboriú. Equipamentos certificados e equipe treinada."
         keywords={[
-          "iÃ§amento de cargas",
-          "movimentaÃ§Ã£o em altura",
+          "içamento de cargas",
+          "movimentação em altura",
           "guincho manual",
           "transporte vertical",
-          "iÃ§amento industrial"
+          "içamento industrial"
         ]}
       />
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">IÃ§amento Profissional</Badge>
+              <Badge className="bg-accent text-white mb-4">Içamento Profissional</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                IÃ§amento de Cargas
+                Içamento de Cargas
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                ServiÃ§o especializado de iÃ§amento e movimentaÃ§Ã£o de cargas em altura com mÃ¡xima seguranÃ§a e planejamento rigoroso.
+                Serviço especializado de içamento e movimentação de cargas em altura com máxima segurança e planejamento rigoroso.
               </p>
-              <Link href="/contato">
+              <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar OrÃ§amento
+                  Solicitar Orçamento
                 </Button>
-              </Link>
+              </a>
             </div>
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1565452884095-55b8d4cdb8b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="IÃ§amento de cargas"
+                alt="Içamento de cargas"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -62,16 +63,16 @@ export default function CargoHoisting() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">IÃ§amento Seguro</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Içamento Seguro</h2>
               <p className="text-gray-600 mb-6">
-                Realizamos iÃ§amento e movimentaÃ§Ã£o de cargas em altura utilizando tÃ©cnicas de acesso por corda e equipamentos certificados, garantindo total seguranÃ§a na operaÃ§Ã£o. IÃ§amos qualquer coisa, desde maquinÃ¡rios atÃ© mÃ³veis.
+                Realizamos içamento e movimentação de cargas em altura utilizando técnicas de acesso por corda e equipamentos certificados, garantindo total segurança na operação. Içamos qualquer coisa, desde maquinários até móveis.
               </p>
               <p className="text-gray-600">
-                Ideal para locais onde guindastes convencionais nÃ£o tÃªm acesso.
+                Ideal para locais onde guindastes convencionais não têm acesso.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">CaracterÃ­sticas</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Características</h3>
               <ul className="space-y-3">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -88,16 +89,16 @@ export default function CargoHoisting() {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Precisa IÃ§ar Equipamentos?
+            Precisa Içar Equipamentos?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Consulte nossa equipe tÃ©cnica
+            Consulte nossa equipe técnica
           </p>
-          <Link href="/contato">
+          <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
-              Solicitar OrÃ§amento
+              Solicitar Orçamento
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </div>

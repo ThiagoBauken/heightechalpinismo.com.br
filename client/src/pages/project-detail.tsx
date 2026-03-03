@@ -1,9 +1,10 @@
-import { useRoute, Link } from "wouter";
+﻿import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Calendar, Building, ArrowLeft, CheckCircle2, Phone } from "lucide-react";
 import SEOHead from "@/components/shared/seo-head";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 // Project data (same as in projects.tsx but with IDs and extended info)
 const projects = [
@@ -315,12 +316,12 @@ export default function ProjectDetail() {
                 <p className="text-blue-100 mb-6">
                   Entre em contato conosco e descubra como podemos ajudar a realizar seu projeto.
                 </p>
-                <Link href="/contato">
+                <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-4 h-4 mr-2" />
                     Solicitar Orçamento
                   </Button>
-                </Link>
+                </a>
               </CardContent>
             </Card>
           </div>

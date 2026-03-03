@@ -3,55 +3,56 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, Wrench, Shield, Clock, Award, Phone, Play } from "lucide-react";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function BuildingMaintenance() {
   const serviceFeatures = [
-    "InspeÃ§Ã£o e reparo de instalaÃ§Ãµes hidrÃ¡ulicas e elÃ©tricas externas",
-    "InstalaÃ§Ã£o de drenos para equipamentos de ar-condicionado",
-    "FixaÃ§Ã£o ou recolocaÃ§Ã£o de peÃ§as de revestimento soltas",
-    "Pintura de estruturas metÃ¡licas tubulares e complexas",
+    "Inspeção e reparo de instalações hidráulicas e elétricas externas",
+    "Instalação de drenos para equipamentos de ar-condicionado",
+    "Fixação ou recolocação de peças de revestimento soltas",
+    "Pintura de estruturas metálicas tubulares e complexas",
     "Tratamento anticorrosivo de alto desempenho",
-    "Pintura de silos, tanques e tubulaÃ§Ãµes industriais",
-    "Pintura de telhados, calhas e exaustores eÃ³licos",
-    "Limpeza tÃ©cnica e preparaÃ§Ã£o de superfÃ­cie para pintura",
-    "AplicaÃ§Ã£o de revestimentos especiais em altura",
-    "Testes de aderÃªncia e inspeÃ§Ã£o de pintura"
+    "Pintura de silos, tanques e tubulações industriais",
+    "Pintura de telhados, calhas e exaustores eólicos",
+    "Limpeza técnica e preparação de superfície para pintura",
+    "Aplicação de revestimentos especiais em altura",
+    "Testes de aderência e inspeção de pintura"
   ];
 
   const applicationTypes = [
-    "Pintura de estruturas metÃ¡licas de galpÃµes e indÃºstrias",
-    "Tratamento e pintura de torres de comunicaÃ§Ã£o",
+    "Pintura de estruturas metálicas de galpões e indústrias",
+    "Tratamento e pintura de torres de comunicação",
     "Revestimento de tanques de armazenamento e silos",
-    "Pintura de tubulaÃ§Ãµes aÃ©reas e pipe racks",
+    "Pintura de tubulações aéreas e pipe racks",
     "Pintura de pontes roletes e passarelas"
   ];
 
   const equipment = [
     "Equipamentos de acesso individual conforme NR-35 e NR-33",
-    "Furadeiras e marteletes elÃ©tricos leves com seguranÃ§a",
-    "Trenas, nÃ­veis e ferramentas de mediÃ§Ã£o",
-    "EspÃ¡tulas e pistolas de silicone para vedaÃ§Ã£o",
-    "PincÃ©is para aplicaÃ§Ã£o de impermeabilizante",
-    "Sistema de iÃ§amento de ferramentas e materiais",
+    "Furadeiras e marteletes elétricos leves com segurança",
+    "Trenas, níveis e ferramentas de medição",
+    "Espátulas e pistolas de silicone para vedação",
+    "Pincéis para aplicação de impermeabilizante",
+    "Sistema de içamento de ferramentas e materiais",
     "Argamassa de reparo estrutural e selantes",
-    "Manta lÃ­quida impermeabilizante para coberturas"
+    "Manta líquida impermeabilizante para coberturas"
   ];
 
   const benefits = [
     {
       icon: Clock,
-      title: "MÃ­nima InterferÃªncia",
-      description: "Reparos rÃ¡pidos sem atrapalhar a rotina dos usuÃ¡rios"
+      title: "Mínima Interferência",
+      description: "Reparos rápidos sem atrapalhar a rotina dos usuários"
     },
     {
       icon: Shield,
-      title: "ProteÃ§Ã£o Duradoura",
-      description: "Evita corrosÃ£o e desgaste estrutural com revestimentos de alta performance"
+      title: "Proteção Duradoura",
+      description: "Evita corrosão e desgaste estrutural com revestimentos de alta performance"
     },
     {
       icon: Award,
       title: "Versatilidade",
-      description: "Acesso a qualquer ponto da estrutura sem limitaÃ§Ãµes"
+      description: "Acesso a qualquer ponto da estrutura sem limitações"
     }
   ];
 
@@ -62,30 +63,30 @@ export default function BuildingMaintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">ServiÃ§o Especializado</Badge>
+              <Badge className="bg-accent text-white mb-4">Serviço Especializado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Pintura Industrial em Altura
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Pintura especializada e tratamento anticorrosivo para estruturas metÃ¡licas e instalaÃ§Ãµes industriais em locais de difÃ­cil acesso com mÃ¡xima seguranÃ§a.
+                Pintura especializada e tratamento anticorrosivo para estruturas metálicas e instalações industriais em locais de difícil acesso com máxima segurança.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contato">
+                <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar OrÃ§amento
+                    Solicitar Orçamento
                   </Button>
-                </Link>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+                </a>
+                <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary">
                   <Play className="w-5 h-5 mr-2" />
-                  Ver DemonstraÃ§Ã£o
+                  Ver Demonstração
                 </Button>
               </div>
             </div>
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="ManutenÃ§Ã£o predial em altura"
+                alt="Manutenção predial em altura"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -98,19 +99,19 @@ export default function BuildingMaintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o ServiÃ§o</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Como Realizamos o Serviço</h2>
               <p className="text-gray-600 mb-6">
-                A pintura industrial via acesso por cordas abrange a proteÃ§Ã£o e revestimento de estruturas que seriam difÃ­ceis de acessar por mÃ©todos convencionais. Nossos tÃ©cnicos especializados realizam o tratamento completo de superfÃ­cies.
+                A pintura industrial via acesso por cordas abrange a proteção e revestimento de estruturas que seriam difíceis de acessar por métodos convencionais. Nossos técnicos especializados realizam o tratamento completo de superfícies.
               </p>
               <p className="text-gray-600 mb-6">
-                Realizamos desde inspeÃ§Ã£o e reparo de instalaÃ§Ãµes hidrÃ¡ulicas e elÃ©tricas externas atÃ© a fixaÃ§Ã£o de peÃ§as de revestimento soltas, manutenÃ§Ã£o de telhados e sistemas de drenagem. TambÃ©m executamos pequenos serviÃ§os de alvenaria e testes de percussÃ£o para identificar problemas estruturais.
+                Realizamos desde inspeção e reparo de instalações hidráulicas e elétricas externas até a fixação de peças de revestimento soltas, manutenção de telhados e sistemas de drenagem. Também executamos pequenos serviços de alvenaria e testes de percussão para identificar problemas estruturais.
               </p>
               <p className="text-gray-600">
-                Ã‰ um serviÃ§o abrangente para garantir a integridade estrutural e estÃ©tica do prÃ©dio, aumentando significativamente sua vida Ãºtil e valor de mercado.
+                É um serviço abrangente para garantir a integridade estrutural e estética do prédio, aumentando significativamente sua vida útil e valor de mercado.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -130,7 +131,7 @@ export default function BuildingMaintenance() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens da Pintura Industrial por Acesso por Corda</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              BenefÃ­cios Ãºnicos da nossa tÃ©cnica especializada em pintura
+              Benefícios únicos da nossa técnica especializada em pintura
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -155,7 +156,7 @@ export default function BuildingMaintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">AplicaÃ§Ãµes Comuns</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Aplicações Comuns</h2>
               <ul className="space-y-3">
                 {applicationTypes.map((application, index) => (
                   <li key={index} className="flex items-start">
@@ -186,30 +187,30 @@ export default function BuildingMaintenance() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Processo de Pintura Profissional</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Metodologia estruturada para garantir qualidade e seguranÃ§a
+              Metodologia estruturada para garantir qualidade e segurança
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
                 step: "01",
-                title: "InspeÃ§Ã£o",
-                description: "AvaliaÃ§Ã£o detalhada dos pontos que necessitam manutenÃ§Ã£o"
+                title: "Inspeção",
+                description: "Avaliação detalhada dos pontos que necessitam manutenção"
               },
               {
                 step: "02",
                 title: "Planejamento",
-                description: "DefiniÃ§Ã£o de materiais e sequÃªncia de execuÃ§Ã£o"
+                description: "Definição de materiais e sequência de execução"
               },
               {
                 step: "03",
-                title: "ExecuÃ§Ã£o",
-                description: "RealizaÃ§Ã£o dos reparos com tÃ©cnicas especializadas"
+                title: "Execução",
+                description: "Realização dos reparos com técnicas especializadas"
               },
               {
                 step: "04",
-                title: "VerificaÃ§Ã£o",
-                description: "InspeÃ§Ã£o final e teste de qualidade dos reparos"
+                title: "Verificação",
+                description: "Inspeção final e teste de qualidade dos reparos"
               }
             ].map((process, index) => (
               <Card key={index} className="text-center p-6">
@@ -232,26 +233,26 @@ export default function BuildingMaintenance() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Tipos de Estruturas Atendidas</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Atendemos diversos tipos de edificaÃ§Ãµes com necessidades especÃ­ficas
+              Atendemos diversos tipos de edificações com necessidades específicas
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "EdifÃ­cios Residenciais",
-                description: "CondomÃ­nios verticais com manutenÃ§Ã£o preventiva regular"
+                title: "Edifícios Residenciais",
+                description: "Condomínios verticais com manutenção preventiva regular"
               },
               {
-                title: "EdifÃ­cios Comerciais",
-                description: "EscritÃ³rios e centros comerciais de mÃ©dio e grande porte"
+                title: "Edifícios Comerciais",
+                description: "Escritórios e centros comerciais de médio e grande porte"
               },
               {
-                title: "PrÃ©dios HistÃ³ricos",
-                description: "EdificaÃ§Ãµes que requerem cuidados especiais na manutenÃ§Ã£o"
+                title: "Prédios Históricos",
+                description: "Edificações que requerem cuidados especiais na manutenção"
               },
               {
                 title: "Complexos Hospitalares",
-                description: "Hospitais e hotÃ©is com mÃ­nima interferÃªncia na operaÃ§Ã£o"
+                description: "Hospitais e hotéis com mínima interferência na operação"
               }
             ].map((building, index) => (
               <Card key={index} className="p-6 text-center">
@@ -272,18 +273,18 @@ export default function BuildingMaintenance() {
             Precisa de Pintura Industrial?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Proteja suas estruturas metÃ¡licas com nossa pintura especializada e evite corrosÃ£o
+            Proteja suas estruturas metálicas com nossa pintura especializada e evite corrosão
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato">
+            <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Solicitar OrÃ§amento Gratuito
+                Solicitar Orçamento Gratuito
               </Button>
-            </Link>
+            </a>
             <Link href="/">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Outros ServiÃ§os
+              <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary">
+                Ver Outros Serviços
               </Button>
             </Link>
           </div>

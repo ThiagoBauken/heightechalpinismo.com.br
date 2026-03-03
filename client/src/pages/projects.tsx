@@ -1,7 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card";
+﻿import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Calendar, Building } from "lucide-react";
 import { Link } from "wouter";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function Projects() {
   const projects = [
@@ -184,7 +185,7 @@ export default function Projects() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/contato" 
+              href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer" 
               className="bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 inline-flex items-center justify-center"
             >
               Solicitar Orçamento

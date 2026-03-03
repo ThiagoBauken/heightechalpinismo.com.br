@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ServiceCard from "@/components/shared/service-card";
@@ -17,6 +17,8 @@ interface ServicesCarouselProps {
 export default function ServicesCarousel({ services }: ServicesCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const itemsPerPage = 1;
   const totalPages = Math.ceil(services.length / itemsPerPage);
@@ -49,9 +51,39 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
+  // Touch/swipe handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; // Minimum swipe distance in pixels
+
+    if (diff > threshold) {
+      nextSlide(); // Swipe left → next slide
+    } else if (diff < -threshold) {
+      prevSlide(); // Swipe right → previous slide
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <div className="md:hidden">
-      <div className="relative overflow-hidden">
+      <div
+        className="relative overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}

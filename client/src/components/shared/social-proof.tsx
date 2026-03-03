@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import { Building2, Users, Award, TrendingUp } from "lucide-react";
 
 interface CounterProps {

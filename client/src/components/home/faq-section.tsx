@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function FAQSection() {
@@ -71,7 +71,7 @@ export default function FAQSection() {
                   <ChevronDown className="w-5 h-5 text-primary flex-shrink-0" />
                 )}
               </button>
-              
+
               {openIndex === index && (
                 <div className="bg-white border-x border-b rounded-b-lg p-6 pt-0">
                   <p className="text-gray-600 leading-relaxed">

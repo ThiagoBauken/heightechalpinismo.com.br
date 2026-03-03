@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
+﻿import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, Play } from "lucide-react";
 import VideoBackground from "@/components/shared/video-background";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function HeroSection() {
   return (
@@ -29,16 +30,16 @@ export default function HeroSection() {
             Especialistas em acesso por corda para manutenção predial, limpeza de fachadas e serviços técnicos em altura em todo o Brasil
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato">
+            <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white text-lg px-8 py-4">
                 <Phone className="w-5 h-5 mr-2" />
                 Solicitar Orçamento
               </Button>
-            </Link>
+            </a>
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+              className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
               onClick={() => {
                 const element = document.getElementById('video-section');
                 if (element) {

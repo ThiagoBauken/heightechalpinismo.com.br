@@ -1,10 +1,11 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, Clock, User, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OptimizedImage from "@/components/shared/optimized-image";
 import { analytics } from "@/lib/analytics-tracker";
 import { Link } from "wouter";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 interface BlogPost {
   id: number;
@@ -138,77 +139,73 @@ export default function Blog() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
-                <article
-                  key={post.id}
-                  className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
-                >
-                  {/* Imagem do Post */}
-                  <div className="relative h-48 overflow-hidden">
-                    <OptimizedImage
-                      src={post.imageUrl || getDefaultImage(post.category)}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {categories.find(c => c.id === post.category)?.name || post.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Conteúdo do Post */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Meta Informações */}
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                      <div className="flex items-center gap-1">
-                        <User className="w-4 h-4" />
-                        <span>{post.author}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{formatDate(post.publishedAt || post.createdAt)}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readTime} min</span>
+                <Link href={`/blog/${post.slug}`}>
+                  <article
+                    key={post.id}
+                    className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
+                  >
+                    {/* Imagem do Post */}
+                    <div className="relative h-48 overflow-hidden">
+                      <OptimizedImage
+                        src={post.imageUrl || getDefaultImage(post.category)}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                          {categories.find(c => c.id === post.category)?.name || post.category}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Tags */}
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    {/* Conteúdo do Post */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                        {post.title}
+                      </h3>
 
-                    {/* Link para o Post Completo */}
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button
-                        variant="link"
-                        className="p-0 h-auto font-semibold text-blue-600 group-hover:text-blue-700"
-                        onClick={() => analytics.trackButtonClick('blog_read_more', post.title)}
-                      >
+                      <p className="text-gray-600 mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Meta Informações */}
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <div className="flex items-center gap-1">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{formatDate(post.publishedAt || post.createdAt)}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime} min</span>
+                        </div>
+                      </div>
+
+                      {/* Tags */}
+                      {post.tags && post.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Link para o Post Completo */}
+                      <span className="inline-flex items-center font-semibold text-blue-600 group-hover:text-blue-700">
                         Ler mais
                         <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
-                  </div>
-                </article>
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
           )}
@@ -224,7 +221,7 @@ export default function Blog() {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Entre em contato conosco e solicite um orçamento personalizado para seu projeto
           </p>
-          <Link href="/contato">
+          <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               variant="secondary"
@@ -234,7 +231,7 @@ export default function Blog() {
               Solicitar Orçamento
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </div>

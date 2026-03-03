@@ -1,10 +1,11 @@
-import { useRoute, Link } from "wouter";
+﻿import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, Clock, User, ArrowLeft, Tag, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OptimizedImage from "@/components/shared/optimized-image";
 import SEOHead from "@/components/shared/seo-head";
 import ReactMarkdown from 'react-markdown';
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 // Interface do blog post da API
 interface BlogPost {
@@ -201,11 +202,11 @@ export default function BlogPost() {
             <p className="text-gray-600 mb-4">
               Entre em contato conosco para um orçamento personalizado
             </p>
-            <Link href="/contato">
+            <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary hover:bg-red-700">
                 Solicitar Orçamento
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
 

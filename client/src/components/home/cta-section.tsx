@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
+﻿import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "wouter";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function CTASection() {
   return (
@@ -15,12 +16,12 @@ export default function CTASection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/contato">
+            <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="secondary" className="text-lg px-8 py-4">
                 <Phone className="w-5 h-5 mr-2" />
                 Solicitar Orçamento Gratuito
               </Button>
-            </Link>
+            </a>
             <Button size="lg" variant="outline" className="text-lg px-8 py-4 bg-white/10 border-white text-white hover:bg-white hover:text-primary">
               <Mail className="w-5 h-5 mr-2" />
               Falar com Especialista

@@ -4,21 +4,22 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { Check, FileCheck, Shield, Clock, Award, Phone, Play } from "lucide-react";
 import SEOHead from "@/components/shared/seo-head";
+import { getWhatsAppOrcamentoUrl } from "@/lib/whatsapp";
 
 export default function AnchorPoints() {
   const serviceFeatures = [
-    "InstalaÃ§Ã£o certificada conforme ABNT NBR 16325",
+    "Instalação certificada conforme ABNT NBR 16325",
     "Teste de ancoragem com carga de ruptura",
-    "Laudo tÃ©cnico completo e detalhado",
-    "ART (AnotaÃ§Ã£o de Responsabilidade TÃ©cnica) inclusa",
+    "Laudo técnico completo e detalhado",
+    "ART (Anotação de Responsabilidade Técnica) inclusa",
     "Dimensionamento estrutural adequado",
-    "Teste de carga e resistÃªncia periÃ³dico",
+    "Teste de carga e resistência periódico",
     "Certificado de conformidade"
   ];
 
   const buildingTypes = [
-    "EdifÃ­cios comerciais e residenciais",
-    "IndÃºstrias e fÃ¡bricas",
+    "Edifícios comerciais e residenciais",
+    "Indústrias e fábricas",
     "Hospitais e escolas",
     "Shopping centers e centros comerciais",
     "Silos e estruturas especiais"
@@ -27,13 +28,13 @@ export default function AnchorPoints() {
   const benefits = [
     {
       icon: Shield,
-      title: "SeguranÃ§a",
-      description: "Conformidade total com normas tÃ©cnicas de seguranÃ§a"
+      title: "Segurança",
+      description: "Conformidade total com normas técnicas de segurança"
     },
     {
       icon: FileCheck,
-      title: "DocumentaÃ§Ã£o",
-      description: "Laudo tÃ©cnico e ART para regularizaÃ§Ã£o"
+      title: "Documentação",
+      description: "Laudo técnico e ART para regularização"
     },
     {
       icon: Award,
@@ -45,42 +46,42 @@ export default function AnchorPoints() {
   return (
     <div className="pt-16">
       <SEOHead
-        title="InstalaÃ§Ã£o e Teste de Pontos de Ancoragem e Linha de Vida com ART - BalneÃ¡rio CamboriÃº"
-        description="InstalaÃ§Ã£o certificada e teste de pontos de ancoragem e linha de vida com laudo tÃ©cnico e ART em BalneÃ¡rio CamboriÃº e Itapema. Conforme ABNT NBR 16325."
+        title="Instalação e Teste de Pontos de Ancoragem e Linha de Vida com ART - Balneário Camboriú"
+        description="Instalação certificada e teste de pontos de ancoragem e linha de vida com laudo técnico e ART em Balneário Camboriú e Itapema. Conforme ABNT NBR 16325."
         keywords={[
           "pontos de ancoragem",
           "linha de vida",
           "teste de ancoragem",
           "ART ancoragem",
-          "laudo tÃ©cnico",
+          "laudo técnico",
           "NR-35",
-          "seguranÃ§a em altura"
+          "segurança em altura"
         ]}
       />
       <section className="relative py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="bg-accent text-white mb-4">ServiÃ§o Certificado</Badge>
+              <Badge className="bg-accent text-white mb-4">Serviço Certificado</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                InstalaÃ§Ã£o e Teste de Pontos de Ancoragem e Linha de Vida
+                Instalação e Teste de Pontos de Ancoragem e Linha de Vida
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                InstalaÃ§Ã£o certificada e teste de pontos de ancoragem e linha de vida com laudo tÃ©cnico e ART para seguranÃ§a em trabalhos em altura conforme NR-35.
+                Instalação certificada e teste de pontos de ancoragem e linha de vida com laudo técnico e ART para segurança em trabalhos em altura conforme NR-35.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contato">
+                <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Solicitar OrÃ§amento
+                    Solicitar Orçamento
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="InstalaÃ§Ã£o de pontos de ancoragem"
+                alt="Instalação de pontos de ancoragem"
                 className="rounded-lg shadow-2xl"
               />
             </div>
@@ -92,16 +93,16 @@ export default function AnchorPoints() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">O que sÃ£o Pontos de Ancoragem e Linha de Vida?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">O que são Pontos de Ancoragem e Linha de Vida?</h2>
               <p className="text-gray-600 mb-6">
-                Pontos de ancoragem e linhas de vida sÃ£o dispositivos instalados em estruturas para permitir trabalhos em altura com seguranÃ§a. SÃ£o essenciais para proteger profissionais que realizam serviÃ§os como limpeza, manutenÃ§Ã£o e pintura em fachadas.
+                Pontos de ancoragem e linhas de vida são dispositivos instalados em estruturas para permitir trabalhos em altura com segurança. São essenciais para proteger profissionais que realizam serviços como limpeza, manutenção e pintura em fachadas.
               </p>
               <p className="text-gray-600 mb-6">
-                Nossa equipe realiza o projeto estrutural, instalaÃ§Ã£o e certificaÃ§Ã£o conforme a ABNT NBR 16325, garantindo total seguranÃ§a e conformidade legal.
+                Nossa equipe realiza o projeto estrutural, instalação e certificação conforme a ABNT NBR 16325, garantindo total segurança e conformidade legal.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">ServiÃ§os Inclusos</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Serviços Inclusos</h3>
               <ul className="space-y-3">
                 {serviceFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -118,7 +119,7 @@ export default function AnchorPoints() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens do Nosso ServiÃ§o</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Vantagens do Nosso Serviço</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
@@ -143,14 +144,14 @@ export default function AnchorPoints() {
             Precisa Instalar Pontos de Ancoragem e Linha de Vida?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Entre em contato para um projeto personalizado com toda documentaÃ§Ã£o necessÃ¡ria
+            Entre em contato para um projeto personalizado com toda documentação necessária
           </p>
-          <Link href="/contato">
+          <a href={getWhatsAppOrcamentoUrl()} target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-accent hover:bg-yellow-600 text-white">
               <Phone className="w-5 h-5 mr-2" />
-              Solicitar OrÃ§amento Gratuito
+              Solicitar Orçamento Gratuito
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </div>

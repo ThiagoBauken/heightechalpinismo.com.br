@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 
 interface VideoBackgroundProps {
   // Opção 1: URL do YouTube (RECOMENDADO - mais rápido!)

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -199,9 +199,8 @@ export default function QuoteForm() {
                   {index < steps.length - 1 && (
                     <div className="flex-1 h-0.5 mx-2 bg-gray-200">
                       <div
-                        className={`h-full transition-all duration-300 ${
-                          isCompleted ? 'bg-green-500 w-full' : 'bg-gray-200 w-0'
-                        }`}
+                        className={`h-full transition-all duration-300 ${isCompleted ? 'bg-green-500 w-full' : 'bg-gray-200 w-0'
+                          }`}
                       />
                     </div>
                   )}

@@ -1,4 +1,4 @@
-import BeforeAfterSlider from "@/components/shared/before-after-slider";
+﻿import BeforeAfterSlider from "@/components/shared/before-after-slider";
 
 export default function ProjectGallery() {
   const beforeAfterProjects = [

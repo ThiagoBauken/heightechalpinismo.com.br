@@ -1,4 +1,4 @@
-import whatsappIcon from "@assets/134w1500.jpg";
+﻿import whatsappIcon from "@assets/134w1500.jpg";
 import { analytics } from "@/lib/analytics-tracker";
 import { useState } from "react";
 
